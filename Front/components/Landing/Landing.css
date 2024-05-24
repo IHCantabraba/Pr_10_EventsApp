@@ -16,15 +16,26 @@
   right: 0;
 }
 #landing-msg {
-  border: 2px solid rgb(50, 50, 128);
+  /* border: 2px solid rgb(50, 50, 128); */
   border-radius: 15px;
   padding: 0.5rem 1.5rem;
   box-shadow: 2px 2px 5px 1px rgba(227, 224, 224, 0.4);
+  background-color: rgb(224, 221, 221);
 }
-#landing-login-btn,
-#landing-register-btn {
-  border-radius: 15px;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
+#landing-options {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
+#landing-login-btn:hover {
+  background-color: lightgreen;
+}
+#landing-register-btn:hover {
+  background-color: lightblue;
+}
+
+/* #landing.hide {
+  display: none;
+} */
