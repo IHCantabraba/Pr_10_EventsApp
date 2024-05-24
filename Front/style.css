@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poetsen+One&display=swap');
+
+:root {
+  --ihc-header-height: 100px;
+  /* footer */
+  --ihc-footer-height: 60px;
+  --ihc-footer-gap: 0.5rem;
+  /*BTN Register*/
+  --ihc-BtnRegister-BG-color: lightblue;
+}
 body {
   background-color: rgb(62, 61, 61);
 }

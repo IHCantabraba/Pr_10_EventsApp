@@ -31,11 +31,9 @@
 }
 #landing-login-btn:hover {
   background-color: lightgreen;
+  border: none;
 }
 #landing-register-btn:hover {
-  background-color: lightblue;
+  background-color: var(--ihc-BtnRegister-BG-color);
+  border: none;
 }
-
-/* #landing.hide {
-  display: none;
-} */

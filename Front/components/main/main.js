@@ -1,8 +1,10 @@
+import './main.css'
 const main = () => {
   const main = `
-  <main></main>
+  <main id="main"></main>
 `
-  document.body.innerHTML += main
+  const app = document.querySelector('#app')
+  app.innerHTML += main
 }
 
 export default main

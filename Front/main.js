@@ -1,13 +1,14 @@
 import './style.css'
 import HeaderTemplate from './components/Header/header'
 import LandingTemplate from './components/Landing/Landing'
-import Register from './pages/Register'
+import Register from './pages/Register/Register'
 import main from './components/main/main'
+import footer from './components/footer/footer'
 /* insertar el header */
 HeaderTemplate()
 main()
 LandingTemplate()
-
+footer()
 document
   .querySelector('#landing-register-btn')
   .addEventListener('click', () => {

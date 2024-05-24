@@ -1,0 +1,16 @@
+#footer {
+  height: var(--ihc-footer-height);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ihc-footer-gap);
+  position: fixed;
+  bottom: 10px;
+}
+
+#footer-img {
+  width: 3rem;
+  height: 50%;
+}

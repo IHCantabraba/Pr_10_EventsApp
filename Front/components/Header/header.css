@@ -16,10 +16,9 @@
   justify-content: space-between;
   gap: 3rem;
   margin: 0.5rem 1.5rem;
+  height: var(--ihc-header-height);
 }
-#app-Title {
-  align-self: flex-start;
-}
+
 #app-Pages {
   min-width: 20rem;
   justify-content: space-between;
