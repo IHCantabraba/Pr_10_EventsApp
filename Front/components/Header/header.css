@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#header,
+#userLogged,
+#app-Pages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#header {
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0.5rem 1.5rem;
+}
+#app-Title {
+  align-self: flex-start;
+}
+#app-Pages {
+  min-width: 20rem;
+  justify-content: space-between;
+}
+#app-Pages > a {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(50, 50, 128);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+#userLogged {
+  justify-content: center;
+  gap: 2rem;
+}
+.userIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid white;
+  border-radius: 50%;
+}
