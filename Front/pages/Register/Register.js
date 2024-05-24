@@ -2,7 +2,7 @@ import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
 import DragDrop from '../../components/common/DragDrop/DragDrop'
-
+/* Register template */
 const template = () => `
   <section id="register-form">
     <form id="register-page">
@@ -16,8 +16,13 @@ const template = () => `
     </form>
   </section>
 `
+
+/* TODO submitRegistration */
+
+/* Register page */
 const Register = () => {
   document.querySelector('main').innerHTML = template()
+
   document.querySelector('#registrationBtn').addEventListener('click', () => {
     console.log('registering')
   })

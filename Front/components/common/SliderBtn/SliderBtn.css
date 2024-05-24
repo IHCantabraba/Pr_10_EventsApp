@@ -1,0 +1,55 @@
+#slider-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+}
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide the checkbox input */
+#checkboxInput {
+  display: none;
+}
+
+/* Describe slider's look and position. */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Describe the white ball's location 
+        and appearance in the slider. */
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.5s;
+  border-radius: 50%;
+}
+
+/* Modify the slider's background color to 
+        blue once the checkbox has been selected. */
+#checkboxInput:checked + .slider {
+  background-color: rgb(12, 99, 221);
+}
+
+/* When the checkbox is checked, shift the 
+        white ball towards the right within the slider. */
+#checkboxInput:checked + .slider:before {
+  transform: translateX(17px);
+}
