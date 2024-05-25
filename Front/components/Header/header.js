@@ -19,17 +19,17 @@ const HeaderTemplate = () => {
   `
   document.body.innerHTML = template
   /* TODO --> not working */
-  let Changetheme = document.querySelector('input[id=checkboxInput]')
-  Changetheme.addEventListener('change', function () {
-    console.log('changing')
-    /* para usar "this." se requiere usar function () {} */
-    /* si se usa ()=>{} se debe usar e.target */
-    if (this.checked) {
-      p.innerHTML = 'What ever you want to activate'
-    } else {
-      p.innerHTML = 'What ever you want to deactivate'
-    }
-  })
+  //   let Changetheme = document.querySelector('input[id=checkboxInput]')
+  //   Changetheme.addEventListener('change', function () {
+  //     console.log('changing')
+  //     /* para usar "this." se requiere usar function () {} */
+  //     /* si se usa ()=>{} se debe usar e.target */
+  //     if (this.checked) {
+  //       p.innerHTML = 'What ever you want to activate'
+  //     } else {
+  //       p.innerHTML = 'What ever you want to deactivate'
+  //     }
+  //   })
 }
 
 export default HeaderTemplate

@@ -11,7 +11,7 @@
 }
 
 /* Hide the checkbox input */
-#checkboxInput {
+#check {
   display: none;
 }
 
@@ -44,12 +44,12 @@
 
 /* Modify the slider's background color to 
         blue once the checkbox has been selected. */
-#checkboxInput:checked + .slider {
+#check:checked + .slider {
   background-color: rgb(12, 99, 221);
 }
 
 /* When the checkbox is checked, shift the 
         white ball towards the right within the slider. */
-#checkboxInput:checked + .slider:before {
+#check:checked + .slider:before {
   transform: translateX(17px);
 }

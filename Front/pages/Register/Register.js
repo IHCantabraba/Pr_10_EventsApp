@@ -1,7 +1,7 @@
 import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
-import DragDrop from '../../components/common/DragDrop/DragDrop'
+import Login from '../Login'
 /* Register template */
 const template = () => `
   <section id="register-form">
@@ -9,7 +9,7 @@ const template = () => `
       ${InputElem('text', 'Username', 'username')}
       ${InputElem('text', 'email', 'email')}
       ${InputElem('password', 'Password', 'password')}
-      ${InputElem('password', 'Repeat Password', 'password')}
+      ${InputElem('password', 'Repeat Password', 'passwordRepeted')}
       ${InputElem('file', 'select profile img', 'avatar')}
       </div>
       <div id="registerBtns">
@@ -21,79 +21,41 @@ const template = () => `
 `
 
 /* TODO submitRegistration */
-
+const submitRegister = async () => {
+  console.log('ready to get data to register')
+  try {
+    const username = documento.querySelector('#username').value
+    const password = document.querySelector('#password').value
+    const passwordRepeted = document.querySelector('#passwordrepeted').value
+    const email = document.querySelector('#email').value
+    const avatar = document.querySelector('#avatar').value
+    console.log(password, passwordRepeted)
+    if (password !== passwordRepeted) {
+      console.log('Password does not match ')
+    }
+    const body = new FormData()
+    body.set('nombre', username)
+    body.set('email', email)
+    body.set('password', password)
+    body.set('img', avatar)
+    const data = await fetch('http://localhost:3000/api/v1/users/register', {
+      headers: { 'Content-type': 'multipart/form-data' },
+      method: 'POST',
+      body: body
+    })
+    alert(`Please, log in with your credentials`)
+    Login()
+  } catch (error) {
+    console.log(error)
+  }
+}
 /* Register page */
 const Register = () => {
   document.querySelector('main').innerHTML = template()
 
   document.querySelector('#registrationBtn').addEventListener('click', () => {
-    console.log('registering')
+    console.log('register btn clicked')
+    submitRegister()
   })
-
-  /* drop zone implementation */
-  // const dropzone = document.querySelector('#drop_zone')
-
-  // dropzone.addEventListener('dragenter', dragenter, false)
-  // dropzone.addEventListener('dragover', dragover, false)
-  // dropzone.addEventListener('drop', drop, false)
-  // function dragenter(e) {
-  //   e.stopPropagation()
-  //   e.preventDefault()
-  // }
-  // function dragover(e) {
-  //   e.stopPropagation()
-  //   e.preventDefault()
-  // }
-  // function drop(e) {
-  //   e.stopPropagation()
-  //   e.preventDefault()
-  //   let dt = e.dataTransfer
-  //   let files = dt.files
-  //   handleFiles(files)
-  // }
-  // function handleFiles(files) {
-  //   for (var i = 0; i < files.length; i++) {
-  //     // get the next file that the user selected
-  //     var file = files[i]
-  //     var imageType = /image.*/
-
-  //     // don't try to process non-images
-  //     if (!file.type.match(imageType)) {
-  //       continue
-  //     }
-
-  //     // a seed img element for the FileReader
-  //     var img = document.createElement('img')
-  //     img.classList.add('obj')
-  //     img.file = file
-
-  //     // get an image file from the user
-  //     // this uses drag/drop, but you could substitute file-browsing
-  //     var reader = new FileReader()
-  //     reader.onload = (function (aImg) {
-  //       return function (e) {
-  //         aImg.onload = function () {
-  //           // draw the aImg onto the canvas
-  //           var canvas = document.createElement('canvas')
-  //           var ctx = canvas.getContext('2d')
-  //           canvas.width = aImg.width
-  //           canvas.height = aImg.height
-  //           ctx.drawImage(aImg, 0, 0)
-
-  //           // make the jpeg image
-  //           var newImg = new Image()
-  //           newImg.onload = function () {
-  //             newImg.id = 'newest'
-  //             document.body.appendChild(newImg)
-  //           }
-  //           newImg.src = canvas.toDataURL('image/jpeg')
-  //         }
-  //         // e.target.result is a dataURL for the image
-  //         aImg.src = e.target.result
-  //       }
-  //     })(img)
-  //     reader.readAsDataURL(file)
-  //   } // end for
-  // } // end handleFiles
 }
 export default Register
