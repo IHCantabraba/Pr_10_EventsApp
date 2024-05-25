@@ -1,0 +1,24 @@
+#login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+#login-page {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#loinginfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

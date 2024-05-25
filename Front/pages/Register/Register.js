@@ -1,7 +1,8 @@
 import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
-import Login from '../Login'
+import Login from '../Login/Login'
+
 /* Register template */
 const template = () => `
   <section id="register-form">
@@ -52,9 +53,10 @@ const submitRegister = async () => {
 const Register = () => {
   document.querySelector('main').innerHTML = template()
 
-  document.querySelector('.registerBtn').addEventListener('click', () => {
-    console.log('register btn clicked')
-    submitRegister()
+  document.querySelector('#registrationBtn').addEventListener('click', () => {
+    Login()
+    // console.log('register btn clicked')
+    // submitRegister()
   })
 }
 export default Register

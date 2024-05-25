@@ -4,7 +4,8 @@ import LandingTemplate from './components/Landing/Landing'
 import Register from './pages/Register/Register'
 import main from './components/main/main'
 import footer from './components/footer/footer'
-import Themes from './components/common/SliderBtn/SliderAction'
+
+import Login from './pages/Login/Login'
 /* insertar el header */
 HeaderTemplate()
 main()
@@ -17,7 +18,7 @@ document
   })
 document
   .querySelector('#landing-login-btn')
-  .addEventListener('click', () => LoginPage())
+  .addEventListener('click', () => Login())
 
 // document.querySelector('#check').addEventListener('change', function (e) {
 //   e.Themes()
