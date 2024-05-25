@@ -39,7 +39,6 @@ const submitRegister = async () => {
     body.set('password', password)
     body.set('img', avatar)
     const data = await fetch('http://localhost:3000/api/v1/users/register', {
-      headers: { 'Content-type': 'multipart/form-data' },
       method: 'POST',
       body: body
     })
@@ -53,7 +52,7 @@ const submitRegister = async () => {
 const Register = () => {
   document.querySelector('main').innerHTML = template()
 
-  document.querySelector('#registrationBtn').addEventListener('click', () => {
+  document.querySelector('.registerBtn').addEventListener('click', () => {
     console.log('register btn clicked')
     submitRegister()
   })
