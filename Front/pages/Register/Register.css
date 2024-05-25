@@ -19,3 +19,17 @@
 #registrationBtn:hover {
   background-color: var(--ihc-BtnRegister-BG-color);
 }
+#registerBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.cancel:hover {
+  background-color: lightcoral;
+  border: none;
+}
+#registrationBtn:hover {
+  border: none;
+  background-color: lightgreen;
+}

@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poetsen+One&display=swap');
 
 :root {
-  --ihc-header-height: 100px;
+  --ihc-header-height: 70px;
+  --ihc-BG-color-HeaderFooter: rgb(245, 244, 244);
   /* footer */
   --ihc-footer-height: 60px;
   --ihc-footer-gap: 0.5rem;
   /*BTN Register*/
   --ihc-BtnRegister-BG-color: lightblue;
 }
-body {
+/* body {
   background-color: rgb(62, 61, 61);
-}
+} */
 * {
   font-family: 'Poetsen One', sans-serif;
 }

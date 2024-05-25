@@ -6,11 +6,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--ihc-footer-gap);
-  position: fixed;
-  bottom: 10px;
+  background-color: var(--ihc-BG-color-HeaderFooter);
+  color: gray;
+  /* position: fixed; */
 }
 
 #footer-img {
-  width: 3rem;
-  height: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+#footer > p {
+  height: 1.2rem;
 }
