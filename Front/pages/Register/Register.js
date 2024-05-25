@@ -33,13 +33,7 @@ const submitRegister = async () => {
     if (password !== passwordRepeted) {
       console.log('Password does not match ')
     }
-    // const body = new FormData()
-    // body.append('nombre', username)
-    // body.set('email', email)
-    // body.set('password', password)
-    // body.set('img', avatar)
-    // const bodyRequest = body.entries()
-    // console.log(`formData: ${[...bodyRequest]}`)
+
     await fetch('http://localhost:3000/api/v1/users/register', {
       headers: {
         'Content-Type': 'application/json'
