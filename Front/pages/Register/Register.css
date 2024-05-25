@@ -33,3 +33,10 @@
   border: none;
   background-color: lightgreen;
 }
+#sumitRegister {
+  align-self: center;
+  padding: 1rem 1.5rem;
+  color: white;
+  background-color: black;
+  height: auto;
+}

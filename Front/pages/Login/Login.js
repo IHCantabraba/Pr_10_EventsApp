@@ -13,7 +13,7 @@ const template = () => `
         ${InputElem('text', 'username', 'LoginUser')}
         ${InputElem('password', 'Password', 'password')}
       </div>
-      ${Btn('registrationBtn', 'Login', 'submitRegistration')}
+      ${Btn('LoginBtn', 'Login', 'submitRegistration')}
 
     </form>
   </section>
