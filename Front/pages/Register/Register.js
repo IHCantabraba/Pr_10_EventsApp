@@ -1,12 +1,13 @@
 import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
+import BtnType from '../../components/common/Button/buttonType'
 import Login from '../Login/Login'
-
+// onsubmit="${submitRegister}" enctype="multipart/form-data"
 /* Register template */
 const template = () => `
   <section id="register-form">
-    <form id="register-page" onsubmit="${submitRegister()}">
+    <form id="register-page" >
       ${InputElem('text', 'Username', 'username')}
       ${InputElem('text', 'email', 'email')}
       ${InputElem('password', 'Password', 'password')}
@@ -14,48 +15,12 @@ const template = () => `
       ${InputElem('file', '', 'avatar', 'avatar')}
       </div>
       <div id="registerBtns">
-        ${InputElem('submit', '', 'sumitRegister')}
+        ${Btn('sumitRegister', 'Enviar', 'sumitRegister')}
         ${Btn('cancelBtn', 'Cancel', 'cancel')}
       </div>
     </form>
   </section>
 `
-
-/* TODO submitRegistration */
-const submitRegister = async () => {
-  console.log('ready to get data to register')
-  try {
-    const username = document.querySelector('#username').value
-    const password = document.querySelector('#password').value
-    const passwordRepeted = document.querySelector('#passwordRepeted').value
-    const email = document.querySelector('#email').value
-    const avatar = document.querySelector('.avatar').value
-    if (password !== passwordRepeted) {
-      console.log('Password does not match ')
-    }
-
-    await fetch('http://localhost:3000/api/v1/users/register', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        nombre: username,
-        email: email,
-        password: password,
-        img: avatar
-      }),
-      mode: 'cors',
-      cache: 'default'
-    })
-      .then((res) => res.json())
-      .then((info) => console.log(info))
-    alert(`Please, log in with your credentials`)
-    // Login()
-  } catch (error) {
-    console.log(error)
-  }
-}
 /* Register page */
 const Register = () => {
   document.querySelector('main').innerHTML = template()
@@ -63,5 +28,34 @@ const Register = () => {
     submitRegister()
     Login()
   })
+}
+
+const submitRegister = async (e) => {
+  console.log('ready to get data to register')
+  try {
+    const form = document.querySelector('#register-page')
+    const username = document.querySelector('#username').value
+    const password = document.querySelector('#password').value
+    const email = document.querySelector('#email').value
+    const avatar = document.querySelector('.avatar').files[0]
+
+    const data = new FormData(form)
+    data.append('nombre', username)
+    data.append('email', email)
+    data.append('password', password)
+    data.append('img', avatar)
+    console.log(data.entries())
+    await fetch('http://localhost:3000/api/v1/users/register', {
+      method: 'POST',
+      body: data,
+      mode: 'cors',
+      cache: 'default'
+    })
+    alert(`Please, log in with your credentials`)
+    // Login()
+    // e.preventDefault()
+  } catch (error) {
+    console.log(error)
+  }
 }
 export default Register

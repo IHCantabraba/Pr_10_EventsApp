@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt')
 
 const register = async (req, res, next) => {
   try {
+    console.log(req.body)
     /* comprobar que no exista ya */
     const userDuplicated = await User.findOne({ nombre: req.body.nombre })
     if (userDuplicated) {
       return res.status(400).json('User already exists')
     }
-
     const newUser = new User(req.body)
     if (req.file) {
       console.log('adding file')
