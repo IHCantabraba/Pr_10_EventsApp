@@ -30,7 +30,7 @@ const Register = () => {
   })
 }
 
-const submitRegister = async (e) => {
+const submitRegister = async () => {
   console.log('ready to get data to register')
   try {
     const form = document.querySelector('#register-page')
@@ -52,8 +52,6 @@ const submitRegister = async (e) => {
       cache: 'default'
     })
     alert(`Please, log in with your credentials`)
-    // Login()
-    // e.preventDefault()
   } catch (error) {
     console.log(error)
   }

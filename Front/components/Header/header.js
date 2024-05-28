@@ -13,7 +13,7 @@ const HeaderTemplate = () => {
         ${sliderBtn()}
         <div id="userLogged">
           <img class="userIcon"></img>
-          <p clas="userName">No user logged</p></div>
+          <p class="userName">No user logged</p></div>
       </header>
     </div>
   `
