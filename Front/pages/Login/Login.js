@@ -48,7 +48,12 @@ const loginsubmit = async () => {
   const dataResponse = await data.json()
   console.log(`Login server answer is: ${dataResponse.user.img}`)
   const userIcon = document.querySelector('.userIcon')
-  userIcon.src = dataResponse.user.img
+  if (dataResponse.user.img === 'undefined') {
+    userIcon.src = 'no-image.png'
+  } else {
+    userIcon.src = dataResponse.user.img
+  }
+
   console.log(`Login server answer is: ${dataResponse.user.nombre}`)
   const loggedName = document.querySelector('.userName')
   loggedName.innerHTML = dataResponse.user.nombre
