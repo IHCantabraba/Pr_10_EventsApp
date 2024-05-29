@@ -1,8 +1,8 @@
 import './EventArticle.css'
 const createArticle = (event) => {
   const article = `
-    <article class="event-article">
-      <img id="event-img" class="img" src="${event.img}">
+    <article style="background-image: url('${event.img}')"  class="event-article">
+      <img id="event-img" class="img" >
       <h2 id="event-title" clas="title">${event.titulo}</h2>
       <h3 id="event-desc">${event.descripcion}</h3>
       <div id="event-info">
