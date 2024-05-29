@@ -9,9 +9,9 @@ Crea un modelo de asistente con información como nombre, correo electrónico y 
 
 Endpoints:
 
-/api/auth/register: Permite el registro de nuevos usuarios.
+/api/auth/register: Permite el registro de nuevos usuarios. DONE
 
-/api/auth/login: Maneja la autenticación y emite tokens JWT.
+/api/auth/login: Maneja la autenticación y emite tokens JWT. DONE
 
 /api/events: Ofrece la lista de eventos disponibles.
 
@@ -28,9 +28,9 @@ Endpoints:
 
 Middleware de Autenticación:
 
-Implementa un middleware que verifica la presencia y validez del token en las rutas protegidas.
+Implementa un middleware que verifica la presencia y validez del token en las rutas protegidas. DONE
 
-Protege las rutas que permiten acciones exclusivas para usuarios autenticados.
+Protege las rutas que permiten acciones exclusivas para usuarios autenticados. DONE
 
 
 Populación de Datos Iniciales:
@@ -42,7 +42,7 @@ Asigna eventos y asistentes a esta colección en la base de datos.
 
 Extra:
 
-Subida de ficheros (por ejemplo: avatares o carteles de eventos).
+Subida de ficheros (por ejemplo: avatares o carteles de eventos). DONE
 
 Autenticación por roles.
 

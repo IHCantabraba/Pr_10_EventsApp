@@ -9,9 +9,15 @@ const storage = new CloudinaryStorage({
       if (req.folder) {
         return req.folder
       } else {
-        let baseUrl = req.baseUrl.split('/').at(-1)
-        console.log(`BaseUrl is: ${baseUrl}`)
-        return `EventsApp/${baseUrl}`
+        let baseUrl = req.originalUrl.split('/').at(-1)
+        console.log(`base url is: ${baseUrl}`)
+        if (baseUrl === 'register') {
+          baseUrl = 'users'
+          console.log(`BaseUrl is: ${baseUrl}`)
+          return `EventsApp/${baseUrl}`
+        } else {
+          return `EventsApp/${baseUrl}`
+        }
       }
     },
     allowedFormats: ['jpg', 'png', 'jpeg', 'gif']

@@ -1,5 +1,6 @@
 const { deleteFile } = require('../../utils/deleteFile')
 const { generateKey } = require('../../utils/jwt')
+const Event = require('../models/events')
 const User = require('../models/users')
 const bcrypt = require('bcrypt')
 
@@ -65,6 +66,7 @@ const getUserByID = async (req, res, next) => {
 }
 
 const updatedUser = async (req, res, next) => {
+  console.log('inside update')
   try {
     const { id } = req.params
     console.log(id)
@@ -105,12 +107,33 @@ const deleteUser = async (req, res, next) => {
     return res.status(400).json(`Error ocurred while deleting User: ${error}`)
   }
 }
-
+const registerEvent = async (req, res, next) => {
+  try {
+    const eventDuplicated = await Event.findOne({ titulo: req.body.titulo })
+    if (eventDuplicated) {
+      return res.satus(400).json(`Event is already register`)
+    }
+    const newEvent = new Event(req.body)
+    if (req.file) {
+      console.log(`Adding file`)
+      newEvent.img = req.file.path
+    } else {
+      console.log(`No image passed for the event`)
+    }
+    const event = await newEvent.save()
+    return res.status(200).json(event)
+  } catch (error) {
+    return res
+      .status(400)
+      .json(`Error occurred while registering event: ${error}`)
+  }
+}
 module.exports = {
   register,
   login,
   getAllusers,
   getUserByID,
   updatedUser,
-  deleteUser
+  deleteUser,
+  registerEvent
 }

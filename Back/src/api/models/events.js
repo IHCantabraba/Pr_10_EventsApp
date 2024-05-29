@@ -3,11 +3,12 @@ const mongoose = require('mongoose')
 /* esquema de evento */
 const eventSchema = new mongoose.Schema(
   {
-    titulo: { type: String, required: true, trim: true },
+    titulo: { type: String, required: true, trim: true, unique: true },
     fecha: { type: String, required: true },
     ubicacion: { type: String, required: true },
     descripcion: { type: String, required: true, trim: true },
-    reserva: { type: boolean, required: true }
+    reserva: { type: Boolean, required: true },
+    img: { type: String, required: true }
   },
   { timestamp: true, collection: 'events' }
 )

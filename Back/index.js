@@ -4,6 +4,7 @@ const { connectDB } = require('./src/config/db')
 const cors = require('cors')
 const userRouter = require('./src/api/routes/users')
 const { cloudinaryConfig } = require('./src/config/cloudinary')
+const eventRouter = require('./src/api/routes/events')
 const app = express()
 const PORT = 3000
 /* coonnect to Mongo DB */
@@ -18,6 +19,7 @@ app.use(cors())
 /* usuarios */
 app.use('/api/v1/users', userRouter)
 /* eventos */
+app.use('/api/v1/events', eventRouter)
 /* asistentes */
 /* Not found Root */
 

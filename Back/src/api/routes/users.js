@@ -6,18 +6,16 @@ const {
   register,
   login,
   updatedUser,
-  deleteUser
+  deleteUser,
+  registerEvent
 } = require('../controllers/users')
 const userRouter = require('express').Router()
 
-userRouter.get(
-  '/',
-  [isAdmin],
-  getAllusers
-) /* TOODO añadir "isAdmin function" */
+userRouter.get('/', [isAdmin], getAllusers)
 userRouter.get('/:id', [isAuth], getUserByID)
 userRouter.post('/register', upload.single('img'), register)
 userRouter.post('/login', login)
+userRouter.post('/events', [isAuth], upload.single('img'), registerEvent)
 userRouter.post('/:id', [isAuth], upload.single('img'), updatedUser)
 userRouter.delete('/:id', [isAdmin], deleteUser)
 
