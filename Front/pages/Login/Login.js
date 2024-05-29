@@ -3,9 +3,9 @@ import Btn from '../../components/common/Button/button'
 import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
 
-const template = () => `
+const template = () =>
+  localStorage.removeItem('user')`
   <section id="login-form">
-
   ${
     localStorage.getItem('user')
       ? `<h2> You are already logged</h2>`
@@ -58,7 +58,7 @@ const loginsubmit = async () => {
   const loggedName = document.querySelector('.userName')
   loggedName.innerHTML = dataResponse.user.nombre
 
-  // localStorage.setItem('user', JSON.stringify(dataResponse))
+  //localStorage.setItem('user', JSON.stringify(dataResponse))
 
   alert(`welcome ${username}`)
   Events()
