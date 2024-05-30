@@ -58,7 +58,7 @@ const loginsubmit = async () => {
   const loggedName = document.querySelector('.userName')
   loggedName.innerHTML = dataResponse.user.nombre
 
-  //localStorage.setItem('user', JSON.stringify(dataResponse))
+  localStorage.setItem('user', JSON.stringify(dataResponse))
 
   alert(`welcome ${username}`)
   /* Events Btn header  */

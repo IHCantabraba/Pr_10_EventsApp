@@ -13,7 +13,7 @@ Endpoints:
 
 /api/auth/login: Maneja la autenticación y emite tokens JWT. DONE
 
-/api/events: Ofrece la lista de eventos disponibles.
+/api/events: Ofrece la lista de eventos disponibles.DONE
 
 /api/events/:id: Proporciona detalles de un evento específico.
 

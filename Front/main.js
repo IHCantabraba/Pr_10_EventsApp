@@ -29,6 +29,13 @@ document.querySelector('#loginLink').addEventListener('click', () => {
 document.querySelector('#registerLink').addEventListener('click', () => {
   Register()
 })
+/* logout Btn Header */
+document.querySelector('#logoutLink').addEventListener('click', () => {
+  localStorage.removeItem('user')
+  document.querySelector('.userIcon').src = './no-image.png'
+  document.querySelector('.userName').textContent = 'No user Logged'
+  Login()
+})
 // document.querySelector('#check').addEventListener('change', function (e) {
 //   e.Themes()
 // })

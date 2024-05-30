@@ -28,7 +28,8 @@
 }
 #Events,
 #loginLink,
-#registerLink {
+#registerLink,
+#logoutLink {
   cursor: pointer;
   text-decoration: none;
   color: rgb(4, 4, 82);
@@ -38,7 +39,8 @@
   font-size: 1.5rem;
 }
 #registerLink,
-#loginLink {
+#loginLink,
+#logoutLink {
   font-size: 1rem;
 }
 #userLogged {
