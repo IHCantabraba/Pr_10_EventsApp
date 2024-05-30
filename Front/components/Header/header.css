@@ -19,7 +19,9 @@
   height: var(--ihc-header-height);
   background-color: var(--ihc-BG-color-HeaderFooter);
 }
-
+#app-Title {
+  font-size: 1rem;
+}
 #app-Pages {
   min-width: 20rem;
   justify-content: space-between;

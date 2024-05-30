@@ -23,11 +23,21 @@ const insertEvents = async () => {
   const EventsSection = document.querySelector('#events-section')
   if (EventsSection) {
     console.log('inserting')
-    console.log(`first event is: ${events[0]}`)
+
     for (let event of events) {
-      console.log(`inserting event: ${event}`)
       const article = createArticle(event)
       EventsSection.innerHTML += article
+      const reserved = document.querySelector(`.${event.titulo}`)
+
+      if (reserved.textContent === 'true') {
+        console.log('necesita reserva')
+        reserved.innerHTML = 'Reserva Ya!'
+      } else {
+        reserved.textContent = 'Sin Reserva'
+      }
+      if (reserved.textContent === 'Sin Reserva') {
+        reserved.style.backgroundColor = 'lightgreen'
+      }
     }
   }
 }
