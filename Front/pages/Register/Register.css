@@ -3,13 +3,8 @@
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  /* position: fixed; */
+  height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
 }
 #register-page {
   display: flex;

@@ -4,7 +4,7 @@ import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
 
 const template = () =>
-  localStorage.removeItem('user')`
+  `
   <section id="login-form">
   ${
     localStorage.getItem('user')
@@ -61,6 +61,10 @@ const loginsubmit = async () => {
   //localStorage.setItem('user', JSON.stringify(dataResponse))
 
   alert(`welcome ${username}`)
+  /* Events Btn header  */
+  document.querySelector('#Events').addEventListener('click', () => {
+    Events()
+  })
   Events()
 }
 export default Login

@@ -11,15 +11,24 @@ HeaderTemplate()
 main()
 LandingTemplate()
 footer()
+/* register Btn Register page */
 document
   .querySelector('#landing-register-btn')
   .addEventListener('click', () => {
     Register()
   })
+/* login btn from register page */
 document
   .querySelector('#landing-login-btn')
   .addEventListener('click', () => Login())
-document.querySelector('#Events').addEventListener('click', Events())
+
+document.querySelector('#loginLink').addEventListener('click', () => {
+  Login()
+})
+/* Register Btn from Header */
+document.querySelector('#registerLink').addEventListener('click', () => {
+  Register()
+})
 // document.querySelector('#check').addEventListener('change', function (e) {
 //   e.Themes()
 // })
