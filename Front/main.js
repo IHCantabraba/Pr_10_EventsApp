@@ -24,18 +24,27 @@ document
 
 document.querySelector('#loginLink').addEventListener('click', () => {
   Login()
+  /* time sleep 1sec */
+  if (document.querySelector('#alreadyLogged')) {
+    setTimeout(() => {
+      /* resetea valores de clicks */
+      Events()
+    }, 1000)
+  }
 })
+
 /* Register Btn from Header */
 document.querySelector('#registerLink').addEventListener('click', () => {
   Register()
 })
 /* logout Btn Header */
 document.querySelector('#logoutLink').addEventListener('click', () => {
-  localStorage.removeItem('user')
+  sessionStorage.removeItem('user')
   document.querySelector('.userIcon').src = './no-image.png'
   document.querySelector('.userName').textContent = 'No user Logged'
   Login()
 })
+
 // document.querySelector('#check').addEventListener('change', function (e) {
 //   e.Themes()
 // })

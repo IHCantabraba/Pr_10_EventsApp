@@ -1,0 +1,51 @@
+#Dialog-Div {
+  width: 200px;
+  height: 70px;
+  background-color: rgb(234, 232, 232);
+  /* background-image: linear-gradient(to right, white, lightgrey); */
+  /* filter: brightness(1.75); */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border-radius: 8px;
+  border: 1px solid rgb(178, 176, 176);
+  position: absolute;
+  animation: smooth-appear 1s ease forwards;
+  bottom: -100%;
+  right: 10px;
+}
+.bad {
+  background-color: lightcoral;
+}
+.good {
+  background-color: lightgreen;
+}
+@keyframes smooth-appear {
+  to {
+    bottom: 60px;
+    opacity: 1;
+  }
+}
+#Dialog-header {
+  width: 100%;
+  height: 20px;
+  border: 1px solid rgb(228, 226, 226);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+  border-radius: 8px;
+}
+#Dialig-info-Div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 100%;
+}
+#msg-symbol {
+  width: 15px;
+  height: 15px;
+}

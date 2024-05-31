@@ -6,6 +6,15 @@
   height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
   width: 100%;
 }
+#alreadyLogged {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+#alreadyLogged::before {
+  content: url('./green-check.png');
+  height: 18px;
+}
 #login-page {
   display: flex;
   flex-direction: column;

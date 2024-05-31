@@ -2,13 +2,15 @@ import './Loing.css'
 import Btn from '../../components/common/Button/button'
 import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
+import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
+import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 
 const template = () =>
   `
   <section id="login-form">
   ${
-    localStorage.getItem('user')
-      ? `<h2> You are already logged</h2>`
+    sessionStorage.getItem('user')
+      ? `<h2 id="alreadyLogged"> You are already logged. Redirecting to Events page... </h2> `
       : `
     <form id="login-page">
       <div id="loinginfo">
@@ -34,8 +36,20 @@ const Login = () => {
       loginsubmit()
     })
   }
+  document.querySelector('#Events').addEventListener('click', () => {
+    if (!sessionStorage.getItem('user')) {
+      /* crear un popup div */
+      document.querySelector('main').innerHTML += MsgTemplate(
+        'Longin First',
+        './redcross.png',
+        'bad'
+      )
+      RemoveMsgDiv()
+    }
+  })
 }
 const loginsubmit = async () => {
+  console.log('making login')
   const username = document.querySelector('#LoginUser').value
   const password = document.querySelector('#password').value
   const data = await fetch('http://localhost:3000/api/v1/users/login', {
@@ -58,13 +72,17 @@ const loginsubmit = async () => {
   const loggedName = document.querySelector('.userName')
   loggedName.innerHTML = dataResponse.user.nombre
 
-  localStorage.setItem('user', JSON.stringify(dataResponse))
-
-  alert(`welcome ${username}`)
+  sessionStorage.setItem('user', JSON.stringify(dataResponse))
   /* Events Btn header  */
-  document.querySelector('#Events').addEventListener('click', () => {
+  document.querySelector('main').innerHTML += MsgTemplate(
+    'Longged Successfully',
+    './green-check.png',
+    'good'
+  )
+  setTimeout(() => {
     Events()
-  })
-  Events()
+  }, 3000)
+
+  RemoveMsgDiv()
 }
 export default Login

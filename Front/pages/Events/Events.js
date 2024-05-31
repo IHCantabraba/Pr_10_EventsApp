@@ -6,8 +6,15 @@ const template = () =>
 <section id="events-section"></section>`
 
 const getEvents = async () => {
+  const userLogged = sessionStorage.getItem('user')
+  const token = userLogged.token
   try {
-    const events = await fetch('http://localhost:3000/api/v1/events')
+    const events = await fetch('http://localhost:3000/api/v1/events', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    })
     const eventsList = await events.json()
     console.log(eventsList)
     return eventsList
