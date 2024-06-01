@@ -34,10 +34,12 @@ const insertEvents = async () => {
     for (let event of events) {
       const article = createArticle(event)
       EventsSection.innerHTML += article
+      document
+        .querySelector('#openEvent')
+        .addEventListener('click', () => OpenPage())
       const reserved = document.querySelector(`.${event.titulo}`)
 
       if (reserved.textContent === 'true') {
-        console.log('necesita reserva')
         reserved.innerHTML = 'Reserva Ya!'
       } else {
         reserved.textContent = 'Sin Reserva'
@@ -48,7 +50,11 @@ const insertEvents = async () => {
     }
   }
 }
-
+/* Implementar ficha completa del Evento.
+  Botón de apuntarse, de ver participantes */
+const OpenPage = () => {
+  console.log('ready to open page')
+}
 const Events = () => {
   document.querySelector('main').innerHTML = template()
   insertEvents()

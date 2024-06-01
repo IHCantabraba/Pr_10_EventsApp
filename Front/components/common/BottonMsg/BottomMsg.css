@@ -2,7 +2,6 @@
   width: 200px;
   height: 70px;
   background-color: rgb(234, 232, 232);
-  /* background-image: linear-gradient(to right, white, lightgrey); */
   /* filter: brightness(1.75); */
   display: flex;
   flex-direction: column;
@@ -15,10 +14,12 @@
   right: 10px;
 }
 .bad {
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
+  background-image: linear-gradient(lightcoral, white);
 }
 .good {
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
+  background-image: linear-gradient(lightgrey, white);
 }
 @keyframes smooth-appear {
   to {

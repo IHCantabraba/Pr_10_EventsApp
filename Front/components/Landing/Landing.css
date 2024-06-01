@@ -8,13 +8,13 @@
   gap: 3rem;
 }
 #landing {
-  position: fixed;
-  height: 100%;
+  /* position: fixed; */
+  height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
   width: 100%;
-  top: 0;
+  /* top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 0; */
 }
 #landing-msg {
   border: 1px solid black;

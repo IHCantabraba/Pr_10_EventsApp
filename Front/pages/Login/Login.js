@@ -30,6 +30,11 @@ const template = () =>
 
 const Login = () => {
   document.querySelector('main').innerHTML = template()
+  if (document.querySelector('#alreadyLogged')) {
+    setTimeout(() => {
+      Events()
+    }, 1000)
+  }
   if (document.querySelector('#LoginBtn')) {
     document.querySelector('#LoginBtn').addEventListener('click', (e) => {
       e.preventDefault()

@@ -4,6 +4,7 @@ const createArticle = (event) => {
   const titulo = pretitle.replace(' ', '')
   const article = `
     <article class="event-article">
+      <button id="openEvent"></button>
       <img id="event-img" class="img" src="${event.img}" >
       <h2 id="event-title" clas="title">${event.titulo}</h2>
       <div id="event-info">
