@@ -1,6 +1,7 @@
 import createArticle from '../../components/common/EventArticle/eventArticle'
+import ShowEventSelected from '../../components/common/EventSelectedPage/EventSelected'
+import RemoveEventPage from '../../utils/RemoveEventPage'
 import './Events.css'
-
 const template = () =>
   `
 <section id="events-section"></section>`
@@ -16,7 +17,7 @@ const getEvents = async () => {
       }
     })
     const eventsList = await events.json()
-    console.log(eventsList)
+    /* TODO save events inside /.data/events.json */
     return eventsList
   } catch (error) {
     const errorMsg = `Error occurred while fetching: ${error}`
@@ -52,8 +53,19 @@ const insertEvents = async () => {
 }
 /* Implementar ficha completa del Evento.
   Botón de apuntarse, de ver participantes */
-const OpenPage = () => {
-  console.log('ready to open page')
+const OpenPage = async () => {
+  console.log('openning')
+  const id = document.querySelector('#eventId-info')
+  const EventInfo = await fetch(
+    `http://localhost:3000/api/v1/events/${id.textContent}`
+  )
+  const EventData = await EventInfo.json()
+  console.log(EventData)
+  /* TODO create Event whole page info */
+  document.querySelector('main').innerHTML += ShowEventSelected(EventData)
+  document
+    .querySelector('#closePage')
+    .addEventListener('click', () => RemoveEventPage())
 }
 const Events = () => {
   document.querySelector('main').innerHTML = template()
