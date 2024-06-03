@@ -6,6 +6,7 @@ import main from './components/main/main'
 import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
+
 /* insertar el header */
 HeaderTemplate()
 main()
