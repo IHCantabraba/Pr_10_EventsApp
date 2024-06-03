@@ -7,6 +7,13 @@ const eventSchema = new mongoose.Schema(
     fecha: { type: String, required: true },
     ubicacion: { type: String, required: true },
     descripcion: { type: String, required: true, trim: true },
+    longDescription: {
+      type: String,
+      required: false,
+      trim: true,
+      default:
+        ' ...No description available right now. Sorry for the inconvenience ...'
+    },
     reserva: { type: Boolean, required: true },
     img: { type: String, required: true }
   },

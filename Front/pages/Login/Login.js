@@ -31,6 +31,16 @@ const template = () =>
 const Login = () => {
   document.querySelector('main').innerHTML = template()
   if (document.querySelector('#alreadyLogged')) {
+    /* asignar imagen y nombre al perfil del login en header si ya estaba logueado */
+
+    const icon = document.querySelector('.userIcon')
+    const userName = document.querySelector('.userName')
+    const user = JSON.parse(sessionStorage.getItem('user'))
+
+    icon.src = user.user.img
+    userName.textContent = user.user.nombre
+    /* abrir events age automáticamente si está logueado */
+
     setTimeout(() => {
       Events()
     }, 1000)

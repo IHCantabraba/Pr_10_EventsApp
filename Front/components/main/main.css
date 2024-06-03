@@ -1,5 +1,5 @@
 main {
-  height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
+  min-height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
   width: 100%;
   background-color: white;
 }

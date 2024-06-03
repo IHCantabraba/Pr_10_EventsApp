@@ -13,13 +13,13 @@
   bottom: -100%;
   right: 10px;
 }
-.bad {
+#Dialog-Div.bad {
   /* background-color: lightcoral; */
   background-image: linear-gradient(lightcoral, white);
 }
-.good {
+#Dialog-Div.good {
   /* background-color: lightgreen; */
-  background-image: linear-gradient(lightgrey, white);
+  background-image: linear-gradient(lightgreen, white);
 }
 @keyframes smooth-appear {
   to {

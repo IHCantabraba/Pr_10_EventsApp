@@ -4,26 +4,98 @@
   right: 0;
   left: 0;
   bottom: 0;
-  height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
-  width: 100%;
-  z-index: 2;
+  min-height: calc(
+    100vh - var(--ihc-header-height) - var(--ihc-footer-height) -
+      var(--ihc-closeBtn-redX-size)
+  );
+  width: calc (100% - var(--ihc-closeBtn-redX-size));
   background-color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   gap: 0.5rem;
+  z-index: 3;
+  margin: 0.5rem 1.5rem;
+}
+#EventSelectedBasicInfo,
+#EventSelectedMoreInfo {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
+  width: 50%;
+}
+#EventSelectedimg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#EventSelectedTitle {
+  position: absolute;
+  left: 18%;
+}
+#EventSelectedFecha,
+#EventSelectedLocation {
+  position: absolute;
+  bottom: 3px;
+}
+#EventSelectedFecha {
+  left: 10%;
+}
+#EventSelectedLocation {
+  left: 30%;
 }
 #closePage {
   position: absolute;
-  top: 0;
-  right: 0;
-  background-image: url(../../../public/redcross.png);
+  top: 10px;
+  right: 10px;
+  background-image: url(/redcross.png);
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
-  height: 20px;
-  width: 20px;
+  height: var(--ihc-closeBtn-redX-size);
+  width: var(--ihc-closeBtn-redX-size);
   border: none;
   background-color: none;
+}
+
+#EventSelectedPage.show {
+  visibility: visible;
+}
+#EventSelectedPage.hide {
+  visibility: hidden;
+}
+/* SEventSelectedBasicInfo*/
+#EventSelectedBasicInfo {
+  height: 100%;
+}
+/* EventSelectedMoreInfo */
+
+#EventSelectedMoreInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+}
+#EventSelectedPageOptions {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#EventselectedLongDescrp {
+  text-align: center;
+}
+
+#EventSelectedBtnJoin.btn,
+#EventSelectedBtnShowAsistance.btn {
+  border-radius: 10px;
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
 }

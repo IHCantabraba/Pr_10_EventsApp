@@ -27,19 +27,14 @@ const getEvents = async () => {
 
 const insertEvents = async () => {
   const events = await getEvents()
-  console.log(`obtained events are: ${events}`)
   const EventsSection = document.querySelector('#events-section')
   if (EventsSection) {
-    console.log('inserting')
-
     for (let event of events) {
       const article = createArticle(event)
       EventsSection.innerHTML += article
-      document
-        .querySelector('#openEvent')
-        .addEventListener('click', () => OpenPage())
-      const reserved = document.querySelector(`.${event.titulo}`)
-
+      const reserved = document.querySelector(
+        `.${event.titulo.replaceAll(' ', '')}`
+      )
       if (reserved.textContent === 'true') {
         reserved.innerHTML = 'Reserva Ya!'
       } else {
@@ -49,23 +44,39 @@ const insertEvents = async () => {
         reserved.style.backgroundColor = 'lightgreen'
       }
     }
+    const eventsBtn = document.querySelectorAll('#openEvent')
+
+    for (let eventBtn of eventsBtn) {
+      console.log(eventBtn)
+      eventBtn.addEventListener(
+        'click',
+        (e) => {
+          OpenPage(e.target.classList[0])
+        },
+        { once: false }
+      )
+    }
   }
 }
-/* Implementar ficha completa del Evento.
-  Botón de apuntarse, de ver participantes */
-const OpenPage = async () => {
-  console.log('openning')
-  const id = document.querySelector('#eventId-info')
-  const EventInfo = await fetch(
-    `http://localhost:3000/api/v1/events/${id.textContent}`
-  )
-  const EventData = await EventInfo.json()
-  console.log(EventData)
-  /* TODO create Event whole page info */
-  document.querySelector('main').innerHTML += ShowEventSelected(EventData)
-  document
-    .querySelector('#closePage')
-    .addEventListener('click', () => RemoveEventPage())
+/* abrir página de detalle del Evento */
+const OpenPage = async (id) => {
+  console.log(`openning event id ${id}`)
+  const eventsPage = document.querySelector('#events-section')
+  if (!eventsPage.classList.contains('blur')) {
+    eventsPage.classList.add('blur')
+  }
+  try {
+    const EventInfo = await fetch(`http://localhost:3000/api/v1/events/${id}`)
+    const EventData = await EventInfo.json()
+
+    document.querySelector('main').innerHTML += ShowEventSelected(EventData)
+    /* close page Btn functionality */
+    document
+      .querySelector('#closePage')
+      .addEventListener('click', () => RemoveEventPage())
+  } catch (error) {
+    console.log(`Error occurred while openning detailed info of Event ${id}`)
+  }
 }
 const Events = () => {
   document.querySelector('main').innerHTML = template()
