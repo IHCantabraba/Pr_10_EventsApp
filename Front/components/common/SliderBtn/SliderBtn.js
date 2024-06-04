@@ -1,11 +1,11 @@
 import './SliderBtn.css'
 
-const sliderBtn = () => {
+const sliderBtn = (onchecked) => {
   /* create tags */
   const BtnTemplate = `
   <div id="slider-btn">
     <label class="toggle">
-      <input type="checkbox" id="check" onchange="${Themes()}" >
+      <input type="checkbox" id="check">
       <span class="slider">
     </label>
     </span>
@@ -16,11 +16,4 @@ const sliderBtn = () => {
   return BtnTemplate
 }
 
-function Themes() {
-  if (this) {
-    console.log('checked')
-  } else {
-    console.log('unchecked')
-  }
-}
 export default sliderBtn

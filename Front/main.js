@@ -9,6 +9,17 @@ import Events from './pages/Events/Events'
 
 /* insertar el header */
 HeaderTemplate()
+const Themes = () => {
+  console.log('inside themes')
+  const slider = document.getElementById('check')
+  if (slider.checked == true) {
+    console.log('checked')
+  } else {
+    console.log('unchecked')
+  }
+}
+const slider = document.getElementById('check')
+slider.onclick = Themes
 main()
 LandingTemplate()
 footer()

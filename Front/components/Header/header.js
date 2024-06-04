@@ -1,5 +1,6 @@
 import './header.css'
 import sliderBtn from '../common/SliderBtn/SliderBtn'
+
 const HeaderTemplate = () => {
   const template = `
     <div id="app">

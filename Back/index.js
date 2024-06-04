@@ -5,6 +5,8 @@ const cors = require('cors')
 const userRouter = require('./src/api/routes/users')
 const { cloudinaryConfig } = require('./src/config/cloudinary')
 const eventRouter = require('./src/api/routes/events')
+const authRouter = require('./src/api/routes/authori')
+
 const app = express()
 const PORT = 3000
 /* coonnect to Mongo DB */
@@ -16,6 +18,8 @@ app.use(express.json())
 app.use(cors())
 
 /* router a los distintos modelos */
+/*auth */
+// app.use('/api/v1/auth', authRouter)
 /* usuarios */
 app.use('/api/v1/users', userRouter)
 /* eventos */

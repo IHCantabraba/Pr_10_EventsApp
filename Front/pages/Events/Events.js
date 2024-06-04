@@ -52,8 +52,8 @@ const insertEvents = async () => {
         'click',
         (e) => {
           OpenPage(e.target.id)
-        },
-        { once: false }
+        }
+        // { once: false }
       )
     }
   }
@@ -66,7 +66,7 @@ const OpenPage = async (id) => {
     eventsPage.classList.add('blur')
   }
   try {
-    const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
+    const EventInfo = await fetch(`http://localhost:3000/api/v1/events/${id}`)
     const EventData = await EventInfo.json()
 
     document.querySelector('main').innerHTML += ShowEventSelected(EventData)
