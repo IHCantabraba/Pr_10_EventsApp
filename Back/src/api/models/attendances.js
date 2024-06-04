@@ -14,7 +14,8 @@ const attendanceSchema = new mongoose.Schema(
       required: true,
       validate: [ValidateEmail, 'Please fill a valid email address']
     },
-    password: { type: String, required: true, trim: true }
+    password: { type: String, required: true, trim: true },
+    eventos: { type: mongoose.Types.ObjectId, ref: 'events' }
   },
   { timestamp: true, collection: 'attendances' }
 )

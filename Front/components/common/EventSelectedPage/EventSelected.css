@@ -1,4 +1,4 @@
-#EventSelectedPage {
+.EventSelectedPage {
   position: absolute;
   top: var(--ihc-header-height);
   right: 0;
@@ -18,34 +18,34 @@
   z-index: 3;
   margin: 0.5rem 1.5rem;
 }
-#EventSelectedBasicInfo,
-#EventSelectedMoreInfo {
+.EventSelectedBasicInfo,
+.EventSelectedMoreInfo {
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
   width: 50%;
 }
-#EventSelectedimg {
+.EventSelectedimg {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-#EventSelectedTitle {
+.EventSelectedTitle {
   position: absolute;
   left: 18%;
 }
-#EventSelectedFecha,
-#EventSelectedLocation {
+.EventSelectedFecha,
+.EventSelectedLocation {
   position: absolute;
   bottom: 3px;
 }
-#EventSelectedFecha {
+.EventSelectedFecha {
   left: 2rem;
 }
-#EventSelectedLocation {
+.EventSelectedLocation {
   left: 30%;
 }
-#closePage {
+.closePage {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -59,38 +59,38 @@
   background-color: none;
 }
 
-#EventSelectedPage.show {
+.EventSelectedPage.show {
   visibility: visible;
 }
-#EventSelectedPage.hide {
+.EventSelectedPage.hide {
   visibility: hidden;
 }
 /* SEventSelectedBasicInfo*/
-#EventSelectedBasicInfo {
+.EventSelectedBasicInfo {
   height: 100%;
 }
 /* EventSelectedMoreInfo */
 
-#EventSelectedMoreInfo {
+.EventSelectedMoreInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10%;
 }
-#EventSelectedPageOptions {
+.EventSelectedPageOptions {
   display: flex;
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
-#EventselectedLongDescrp {
+.EventselectedLongDescrp {
   text-align: center;
 }
 
-#EventSelectedBtnJoin.btn,
-#EventSelectedBtnShowAsistance.btn {
+.EventSelectedBtnJoin.btn,
+.EventSelectedBtnShowAsistance.btn {
   border-radius: 10px;
   border: none;
   padding: 1rem 1.5rem;

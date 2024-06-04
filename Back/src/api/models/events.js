@@ -15,7 +15,8 @@ const eventSchema = new mongoose.Schema(
         ' ...No description available right now. Sorry for the inconvenience ...'
     },
     reserva: { type: Boolean, required: true },
-    img: { type: String, required: true }
+    img: { type: String, required: true },
+    asistentes: { type: mongoose.Types.ObjectId, ref: 'attendances' }
   },
   { timestamp: true, collection: 'events' }
 )

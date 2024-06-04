@@ -44,14 +44,14 @@ const insertEvents = async () => {
         reserved.style.backgroundColor = 'lightgreen'
       }
     }
-    const eventsBtn = document.querySelectorAll('#openEvent')
+    const eventsBtn = document.querySelectorAll('.openEvent')
 
     for (let eventBtn of eventsBtn) {
       console.log(eventBtn)
       eventBtn.addEventListener(
         'click',
         (e) => {
-          OpenPage(e.target.classList[0])
+          OpenPage(e.target.id)
         },
         { once: false }
       )
@@ -66,13 +66,13 @@ const OpenPage = async (id) => {
     eventsPage.classList.add('blur')
   }
   try {
-    const EventInfo = await fetch(`http://localhost:3000/api/v1/events/${id}`)
+    const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
     const EventData = await EventInfo.json()
 
     document.querySelector('main').innerHTML += ShowEventSelected(EventData)
     /* close page Btn functionality */
     document
-      .querySelector('#closePage')
+      .querySelector('.closePage')
       .addEventListener('click', () => RemoveEventPage())
   } catch (error) {
     console.log(`Error occurred while openning detailed info of Event ${id}`)
