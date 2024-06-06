@@ -45,7 +45,7 @@ const submitRegister = async () => {
     data.append('password', password)
     data.append('img', avatar)
     console.log(data.entries())
-    await fetch('http://localhost:3000/api/v1/users/register', {
+    await fetch('http://localhost:3000/api/users/register', {
       method: 'POST',
       body: data,
       mode: 'cors',

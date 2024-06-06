@@ -67,7 +67,7 @@ const loginsubmit = async () => {
   console.log('making login')
   const username = document.querySelector('#LoginUser').value
   const password = document.querySelector('#password').value
-  const data = await fetch('http://localhost:3000/api/v1/users/login', {
+  const data = await fetch('http://localhost:3000/api/users/login', {
     headers: {
       'Content-Type': 'application/json'
     },

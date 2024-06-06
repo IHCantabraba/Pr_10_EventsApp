@@ -19,11 +19,11 @@ app.use(cors())
 
 /* router a los distintos modelos */
 /*auth */
-// app.use('/api/v1/auth', authRouter)
+// app.use('/api/auth', authRouter)
 /* usuarios */
-app.use('/api/v1/users', userRouter)
+app.use('/api/users', userRouter)
 /* eventos */
-app.use('/api/v1/events', eventRouter)
+app.use('/apievents', eventRouter)
 /* asistentes */
 // app.use('/api/attendees', attend)
 /* Not found Root */

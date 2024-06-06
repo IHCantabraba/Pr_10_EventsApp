@@ -10,7 +10,7 @@ const getEvents = async () => {
   const userLogged = sessionStorage.getItem('user')
   const token = userLogged.token
   try {
-    const events = await fetch('http://localhost:3000/api/v1/events', {
+    const events = await fetch('http://localhost:3000/api/events', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
@@ -66,7 +66,7 @@ const OpenPage = async (id) => {
     eventsPage.classList.add('blur')
   }
   try {
-    const EventInfo = await fetch(`http://localhost:3000/api/v1/events/${id}`)
+    const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
     const EventData = await EventInfo.json()
 
     document.querySelector('main').innerHTML += ShowEventSelected(EventData)
