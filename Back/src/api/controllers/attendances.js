@@ -1,5 +1,6 @@
 const Attendance = require('../models/attendances')
 const Event = require('../models/events')
+const User = require('../models/users')
 
 const registerAttendance = async (req, res, next) => {
   /* comprobar que no exista ya */
@@ -7,20 +8,19 @@ const registerAttendance = async (req, res, next) => {
   try {
     const newReserve = new Attendance(req.body)
     const reservation = await newReserve.save()
-    const evento = req.body
-    console.log(evento)
+
     const { id } = req.params
     console.log(id)
     const EventInfo = await Event.findById(id)
     console.log(EventInfo)
     if (EventInfo !== 'undefined') {
       console.log(EventInfo.titulo)
-      EventInfo.asistentes.push(req.body.nombre)
+      EventInfo.users.push(req.body.users)
       const eventupdated = await Event.findByIdAndUpdate(id, EventInfo, {
         new: true
       })
     } else {
-      console.log(`can not find event: ${evento}`)
+      console.log(`can not find event`)
     }
     return res.status(201).json(reservation)
   } catch (error) {
@@ -29,7 +29,7 @@ const registerAttendance = async (req, res, next) => {
 }
 const getAllAttendance = async (req, res, next) => {
   try {
-    const attendee = await Attendance.find()
+    const attendee = await Attendance.find().populate('events')
     return res.status(200).json(attendee)
   } catch (error) {
     return res

@@ -44,7 +44,7 @@ const login = async (req, res, next) => {
 
 const getAllusers = async (req, res, next) => {
   try {
-    const users = await User.find().populate('users')
+    const users = await User.find()
     return res.status(200).json(users)
   } catch (error) {
     return res

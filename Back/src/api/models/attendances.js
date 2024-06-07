@@ -10,12 +10,13 @@ const attendanceSchema = new mongoose.Schema(
   {
     // usuario: [{ type: mongoose.Types.ObjectId, ref: 'users' }]
     nombre: { type: String, required: true, trim: true },
+    users: { type: mongoose.Types.ObjectId, ref: 'users' },
     email: {
       type: String,
       required: true,
       validate: [ValidateEmail, 'Please fill a valid email address']
     },
-    eventos: { type: String, required: true }
+    events: [{ type: mongoose.Types.ObjectId, ref: 'events' }]
   },
   { timestamp: true, collection: 'attendances' }
 )

@@ -16,7 +16,7 @@ const eventSchema = new mongoose.Schema(
     },
     reserva: { type: Boolean, required: true },
     img: { type: String, required: true },
-    asistentes: { type: Array }
+    users: [{ type: mongoose.Types.ObjectId, ref: 'users' }]
   },
   { timestamp: true, collection: 'events' }
 )

@@ -22,8 +22,7 @@ const userSchema = new mongoose.Schema(
       enum: ['admin', 'user']
     },
     img: { type: String, required: false },
-    folder: { type: String, required: false },
-    events: [{ type: mongoose.Types.ObjectId, ref: 'events' }]
+    folder: { type: String, required: false }
   },
 
   { timestamp: true, collection: 'users' }
