@@ -44,8 +44,8 @@ const login = async (req, res, next) => {
 
 const getAllusers = async (req, res, next) => {
   try {
-    const users = await User.find()
-    return res.status(200).json(`All users are: ${users}`)
+    const users = await User.find().populate('users')
+    return res.status(200).json(users)
   } catch (error) {
     return res
       .status(400)
@@ -68,14 +68,8 @@ const updatedUser = async (req, res, next) => {
   console.log('inside update')
   try {
     const { id } = req.params
-    console.log(id)
     const newUser = new User(req.body)
     const oldUser = await User.findById(id)
-    // if (req.user._id.toString() !== id) {
-    //   return res
-    //     .status(400)
-    //     .json(`You can not modify any other user but yourself`)
-    // }
     if (req.file) {
       console.log('changing avatar img')
       deleteFile(oldUser.img)
@@ -127,6 +121,7 @@ const registerEvent = async (req, res, next) => {
       .json(`Error occurred while registering event: ${error}`)
   }
 }
+
 module.exports = {
   register,
   login,

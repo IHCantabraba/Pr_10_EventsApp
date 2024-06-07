@@ -7,7 +7,8 @@ const {
   login,
   updatedUser,
   deleteUser,
-  registerEvent
+  registerEvent,
+  eventReservation
 } = require('../controllers/users')
 const userRouter = require('express').Router()
 

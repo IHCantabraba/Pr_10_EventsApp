@@ -21,7 +21,7 @@ Endpoints:
 
 /api/attendees/:id: Proporciona detalles de un asistente específico. 
 
-/api/user/events: Permite a los usuarios crear nuevos eventos.
+/api/user/events: Permite a los usuarios crear nuevos eventos.DONE
 
 /api/user/attendees/:eventId: Permite a los usuarios confirmar asistencia a un evento
 

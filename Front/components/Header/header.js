@@ -14,7 +14,7 @@ const HeaderTemplate = () => {
         </div>
         ${sliderBtn()}
         <div id="userLogged">
-          <img class="userIcon"></img>
+          <img class="userIcon" src="no-image.png"></img>
           <p class="userName">No user logged</p></div>
       </header>
     </div>

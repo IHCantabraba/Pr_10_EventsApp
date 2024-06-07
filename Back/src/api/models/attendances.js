@@ -8,14 +8,14 @@ const ValidateEmail = (email) => {
 /* esquema de evento */
 const attendanceSchema = new mongoose.Schema(
   {
+    // usuario: [{ type: mongoose.Types.ObjectId, ref: 'users' }]
     nombre: { type: String, required: true, trim: true },
     email: {
       type: String,
       required: true,
       validate: [ValidateEmail, 'Please fill a valid email address']
     },
-    password: { type: String, required: true, trim: true },
-    eventos: { type: mongoose.Types.ObjectId, ref: 'events' }
+    eventos: { type: String, required: true }
   },
   { timestamp: true, collection: 'attendances' }
 )
