@@ -26,7 +26,7 @@ app.use('/api/users', userRouter)
 /* eventos */
 app.use('/api/events', eventRouter)
 /* asistentes */
-app.use('/api/attendees', reservationRouter)
+app.use('/api/user/attendees', reservationRouter)
 /* Not found Root */
 
 app.use('*', (req, res, next) => {

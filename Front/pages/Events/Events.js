@@ -1,6 +1,8 @@
+import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import createArticle from '../../components/common/EventArticle/eventArticle'
 import ShowEventSelected from '../../components/common/EventSelectedPage/EventSelected'
 import RemoveEventPage from '../../utils/RemoveEventPage'
+import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import './Events.css'
 const template = () =>
   `
@@ -47,7 +49,6 @@ const insertEvents = async () => {
     const eventsBtn = document.querySelectorAll('.openEvent')
 
     for (let eventBtn of eventsBtn) {
-      console.log(eventBtn)
       eventBtn.addEventListener(
         'click',
         (e) => {
@@ -74,10 +75,55 @@ const OpenPage = async (id) => {
     document
       .querySelector('.closePage')
       .addEventListener('click', () => RemoveEventPage())
+    /* apuntate btn functionality */
+    document
+      .querySelector('.EventSelectedBtnJoin')
+      .addEventListener('click', () => RegisterInEvent(id))
+
+    /* ver participantes btn functionality TODO */
   } catch (error) {
     console.log(`Error occurred while openning detailed info of Event ${id}`)
   }
 }
+const RegisterInEvent = async (id) => {
+  const userLogged = JSON.parse(sessionStorage.getItem('user'))
+  const token = userLogged.token
+  const userNombre = userLogged.user.nombre
+  const useremail = userLogged.user.email
+  const userId = userLogged.user._id
+
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/user/attendees/${id}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          nombre: userNombre,
+          email: useremail,
+          users: userId,
+          events: id
+        })
+      }
+    )
+    console.log(response)
+    if (response.ok) {
+      console.log('Registrado correctamente')
+      document.querySelector('.EventSelectedPage ').innerHTML += MsgTemplate(
+        'Successfully Reservation',
+        './green-check.png',
+        'good'
+      )
+      RemoveMsgDiv()
+    }
+  } catch (error) {
+    console.log(`An error occurred: ${error}`)
+  }
+}
+
 const Events = () => {
   document.querySelector('main').innerHTML = template()
   insertEvents()
