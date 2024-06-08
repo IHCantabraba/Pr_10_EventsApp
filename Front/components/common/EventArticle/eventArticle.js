@@ -2,6 +2,17 @@ import './EventArticle.css'
 const createArticle = (event) => {
   const pretitle = event.titulo
   const titulo = pretitle.replaceAll(' ', '')
+  const plazas = event.limitParticipantes
+  const asistentes = event.users.length
+  let plazasRestantes = 0
+  if (plazas !== 9999) {
+    plazasRestantes = plazas - asistentes + ' plazas'
+    if (plazasRestantes === 0) {
+      plazasRestantes = 'Agotado'
+    }
+  } else {
+    plazasRestantes = 'No limit'
+  }
   const article = `
     <article class="event-article">
       <p id="${event._id}" class="hidenP">eventId-info</p>
@@ -14,6 +25,7 @@ const createArticle = (event) => {
         <p class="event-location">${event.ubicacion}</p>
       </div>
       <div id="reserved" class="reservation ${titulo}">${event.reserva}</div>
+      <p class="freePlaces">${plazasRestantes}</p>
     </article>
   `
   return article

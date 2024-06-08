@@ -59,6 +59,15 @@
   text-align: center;
   writing-mode: vertical-lr;
 }
+.freePlaces {
+  display: flex;
+  position: absolute;
+  background-color: rgb(237, 208, 208);
+  border-radius: 5px;
+  padding: 0.1rem 0.3rem;
+  top: 42px;
+  left: 5px;
+}
 .event-date,
 .event-location,
 .event-desc {

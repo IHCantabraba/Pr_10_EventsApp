@@ -22,7 +22,10 @@
 .EventSelectedMoreInfo {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--ihc-header-height) - var(--ihc-footer-height));
+  height: calc(
+    100vh - var(--ihc-header-height) - var(--ihc-footer-height) -
+      var(--ihc-closeBtn-redX-size)
+  );
   width: 50%;
 }
 .EventSelectedimg {
@@ -98,4 +101,8 @@
   border: 1px solid black;
   background-color: black;
   color: white;
+}
+.EventSelectedBtnJoin[disabled] {
+  background-color: rgb(61, 59, 59);
+  cursor: default;
 }

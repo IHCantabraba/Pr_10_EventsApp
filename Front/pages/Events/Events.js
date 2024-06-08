@@ -29,9 +29,17 @@ const getEvents = async () => {
 
 const insertEvents = async () => {
   const events = await getEvents()
+  /* ordenar de menos plazas a màs */
+  const sortedEvents = events.sort((e1, e2) =>
+    e1.limitParticipantes < e2.limitParticipantes
+      ? -1
+      : e1.limitParticipantes > e2.limitParticipantes
+      ? 1
+      : 0
+  )
   const EventsSection = document.querySelector('#events-section')
   if (EventsSection) {
-    for (let event of events) {
+    for (let event of sortedEvents) {
       const article = createArticle(event)
       EventsSection.innerHTML += article
       const reserved = document.querySelector(
@@ -44,6 +52,11 @@ const insertEvents = async () => {
       }
       if (reserved.textContent === 'Sin Reserva') {
         reserved.style.backgroundColor = 'lightgreen'
+      }
+      /* cambair simbología si no hay plazas */
+      const places = document.querySelector('.freePlaces')
+      if (places.textContent.includes('0')) {
+        places.style.backgroundColor = 'lightcoral'
       }
     }
     const eventsBtn = document.querySelectorAll('.openEvent')
@@ -80,6 +93,13 @@ const OpenPage = async (id) => {
       .querySelector('.EventSelectedBtnJoin')
       .addEventListener('click', () => RegisterInEvent(id))
 
+    const places = document.querySelector('.freePlaces')
+    if (places.textContent.includes('0')) {
+      console.log('0 plazas')
+      const joinBtn = document.querySelector('.EventSelectedBtnJoin')
+      joinBtn.disabled = true
+      joinBtn.textContent = 'No more Places'
+    }
     /* ver participantes btn functionality TODO */
   } catch (error) {
     console.log(`Error occurred while openning detailed info of Event ${id}`)
@@ -91,7 +111,7 @@ const RegisterInEvent = async (id) => {
   const userNombre = userLogged.user.nombre
   const useremail = userLogged.user.email
   const userId = userLogged.user._id
-
+  /* register user on event */
   try {
     const response = await fetch(
       `http://localhost:3000/api/user/attendees/${id}`,
@@ -111,7 +131,6 @@ const RegisterInEvent = async (id) => {
     )
     console.log(response)
     if (response.ok) {
-      console.log('Registrado correctamente')
       document.querySelector('.EventSelectedPage ').innerHTML += MsgTemplate(
         'Successfully Reservation',
         './green-check.png',

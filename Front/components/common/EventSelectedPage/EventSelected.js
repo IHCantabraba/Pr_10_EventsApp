@@ -1,6 +1,12 @@
 import './EventSelected.css'
 
 const ShowEventSelected = (eventSelected) => {
+  let longDescription = eventSelected.longDescription
+  if (longDescription === '') {
+    console.log('empty')
+    longDescription =
+      '...Information Not available right now. Sorry for disturbances...'
+  }
   const selectedEvent = `
   <section  class="EventSelectedPage show">
     <button class="closePage" background-img="./redcross.png"></button>
@@ -11,7 +17,7 @@ const ShowEventSelected = (eventSelected) => {
       <p class="EventSelectedLocation">${eventSelected.ubicacion}</p>
     </div>
     <div class="EventSelectedMoreInfo">
-      <p class="EventselectedLongDescrp">${eventSelected.longDescription}</p>
+      <p class="EventselectedLongDescrp">${longDescription}</p>
       <div class="EventSelectedPageOptions">
         <button class="EventSelectedBtnJoin btn">Apuntate!</button>
         <button class="EventSelectedBtnShowAsistance btn">Participantes</button>

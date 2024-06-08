@@ -21,9 +21,9 @@ Endpoints:
 
 /api/attendees/:id: Proporciona detalles de un asistente específico. 
 
-/api/user/events: Permite a los usuarios crear nuevos eventos.DONE
+/api/user/events: Permite a los usuarios crear nuevos eventos.
 
-/api/user/attendees/:eventId: Permite a los usuarios confirmar asistencia a un evento
+/api/user/attendees/:eventId: Permite a los usuarios confirmar asistencia a un evento DONE
 
 
 Middleware de Autenticación:
@@ -46,9 +46,9 @@ Subida de ficheros (por ejemplo: avatares o carteles de eventos). DONE
 
 Autenticación por roles.
 
-Controladores que ordenen la información bajo algún criterio.
+Controladores que ordenen la información bajo algún criterio. DONE
 
-Controladores que inserten un elemento de una colección en otra.
+Controladores que inserten un elemento de una colección en otra.DONE
 
 Mongo dB 
 inigocanta
