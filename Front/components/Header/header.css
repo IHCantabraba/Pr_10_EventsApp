@@ -46,6 +46,7 @@
 #userLogged {
   justify-content: center;
   gap: 2rem;
+  border: 1px solid lightgray;
 }
 .userIcon {
   height: 2rem;

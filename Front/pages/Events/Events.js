@@ -54,6 +54,7 @@ const insertEvents = async () => {
         reserved.style.backgroundColor = 'lightgreen'
       }
       /* cambair simbología si no hay plazas */
+      /* TODO revisar */
       const places = document.querySelector('.freePlaces')
       if (places.textContent.includes('0')) {
         places.style.backgroundColor = 'lightcoral'
@@ -62,13 +63,9 @@ const insertEvents = async () => {
     const eventsBtn = document.querySelectorAll('.openEvent')
 
     for (let eventBtn of eventsBtn) {
-      eventBtn.addEventListener(
-        'click',
-        (e) => {
-          OpenPage(e.target.id)
-        }
-        // { once: false }
-      )
+      eventBtn.addEventListener('click', (e) => {
+        OpenPage(e.target.id)
+      })
     }
   }
 }
@@ -82,7 +79,8 @@ const OpenPage = async (id) => {
   try {
     const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
     const EventData = await EventInfo.json()
-
+    console.log(EventData)
+    /* insert detailed event page */
     document.querySelector('main').innerHTML += ShowEventSelected(EventData)
     /* close page Btn functionality */
     document
@@ -93,16 +91,53 @@ const OpenPage = async (id) => {
       .querySelector('.EventSelectedBtnJoin')
       .addEventListener('click', () => RegisterInEvent(id))
 
-    const places = document.querySelector('.freePlaces')
-    if (places.textContent.includes('0')) {
-      console.log('0 plazas')
-      const joinBtn = document.querySelector('.EventSelectedBtnJoin')
-      joinBtn.disabled = true
-      joinBtn.textContent = 'No more Places'
+    /* TODO ver cómo seleccionar el freePlaces del elemento clickado */
+    const places = document.querySelectorAll(`.freePlaces`)
+    for (let place of places) {
+      if (place.textContent.includes('0')) {
+        let targetId = place.classList[1]
+        const joinBtns = document.querySelectorAll(`.EventSelectedBtnJoin`)
+        for (let joinBtn of joinBtns) {
+          const btnId = joinBtn.classList[2]
+          if (targetId === btnId) {
+            console.log(`id: ${id} tiene ${place.textContent} plazas libres`)
+            joinBtn.disabled = true
+            joinBtn.textContent = 'No more Places'
+            break
+          }
+        }
+      }
     }
     /* ver participantes btn functionality TODO */
+    document
+      .querySelector('.EventSelectedBtnShowAsistance')
+      .addEventListener('click', () => ShowParticipants(id))
   } catch (error) {
     console.log(`Error occurred while openning detailed info of Event ${id}`)
+  }
+}
+const ShowParticipants = async (id) => {
+  let asistentes = []
+  try {
+    const response = await fetch('http://localhost:3000/api/attendees')
+    if (response.ok) {
+      const ParsedResponse = await response.json()
+      console.log(ParsedResponse)
+      for (let asistente of ParsedResponse) {
+        const eventosRegistrados = asistente.events
+        for (let event of eventosRegistrados) {
+          if (event._id === id) {
+            asistentes.push({
+              nombre: asistente.nombre,
+              email: asistente.email
+            })
+          }
+        }
+      }
+      console.log(asistentes)
+    }
+  } catch (error) {
+    console.log(`An error occurred: ${error}`)
   }
 }
 const RegisterInEvent = async (id) => {
@@ -111,6 +146,8 @@ const RegisterInEvent = async (id) => {
   const userNombre = userLogged.user.nombre
   const useremail = userLogged.user.email
   const userId = userLogged.user._id
+  /* hay que asegurarse de que no está ya registrado en el evento */
+
   /* register user on event */
   try {
     const response = await fetch(
@@ -135,6 +172,13 @@ const RegisterInEvent = async (id) => {
         'Successfully Reservation',
         './green-check.png',
         'good'
+      )
+      RemoveMsgDiv()
+    } else {
+      document.querySelector('.EventSelectedPage ').innerHTML += MsgTemplate(
+        ` Event Reserved already !`,
+        './redcross.png',
+        'bad'
       )
       RemoveMsgDiv()
     }

@@ -1,3 +1,4 @@
+// import { events } from '../../../../Back/src/api/models/attendances'
 import './EventSelected.css'
 
 const ShowEventSelected = (eventSelected) => {
@@ -8,7 +9,7 @@ const ShowEventSelected = (eventSelected) => {
       '...Information Not available right now. Sorry for disturbances...'
   }
   const selectedEvent = `
-  <section  class="EventSelectedPage show">
+  <section class="EventSelectedPage show">
     <button class="closePage" background-img="./redcross.png"></button>
     <div class="EventSelectedBasicInfo">
       <img class="EventSelectedimg" src="${eventSelected.img}"/>
@@ -19,7 +20,7 @@ const ShowEventSelected = (eventSelected) => {
     <div class="EventSelectedMoreInfo">
       <p class="EventselectedLongDescrp">${longDescription}</p>
       <div class="EventSelectedPageOptions">
-        <button class="EventSelectedBtnJoin btn">Apuntate!</button>
+        <button class="EventSelectedBtnJoin btn ${eventSelected._id}">Apuntate!</button>
         <button class="EventSelectedBtnShowAsistance btn">Participantes</button>
       </div>
     </div>

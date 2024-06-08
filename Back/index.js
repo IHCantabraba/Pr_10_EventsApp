@@ -7,6 +7,7 @@ const { cloudinaryConfig } = require('./src/config/cloudinary')
 const eventRouter = require('./src/api/routes/events')
 const authRouter = require('./src/api/routes/authori')
 const { reservationRouter } = require('./src/api/routes/attendances')
+const { attendeesRouter } = require('./src/api/routes/attendees')
 
 const app = express()
 const PORT = 3000
@@ -25,10 +26,12 @@ app.use(cors())
 app.use('/api/users', userRouter)
 /* eventos */
 app.use('/api/events', eventRouter)
-/* asistentes */
+/* attendees */
+app.use('/api/attendees', attendeesRouter)
+/* registrar asistentes */
 app.use('/api/user/attendees', reservationRouter)
-/* Not found Root */
 
+/* Not found Root */
 app.use('*', (req, res, next) => {
   return res.status(404).json(`Route not found`)
 })

@@ -15,7 +15,6 @@ const createArticle = (event) => {
   }
   const article = `
     <article class="event-article">
-      <p id="${event._id}" class="hidenP">eventId-info</p>
       <button id="${event._id}" class="openEvent"></button>
       <img class="event-img" class="img" src="${event.img}" >
       <h2 class="event-title" clas="title">${event.titulo}</h2>
@@ -25,7 +24,7 @@ const createArticle = (event) => {
         <p class="event-location">${event.ubicacion}</p>
       </div>
       <div id="reserved" class="reservation ${titulo}">${event.reserva}</div>
-      <p class="freePlaces">${plazasRestantes}</p>
+      <p class="freePlaces ${event._id}">${plazasRestantes}</p>
     </article>
   `
   return article

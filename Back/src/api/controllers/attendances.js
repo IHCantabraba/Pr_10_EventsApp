@@ -6,23 +6,34 @@ const registerAttendance = async (req, res, next) => {
   /* comprobar que no exista ya */
   /* TODO already registerd */
   try {
-    const newReserve = new Attendance(req.body)
-    const reservation = await newReserve.save()
-
     const { id } = req.params
     console.log(id)
     const EventInfo = await Event.findById(id)
     console.log(EventInfo)
+
     if (EventInfo !== 'undefined') {
       console.log(EventInfo.titulo)
-      EventInfo.users.push(req.body.users)
-      const eventupdated = await Event.findByIdAndUpdate(id, EventInfo, {
-        new: true
-      })
+      /* comprobar que el usuario no esté ya registrado */
+      for (let userRegister of EventInfo.users) {
+        console.log(`${EventInfo.users}`)
+        console.log(`${req.body.users}`)
+        if (EventInfo.users.includes(req.body.users)) {
+          console.log('user already registerd')
+          let msg = { msg: 'user already registerd' }
+          return res.status(409).json(msg)
+        } else {
+          EventInfo.users.push(req.body.users)
+          const eventupdated = await Event.findByIdAndUpdate(id, EventInfo, {
+            new: true
+          })
+          const newReserve = new Attendance(req.body)
+          const reservation = await newReserve.save()
+          return res.status(201).json(reservation)
+        }
+      }
     } else {
       console.log(`can not find event`)
     }
-    return res.status(201).json(reservation)
   } catch (error) {
     return res.status(400).json(`Error while registering event: ${error}`)
   }
