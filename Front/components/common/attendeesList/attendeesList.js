@@ -6,15 +6,15 @@ const template = () => `
 
 const showAsistanceList = (asistentes) => {
   console.log(asistentes)
-  const participantesList = document.getElementById('#attendees')
-
-  for (const asistente of asistentes) {
+  const participantesList = document.querySelector('#attendees')
+  console.log(participantesList)
+  for (let asistente of asistentes) {
     const li = document.createElement('li')
     li.innerHTML = `
       <img src="${asistente.img}" >
       <p>${asistente.nombre}</p>
     `
-    participantesList.append(li)
+    participantesList.appendChild(li)
   }
 }
 
