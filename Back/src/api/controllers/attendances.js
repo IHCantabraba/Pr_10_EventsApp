@@ -15,7 +15,7 @@ const registerAttendance = async (req, res, next) => {
       if (EventInfo.users.includes(req.body.users)) {
         console.log('user already registerd')
         let msg = { msg: 'user already registerd' }
-        return res.status(409).json(msg)
+        return res.status(201).json(msg)
       } else {
         EventInfo.users.push(req.body.users)
         const eventupdated = await Event.findByIdAndUpdate(id, EventInfo, {
@@ -23,7 +23,7 @@ const registerAttendance = async (req, res, next) => {
         })
         const newReserve = new Attendance(req.body)
         const reservation = await newReserve.save()
-        return res.status(201).json(reservation)
+        return res.status(200).json(reservation)
       }
     } else {
       console.log(`can not find event`)

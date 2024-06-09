@@ -50,8 +50,15 @@ const OpenPage = async (id) => {
     /* apuntate btn functionality */
     document
       .querySelector('.EventSelectedBtnJoin')
-      .addEventListener('click', () => RegisterInEvent(id))
-
+      .addEventListener('click', () => {
+        RegisterInEvent(id)
+      })
+    /* ver participantes btn functionality TODO */
+    document
+      .querySelector('.EventSelectedBtnShowAsistance')
+      .addEventListener('click', () => {
+        ShowParticipants(id)
+      })
     /* seleccionar el freePlaces del elemento clickado */
     const places = document.querySelectorAll(`.freePlaces`)
     for (let place of places) {
@@ -68,10 +75,6 @@ const OpenPage = async (id) => {
         }
       }
     }
-    /* ver participantes btn functionality TODO */
-    document
-      .querySelector('.EventSelectedBtnShowAsistance')
-      .addEventListener('click', () => ShowParticipants(id))
   } catch (error) {
     console.log(`Error occurred while openning detailed info of Event ${id}`)
   }
@@ -107,9 +110,7 @@ const ShowParticipants = async (id) => {
     console.log(`An error occurred: ${error}`)
   }
 }
-// const showAsistanceList = async (asistente) => {
-//   console.log(asistente)
-// }
+
 const RegisterInEvent = async (id) => {
   const userLogged = JSON.parse(sessionStorage.getItem('user'))
   const token = userLogged.token
@@ -139,7 +140,7 @@ const RegisterInEvent = async (id) => {
       }
     )
     console.log(response)
-    if (response.ok) {
+    if (response.status !== 201) {
       document.querySelector('.EventSelectedPage ').innerHTML += MsgTemplate(
         'Successfully Reservation',
         './green-check.png',

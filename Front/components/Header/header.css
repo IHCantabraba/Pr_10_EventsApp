@@ -14,7 +14,7 @@
 
 #header {
   justify-content: space-between;
-  gap: 3rem;
+  gap: 1rem;
   padding: 0.5rem 1.5rem;
   height: var(--ihc-header-height);
   background-color: var(--ihc-BG-color-HeaderFooter);
@@ -23,13 +23,14 @@
   font-size: 1rem;
 }
 #app-Pages {
-  min-width: 20rem;
+  min-width: 35rem;
   justify-content: space-between;
 }
 #Events,
 #loginLink,
 #registerLink,
-#logoutLink {
+#logoutLink,
+#NewEvent {
   cursor: pointer;
   text-decoration: none;
   color: rgb(4, 4, 82);

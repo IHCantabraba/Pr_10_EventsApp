@@ -8,6 +8,7 @@ const HeaderTemplate = () => {
         <h1 id="app-Title">Find your Event!</h1>
         <div id="app-Pages">
           <a href="#" id="Events">Eventos</a>
+          <a href="#" id="NewEvent">Crear Evento</a>
           <a href="#" id="loginLink">Login</a>
           <a href="#" id="registerLink">Register</a>
           <a href="#" id="logoutLink">Long Out</a>
@@ -20,18 +21,6 @@ const HeaderTemplate = () => {
     </div>
   `
   document.body.innerHTML = template
-  /* TODO --> not working */
-  // let Changetheme = document.querySelector('#check')
-  // Changetheme.addEventListener('change', function () {
-  //   console.log('changing')
-  //   /* para usar "this." se requiere usar function () {} */
-  //   /* si se usa ()=>{} se debe usar e.target */
-  //   if (this.checked) {
-  //     p.innerHTML = 'What ever you want to activate'
-  //   } else {
-  //     p.innerHTML = 'What ever you want to deactivate'
-  //   }
-  // })
 }
 
 export default HeaderTemplate

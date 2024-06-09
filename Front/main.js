@@ -6,6 +6,7 @@ import main from './components/main/main'
 import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
+import NewEvent from './pages/NewEvent/NewEvrnt'
 
 /* insertar el header */
 HeaderTemplate()
@@ -57,6 +58,9 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
   Login()
 })
 
+document.querySelector('#NewEvent').addEventListener('click', () => {
+  NewEvent()
+})
 // document.querySelector('#check').addEventListener('change', function (e) {
 //   e.Themes()
 // })
