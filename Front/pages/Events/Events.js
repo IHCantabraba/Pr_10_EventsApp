@@ -1,6 +1,7 @@
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import createArticle from '../../components/common/EventArticle/eventArticle'
 import ShowEventSelected from '../../components/common/EventSelectedPage/EventSelected'
+import Participantes from '../../components/common/attendeesList/attendeesList'
 import RemoveEventPage from '../../utils/RemoveEventPage'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import './Events.css'
@@ -121,31 +122,42 @@ const ShowParticipants = async (id) => {
   try {
     const response = await fetch('http://localhost:3000/api/attendees')
     if (response.ok) {
-      const ParsedResponse = await response.json()
+      const ParsedResponse = response.json()
       console.log(ParsedResponse)
+      /* para cada asistente registrado en general */
       for (let asistente of ParsedResponse) {
+        /* obtener eventos en los que se ha registrado */
         const eventosRegistrados = asistente.events
         for (let event of eventosRegistrados) {
+          /* si el evento coincide con el que se está viendo */
+          /* .... añadirlo a la lista de asistente sde dicho evento */
           if (event._id === id) {
             asistentes.push({
               nombre: asistente.nombre,
-              email: asistente.email
+              email: asistente.email,
+              img: asistente.img,
+              userId: asistente.users
             })
           }
         }
       }
-      console.log(asistentes)
+
+      Participantes(asistentes)
     }
   } catch (error) {
     console.log(`An error occurred: ${error}`)
   }
 }
+// const showAsistanceList = async (asistente) => {
+//   console.log(asistente)
+// }
 const RegisterInEvent = async (id) => {
   const userLogged = JSON.parse(sessionStorage.getItem('user'))
   const token = userLogged.token
   const userNombre = userLogged.user.nombre
   const useremail = userLogged.user.email
   const userId = userLogged.user._id
+  const userImg = userLogged.user.img
   /* hay que asegurarse de que no está ya registrado en el evento */
 
   /* register user on event */
@@ -162,6 +174,7 @@ const RegisterInEvent = async (id) => {
           nombre: userNombre,
           email: useremail,
           users: userId,
+          img: userImg,
           events: id
         })
       }

@@ -4,7 +4,6 @@ import './EventSelected.css'
 const ShowEventSelected = (eventSelected) => {
   let longDescription = eventSelected.longDescription
   if (longDescription === '') {
-    console.log('empty')
     longDescription =
       '...Information Not available right now. Sorry for disturbances...'
   }
