@@ -10,6 +10,7 @@ const showAsistanceList = (asistentes) => {
   console.log(participantesList)
   for (let asistente of asistentes) {
     const li = document.createElement('li')
+    li.classList.add('li')
     li.innerHTML = `
       <img src="${asistente.img}" >
       <p>${asistente.nombre}</p>
