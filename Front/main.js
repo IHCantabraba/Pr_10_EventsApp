@@ -7,6 +7,8 @@ import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
 import NewEvent from './pages/NewEvent/NewEvrnt'
+import MsgTemplate from './components/common/BottonMsg/BottomMsg'
+import RemoveMsgDiv from './utils/RemoveMsgDiv'
 
 /* insertar el header */
 HeaderTemplate()
@@ -59,9 +61,12 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
 })
 
 document.querySelector('#NewEvent').addEventListener('click', () => {
-  NewEvent()
+  sessionStorage.getItem('user')
+    ? NewEvent()
+    : document
+        .querySelector('main')
+        .append(
+          MsgTemplate('Login or Register First!', './redcross.png', 'bad')
+        )
+  document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
 })
-
-// document.querySelector('#check').addEventListener('change', function (e) {
-//   e.Themes()
-// })
