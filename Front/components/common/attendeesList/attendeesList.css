@@ -1,4 +1,4 @@
-#attendees {
+#attendees.show {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -19,4 +19,7 @@
   height: 2rem;
   border-radius: 50%;
   cursor: pointer;
+}
+#attendees.hide {
+  visibility: hidden;
 }

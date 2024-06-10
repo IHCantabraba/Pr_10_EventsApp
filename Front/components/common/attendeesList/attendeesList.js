@@ -1,26 +1,37 @@
 import './attendeesList.css'
 
-const template = () => `
-  <ul id="attendees"></ul>
-`
+const template = () => {
+  const ul = document.createElement('ul')
+  ul.id = 'attendees'
+  ul.classList.add('show')
+  return ul
+}
 
 const showAsistanceList = (asistentes) => {
   console.log(asistentes)
   const participantesList = document.querySelector('#attendees')
-  console.log(participantesList)
-  for (let asistente of asistentes) {
-    const li = document.createElement('li')
-    li.classList.add('li')
-    li.innerHTML = `
+  if (participantesList.length !== 0) {
+    for (let asistente of asistentes) {
+      const li = document.createElement('li')
+      li.classList.add('li')
+      li.innerHTML = `
       <img src="${asistente.img}" >
       <p>${asistente.nombre}</p>
     `
-    participantesList.appendChild(li)
+      participantesList.appendChild(li)
+    }
   }
 }
 
 const Participantes = (asistentes) => {
-  document.querySelector('.EventSelectedMoreInfo').innerHTML += template()
-  showAsistanceList(asistentes)
+  const DivInfo = document.querySelector('.EventSelectedMoreInfo')
+  if (document.querySelector('#attendees')) {
+    const list = document.querySelector('#attendees')
+    list.classList.toggle('show')
+    list.classList.toggle('hide')
+  } else {
+    DivInfo.append(template())
+    showAsistanceList(asistentes)
+  }
 }
 export default Participantes

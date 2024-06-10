@@ -6,7 +6,6 @@ const RemoveEventPage = () => {
   // page.classList.toggle('show')
   // page.classList.toggle('hide')
   page.remove()
-  document.querySelector('#events-section').classList.toggle('blur')
   Events()
 }
 export default RemoveEventPage
