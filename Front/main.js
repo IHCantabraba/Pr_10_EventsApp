@@ -61,6 +61,7 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
 document.querySelector('#NewEvent').addEventListener('click', () => {
   NewEvent()
 })
+
 // document.querySelector('#check').addEventListener('change', function (e) {
 //   e.Themes()
 // })

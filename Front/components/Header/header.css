@@ -23,8 +23,8 @@
   font-size: 1rem;
 }
 #app-Pages {
-  min-width: 35rem;
-  justify-content: space-between;
+  width: 60%;
+  justify-content: space-around;
 }
 #Events,
 #loginLink,

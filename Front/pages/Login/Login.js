@@ -51,17 +51,6 @@ const Login = () => {
       loginsubmit()
     })
   }
-  document.querySelector('#Events').addEventListener('click', () => {
-    if (!sessionStorage.getItem('user')) {
-      /* crear un popup div */
-      document.querySelector('main').innerHTML += MsgTemplate(
-        'Longin First',
-        './redcross.png',
-        'bad'
-      )
-      RemoveMsgDiv()
-    }
-  })
 }
 const loginsubmit = async () => {
   const username = document.querySelector('#LoginUser').value

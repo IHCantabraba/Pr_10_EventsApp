@@ -1,5 +1,6 @@
 import Btn from '../../components/common/Button/button'
 import InputElem from '../../components/common/Input/Input'
+import Events from '../Events/Events'
 import './NewEvent.css'
 import datepicker from 'js-datepicker'
 const template = () => `
@@ -20,7 +21,10 @@ const template = () => `
       ${InputElem('file', '', 'new-event-img', 'new-event-img')}
       <p id="new-event-longdesc">Descripcion Detallada</p>
       ${InputElem('text', '', 'new-even-longdesc')}
-      ${Btn('NewEventSubmit', 'Publicar', 'new-event-submit-btn')}
+      <div id="NewEventBtns">
+        ${Btn('NewEventSubmit', 'Publicar', 'new-event-submit-btn')}
+        ${Btn('CancelNewEvent', 'Cancelar', 'new-event-cancel-btn')}
+      </div>
 
     </form>
   </section>
@@ -33,6 +37,11 @@ const verFechas = () => {
 }
 const NewEvent = () => {
   document.querySelector('main').innerHTML = template()
+  /* funcinalidad del bton cancelar */
+  document
+    .querySelector('.new-event-cancel-btn')
+    .addEventListener('click', () => Events())
+  /* funcionalidad del boton publicar */
   const submitBtn = document
     .querySelector('.new-event-submit-btn')
     .addEventListener('click', () => verFechas())
