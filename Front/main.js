@@ -39,13 +39,6 @@ document
 
 document.querySelector('#loginLink').addEventListener('click', () => {
   Login()
-  /* time sleep 1sec */
-  if (document.querySelector('#alreadyLogged')) {
-    setTimeout(() => {
-      /* resetea valores de clicks */
-      Events()
-    }, 1000)
-  }
 })
 
 /* Register Btn from Header */
@@ -59,7 +52,7 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
   document.querySelector('.userName').textContent = 'No user Logged'
   Login()
 })
-
+/* NewEvent header btn functionality */
 document.querySelector('#NewEvent').addEventListener('click', () => {
   sessionStorage.getItem('user')
     ? NewEvent()

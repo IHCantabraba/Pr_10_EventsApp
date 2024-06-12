@@ -42,13 +42,20 @@ const Login = () => {
     /* abrir events age automáticamente si está logueado */
 
     setTimeout(() => {
-      Events()
+      if (!document.querySelector('#events-section')) {
+        Events()
+      }
     }, 1000)
   }
   if (document.querySelector('#LoginBtn')) {
     document.querySelector('#LoginBtn').addEventListener('click', (e) => {
       e.preventDefault()
       loginsubmit()
+      setTimeout(() => {
+        if (!document.querySelector('#events-section')) {
+          Events()
+        }
+      }, 3000)
     })
   }
 }
@@ -76,15 +83,9 @@ const loginsubmit = async () => {
 
   sessionStorage.setItem('user', JSON.stringify(dataResponse))
   /* Events Btn header  */
-  document.querySelector('main').innerHTML += MsgTemplate(
-    'Longged Successfully',
-    './green-check.png',
-    'good'
-  )
-  setTimeout(() => {
-    Events()
-  }, 3000)
-
+  document
+    .querySelector('main')
+    .append(MsgTemplate('Longged Successfully', './green-check.png', 'good'))
   RemoveMsgDiv()
 }
 export default Login

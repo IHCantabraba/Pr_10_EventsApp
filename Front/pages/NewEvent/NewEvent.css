@@ -15,6 +15,7 @@
 #new-even-longdesc {
   min-height: 10rem;
   min-width: 60%;
+  text-align: center;
 }
 
 #NewEventBtns {
@@ -24,4 +25,27 @@
   justify-content: center;
   gap: 0.5rem;
   width: 40%;
+}
+#first-row-form,
+#form-second-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+#form-title-info,
+#form-location-info,
+#form-desc,
+#form-places {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+}
+#titulo::after,
+#new-event-location-P::after,
+#new-event-desc-P::after,
+#fechas::after,
+#img-text::after {
+  content: ' *';
 }
