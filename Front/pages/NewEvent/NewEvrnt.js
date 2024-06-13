@@ -66,7 +66,6 @@ const calculateDate = (start, end) => {
 }
 const CreateNewEvent = async () => {
   const token = JSON.parse(sessionStorage.getItem('user')).token
-  console.log('token is ' + token)
   const start = document.querySelector('.start').value
   const end = document.querySelector('.end').value
   const titulo = document.querySelector('#new-event-name').value
@@ -94,16 +93,13 @@ const CreateNewEvent = async () => {
     data.append('reserva', reserva)
     data.append('img', img)
     data.append('limitParticipantes', Number(plazas))
-
     const response = await fetch('http://localhost:3000/api/users/events', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
-      body: data,
-      credentials: 'include',
-      mode: 'cors'
+      body: data
     })
     if (response.ok) {
       MsgTemplate('Succesfully created Event', './green-check.png', 'good')
@@ -112,10 +108,9 @@ const CreateNewEvent = async () => {
     }
   } catch (error) {
     console.log(error)
-    document.querySelector('##event-register-page').innerHTML += MsgTemplate(
-      'Error while creating event',
-      './redcross.png',
-      'bad'
+    const NewEventDiv = document.querySelector('#event-register-form')
+    NewEventDiv.append(
+      MsgTemplate('Error while creating event', './redcross.png', 'bad')
     )
     RemoveMsgDiv()
   }

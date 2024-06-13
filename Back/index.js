@@ -17,8 +17,12 @@ cloudinaryConfig()
 /* configure to accept json structure */
 app.use(express.json())
 /* configure to access from different ip (front and back end) */
-app.use(cors())
-
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+  })
+)
 /* router a los distintos modelos */
 /*auth */
 // app.use('/api/auth', authRouter)

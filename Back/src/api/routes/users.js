@@ -1,5 +1,6 @@
 const { isAuth, isAdmin } = require('../../middleware/auth')
 const upload = require('../../middleware/file')
+
 const {
   getUserByID,
   getAllusers,

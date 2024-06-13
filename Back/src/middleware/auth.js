@@ -8,7 +8,6 @@ const isAuth = async (req, res, next) => {
     const parsedToken = token.replace('Bearer ', '')
     console.log(parsedToken)
     const { id } = verifyToken(parsedToken)
-    console.log(IDBCursor)
     const user = await User.findById(id)
     console.log(user)
     if (user) {

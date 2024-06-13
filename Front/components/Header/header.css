@@ -25,6 +25,7 @@
 #app-Pages {
   width: 60%;
   justify-content: space-around;
+  gap: 1rem;
 }
 #Events,
 #loginLink,
@@ -46,9 +47,10 @@
 }
 #userLogged {
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   border: 1px solid lightgray;
   padding: 0 0.2rem;
+  border-radius: 5px;
 }
 .userIcon {
   height: 2rem;
@@ -56,4 +58,26 @@
   border: 1px solid white;
   border-radius: 50%;
   background-color: lightgrey;
+}
+@media (max-width: 550px) {
+  #app-Title {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  #userLogged {
+    gap: 0.5rem;
+  }
+  .userName {
+    font-size: 0.6rem;
+  }
+  #NewEvent,
+  #loginLink,
+  #registerLink,
+  #logoutLink {
+    font-size: 0.8rem;
+  }
+  #app-Pages {
+    width: 80%;
+  }
 }

@@ -21,8 +21,8 @@ const Themes = () => {
     console.log('unchecked')
   }
 }
-const slider = document.getElementById('check')
-slider.onclick = Themes
+// const slider = document.getElementById('check')
+// slider.onclick = Themes
 main()
 LandingTemplate()
 footer()
