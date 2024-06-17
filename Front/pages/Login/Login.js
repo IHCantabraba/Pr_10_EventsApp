@@ -93,6 +93,22 @@ const loginsubmit = async () => {
         loggedName.innerHTML = dataResponse.user.nombre
         /* almacenar en sessionStorage  el usuairo logueado */
         sessionStorage.setItem('user', JSON.stringify(dataResponse))
+        /* habilitar crear evento en funcion de los permisos del rol */
+        const rol = JSON.parse(sessionStorage.getItem('user')).user.rol
+        console.log(rol)
+        if (rol !== 'admin' || rol !== 'publisher') {
+          const CrearEvent = document.querySelector('#NewEvent')
+          /* TODO revisar cómo eliminar el eventListener que ya tiene */
+          // CrearEvent.removeEventListener('click')
+          CrearEvent.addEventListener('click', () => {
+            document
+              .querySelector('main')
+              .append(
+                MsgTemplate('You need to be Publisher', './redcross.png', 'bad')
+              )
+            RemoveMsgDiv()
+          })
+        }
         /* Events Btn header  */
         document
           .querySelector('main')

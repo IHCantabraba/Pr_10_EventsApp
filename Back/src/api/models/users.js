@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
       default: 'user',
-      enum: ['admin', 'user']
+      enum: ['admin', 'user', 'publisher']
     },
     img: { type: String, required: false },
     folder: { type: String, required: false }

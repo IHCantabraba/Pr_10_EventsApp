@@ -35,3 +35,17 @@
   background-color: black;
   height: auto;
 }
+#publisherOption,
+#publicara {
+  font-size: 0.8rem;
+}
+#isPublisher {
+  height: 15px;
+  width: 15px;
+  align-self: center;
+}
+#publisher {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
