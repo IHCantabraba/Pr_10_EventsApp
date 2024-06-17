@@ -1,3 +1,4 @@
+import Btn from '../Button/button'
 import './attendeesList.css'
 
 const template = () => {
@@ -17,6 +18,7 @@ const showAsistanceList = (asistentes) => {
       li.innerHTML = `
       <img src="${asistente.img}" >
       <p>${asistente.nombre}</p>
+      ${Btn('more-info-btn', 'Details', 'attendeBtn')}
     `
       participantesList.appendChild(li)
     }

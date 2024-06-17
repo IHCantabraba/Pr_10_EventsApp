@@ -111,7 +111,7 @@ const ShowParticipants = async (id) => {
         const eventosRegistrados = asistente.events
         for (let event of eventosRegistrados) {
           /* si el evento coincide con el que se está viendo */
-          /* .... añadirlo a la lista de asistente sde dicho evento */
+          /* .... añadirlo a la lista de asistentes de dicho evento */
           if (event._id === id) {
             asistentes.push({
               nombre: asistente.nombre,
@@ -122,7 +122,6 @@ const ShowParticipants = async (id) => {
           }
         }
       }
-
       Participantes(asistentes)
     }
   } catch (error) {
@@ -170,9 +169,6 @@ const RegisterInEvent = async (id) => {
         MsgTemplate(` Event Reserved already !`, './redcross.png', 'bad')
       )
       RemoveMsgDiv()
-      // setTimeout(() => {
-      //   OpenPage(id)
-      // }, 2000)
     }
   } catch (error) {
     console.log(`An error occurred: ${error}`)

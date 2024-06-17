@@ -40,13 +40,14 @@
 .EventSelectedFecha,
 .EventSelectedLocation {
   position: absolute;
-  bottom: 3px;
+  bottom: 15px;
+  font-size: 0.8rem;
 }
 .EventSelectedFecha {
-  left: 2rem;
+  left: 1.5rem;
 }
 .EventSelectedLocation {
-  left: 30%;
+  left: 25%;
 }
 .closePage {
   position: absolute;
