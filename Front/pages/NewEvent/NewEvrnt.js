@@ -94,7 +94,7 @@ const CreateNewEvent = async () => {
     data.append('img', img)
     console.log(`img is: ${img}`)
     data.append('limitParticipantes', Number(plazas))
-    console.log(`data entries: ${data.entries()}`)
+
     const response = await fetch('http://localhost:3000/api/users/events', {
       method: 'POST',
       headers: {
