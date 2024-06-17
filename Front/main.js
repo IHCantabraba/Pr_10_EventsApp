@@ -12,17 +12,6 @@ import RemoveMsgDiv from './utils/RemoveMsgDiv'
 
 /* insertar el header */
 HeaderTemplate()
-const Themes = () => {
-  console.log('inside themes')
-  const slider = document.getElementById('check')
-  if (slider.checked == true) {
-    console.log('checked')
-  } else {
-    console.log('unchecked')
-  }
-}
-// const slider = document.getElementById('check')
-// slider.onclick = Themes
 main()
 LandingTemplate()
 footer()
@@ -63,3 +52,13 @@ document.querySelector('#NewEvent').addEventListener('click', () => {
         )
   document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
 })
+
+if (sessionStorage.getItem('user')) {
+  document.querySelector('.userIcon').src = JSON.parse(
+    sessionStorage.getItem('user')
+  ).user.img
+  document.querySelector('.userName').textContent = JSON.parse(
+    sessionStorage.getItem('user')
+  ).user.nombre
+  Events()
+}
