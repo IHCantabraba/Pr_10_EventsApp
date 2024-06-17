@@ -1,10 +1,6 @@
 * {
   box-sizing: border-box;
 }
-#events-section {
-  display: grid;
-  grid-template-columns: repeat(3, 250px);
-}
 
 .event-article {
   display: flex;
@@ -12,7 +8,7 @@
   width: 200px;
   height: 300px;
   box-shadow: 5px 6px 4px lightgray;
-  margin: 01rem 1.5rem;
+  margin: 1rem 1.5rem 1rem 3rem;
   border-radius: 15px;
   align-items: center;
   justify-content: center;
@@ -20,6 +16,7 @@
   gap: 1rem;
   background-color: rgb(239, 237, 237);
   cursor: pointer;
+  align-self: center;
 }
 .event-article:hover {
   transform: scale(1.1);
@@ -73,8 +70,6 @@
 .event-desc {
   position: absolute;
   width: 100%;
-
-  border-radius: 10px;
 }
 .event-info {
   display: flex;
@@ -108,7 +103,30 @@
   opacity: 0;
   cursor: pointer;
 }
-/* .hidenP {
-  visibility: hidden;
-  display: none;
-} */
+
+@media (max-width: 850px) {
+  .event-article {
+    width: 150px;
+    height: 250px;
+  }
+  .event-title {
+    font-size: 0.8rem;
+  }
+  #reserved {
+    font-size: 0.8rem;
+    top: -47px;
+  }
+  .freePlaces {
+    font-size: 0.8rem;
+  }
+  .event-info {
+    gap: 0.5rem;
+  }
+  .event-date {
+    bottom: 26px;
+  }
+  .event-desc {
+    bottom: 60px;
+    font-size: 0.9rem;
+  }
+}

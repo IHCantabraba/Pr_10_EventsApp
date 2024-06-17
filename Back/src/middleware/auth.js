@@ -1,14 +1,14 @@
 const User = require('../api/models/users')
 const { verifyToken } = require('../utils/jwt')
-
+const mongoose = require('mongoose')
 const isAuth = async (req, res, next) => {
   try {
     const token = await req.headers.authorization
-    console.log(token)
     const parsedToken = token.replace('Bearer ', '')
     console.log(parsedToken)
-    const { id } = verifyToken(parsedToken)
-    const user = await User.findById(id)
+    const { _id } = verifyToken(parsedToken)
+    console.log(new mongoose.Types.ObjectId(_id))
+    const user = await User.findById(_id)
     console.log(user)
     if (user) {
       user.password = null

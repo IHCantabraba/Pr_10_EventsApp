@@ -1,3 +1,27 @@
-#events-section.blur {
-  filter: blur(10px);
+#events-section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 1000px) {
+  #events-section {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+}
+@media (max-width: 850px) {
+  #events-section {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+}
+@media (max-width: 715px) {
+  #events-section {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
 }

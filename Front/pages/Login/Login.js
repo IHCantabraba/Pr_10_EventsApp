@@ -14,7 +14,7 @@ const template = () =>
       : `
     <form id="login-page">
       <div id="loinginfo">
-      <p id="LoginName">user name</p>
+      <p id="LoginName">User name</p>
       <p id="LoginPassword">Password</p>
       </div>
       <div id="logindiv">

@@ -73,6 +73,7 @@ const CreateNewEvent = async () => {
   const desc = document.querySelector('#new-event-desc').value
   const longDesc = document.querySelector('#new-event-longdesc').value
   const img = document.querySelector('#new-event-img').files[0]
+  console.log(`img is: ${img}`)
   const plazas = document.querySelector('#new-event-places').value
   let reserva
   if (plazas !== '') {
@@ -84,7 +85,6 @@ const CreateNewEvent = async () => {
   try {
     const form = document.querySelector('#event-register-page')
     const data = new FormData(form)
-
     data.append('titulo', titulo)
     data.append('fecha', fecha)
     data.append('ubicacion', ubicacion)
@@ -92,7 +92,9 @@ const CreateNewEvent = async () => {
     data.append('longDescription', longDesc)
     data.append('reserva', reserva)
     data.append('img', img)
+    console.log(`img is: ${img}`)
     data.append('limitParticipantes', Number(plazas))
+    console.log(`data entries: ${data.entries()}`)
     const response = await fetch('http://localhost:3000/api/users/events', {
       method: 'POST',
       headers: {
