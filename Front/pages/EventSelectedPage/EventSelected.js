@@ -31,9 +31,15 @@ const ShowEventSelected = (eventSelected) => {
   return selectedEvent
 }
 // export default ShowEventSelected
+
+const blurContent = (events) => {
+  events.classList.toggle('blur')
+}
 /* abrir página de detalle del Evento */
 const OpenPage = async (id) => {
   console.log(`openning event id ${id}`)
+  const events = document.querySelector('#events-section')
+  blurContent(events)
 
   try {
     const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
