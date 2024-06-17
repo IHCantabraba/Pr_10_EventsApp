@@ -32,7 +32,6 @@ const Login = () => {
   document.querySelector('main').innerHTML = template()
   if (document.querySelector('#alreadyLogged')) {
     /* asignar imagen y nombre al perfil del login en header si ya estaba logueado */
-
     const icon = document.querySelector('.userIcon')
     const userName = document.querySelector('.userName')
     const user = JSON.parse(sessionStorage.getItem('user'))
@@ -40,7 +39,6 @@ const Login = () => {
     icon.src = user.user.img
     userName.textContent = user.user.nombre
     /* abrir events age automáticamente si está logueado */
-
     setTimeout(() => {
       if (!document.querySelector('#events-section')) {
         Events()
@@ -51,41 +49,71 @@ const Login = () => {
     document.querySelector('#LoginBtn').addEventListener('click', (e) => {
       e.preventDefault()
       loginsubmit()
-      setTimeout(() => {
-        if (!document.querySelector('#events-section')) {
-          Events()
-        }
-      }, 3000)
     })
   }
 }
 const loginsubmit = async () => {
-  const username = document.querySelector('#LoginUser').value
-  const password = document.querySelector('#password').value
-  const data = await fetch('http://localhost:3000/api/users/login', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify({ nombre: username, password: password })
-  })
-  const dataResponse = await data.json()
-  const userIcon = document.querySelector('.userIcon')
-  if (dataResponse.user.img === 'undefined') {
-    userIcon.src = 'no-image.png'
-  } else {
-    userIcon.src = dataResponse.user.img
+  try {
+    /* recoger los datos de login */
+    const username = document.querySelector('#LoginUser').value
+    const password = document.querySelector('#password').value
+    if (username === '' || password === '') {
+      /* Events Btn header  */
+      document
+        .querySelector('main')
+        .append(
+          MsgTemplate(
+            'Please Enter valid User and passwors',
+            './redcross.png',
+            'bad'
+          )
+        )
+      RemoveMsgDiv()
+    } else {
+      /* enviar solicitud de login */
+      console.log('sending')
+      const data = await fetch('http://localhost:3000/api/users/login', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({ nombre: username, password: password })
+      })
+
+      if (data.ok) {
+        const dataResponse = await data.json()
+        const userIcon = document.querySelector('.userIcon')
+        /* adding user name and icon to log session */
+        if (dataResponse.user.img === 'undefined') {
+          userIcon.src = 'no-image.png'
+        } else {
+          userIcon.src = dataResponse.user.img
+        }
+        const loggedName = document.querySelector('.userName')
+        loggedName.innerHTML = dataResponse.user.nombre
+        /* almacenar en sessionStorage  el usuairo logueado */
+        sessionStorage.setItem('user', JSON.stringify(dataResponse))
+        /* Events Btn header  */
+        document
+          .querySelector('main')
+          .append(
+            MsgTemplate('Longged Successfully', './green-check.png', 'good')
+          )
+        RemoveMsgDiv()
+        setTimeout(() => {
+          if (!document.querySelector('#events-section')) {
+            Events()
+          }
+        }, 3000)
+      }
+    }
+  } catch (error) {
+    /* Events Btn header  */
+    console.log(`error ${error}`)
+    document
+      .querySelector('main')
+      .append(MsgTemplate('User or pasword incorrect', './redcross.png', 'bad'))
+    RemoveMsgDiv()
   }
-
-  console.log(`Login server answer is: ${dataResponse.user.nombre}`)
-  const loggedName = document.querySelector('.userName')
-  loggedName.innerHTML = dataResponse.user.nombre
-
-  sessionStorage.setItem('user', JSON.stringify(dataResponse))
-  /* Events Btn header  */
-  document
-    .querySelector('main')
-    .append(MsgTemplate('Longged Successfully', './green-check.png', 'good'))
-  RemoveMsgDiv()
 }
 export default Login

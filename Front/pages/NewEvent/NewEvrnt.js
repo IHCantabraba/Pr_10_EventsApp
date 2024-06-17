@@ -33,7 +33,7 @@ const template = () => `
         ${InputElem('text', '', 'new-event-date-start', 'end')}
       </div>
       <p id="img-text"> Seleccionar imagen del evento</p>
-      ${InputElem('file', '', 'new-event-img', 'new-event-img')}
+      ${InputElem('file', '', 'new-event-img', 'new-event-imgF')}
       <p id="new-event-longdesc-P">Descripcion Detallada</p>
       ${InputElem('text', '(Optional)', 'new-event-longdesc')}
       <div id="NewEventBtns">
@@ -73,7 +73,6 @@ const CreateNewEvent = async () => {
   const desc = document.querySelector('#new-event-desc').value
   const longDesc = document.querySelector('#new-event-longdesc').value
   const img = document.querySelector('#new-event-img').files[0]
-  console.log(`img is: ${img}`)
   const plazas = document.querySelector('#new-event-places').value
   let reserva
   if (plazas !== '') {
@@ -92,13 +91,11 @@ const CreateNewEvent = async () => {
     data.append('longDescription', longDesc)
     data.append('reserva', reserva)
     data.append('img', img)
-    console.log(`img is: ${img}`)
     data.append('limitParticipantes', Number(plazas))
 
     const response = await fetch('http://localhost:3000/api/users/events', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
       body: data
