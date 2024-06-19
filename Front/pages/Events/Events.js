@@ -23,8 +23,6 @@ const getEvents = async () => {
     } else {
       refreshSession()
     }
-    // const eventsList = await events.json()
-    // return eventsList
   } catch (error) {
     const errorMsg = `Error occurred while fetching: ${error}`
     return errorMsg
@@ -92,10 +90,6 @@ const showEvents = (events) => {
 const insertEvents = async () => {
   /* obtener los eventos en BBDD */
   const events = await getEvents()
-  /* comprobar si se han obtenido o si ha expirado el token
-  ... si ha expirado lanzar login y sino, insertar eventos */
-  // JSON.stringify(events).includes('TokenExpiredError')
-  //   ? refreshSession()
   if (events) {
     showEvents(events)
   }

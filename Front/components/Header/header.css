@@ -13,15 +13,16 @@
 }
 
 #header {
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 1rem;
-  padding: 0.5rem 1.5rem;
   height: var(--ihc-header-height);
   background-color: var(--ihc-BG-color-HeaderFooter);
+  margin-bottom: 0.5rem;
 }
 #app-Title {
   font-size: 1rem;
 }
+
 #app-Pages {
   width: 60%;
   justify-content: space-around;
@@ -51,6 +52,7 @@
   border: 1px solid lightgray;
   padding: 0 0.2rem;
   border-radius: 5px;
+  font-size: 0.6rem;
 }
 .userIcon {
   height: 2rem;

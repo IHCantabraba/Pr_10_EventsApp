@@ -6,9 +6,6 @@ import main from './components/main/main'
 import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
-import NewEvent from './pages/NewEvent/NewEvrnt'
-import MsgTemplate from './components/common/BottonMsg/BottomMsg'
-import RemoveMsgDiv from './utils/RemoveMsgDiv'
 
 /* insertar el header */
 HeaderTemplate()
