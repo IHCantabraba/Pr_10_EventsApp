@@ -59,7 +59,7 @@ const OpenPage = async (id) => {
 
         RegisterInEvent(id)
       })
-    /* ver participantes btn functionality TODO */
+    /* ver participantes btn functionality */
     document
       .querySelector('.EventSelectedBtnShowAsistance')
       .addEventListener('click', () => {

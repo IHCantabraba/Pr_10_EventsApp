@@ -131,7 +131,7 @@ const loginsubmit = async () => {
           if (!document.querySelector('#events-section')) {
             Events()
           }
-        }, 3000)
+        }, 2000)
       }
     }
   } catch (error) {

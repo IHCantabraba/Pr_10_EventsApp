@@ -19,7 +19,11 @@ const showAsistanceList = async (asistentes) => {
       li.innerHTML = `
       <img src="${asistente.img}" >
       <label>${asistente.nombre}</label>
-      ${Btn(`${asistente.AttendeeId}`, 'Details', 'attendeBtn')} 
+      ${Btn(
+        `${asistente.AttendeeId}`,
+        'Detalles',
+        `attendeBtn ${asistente.nombre}`
+      )} 
     `
       participantesList.appendChild(li)
     }
@@ -27,16 +31,30 @@ const showAsistanceList = async (asistentes) => {
     for (let btn of detailedBtn) {
       btn.addEventListener('click', async () => {
         const contactInfo = await showAttendeContact(btn.id)
-        const li = document.querySelector(`#${contactInfo.nombre}`)
-        const p = document.createElement('p')
-        p.id = 'contact'
-        p.textContent = contactInfo.email
-        li.append(p)
+
+        /* cambair boton detalles */
+        switchDetailBtn(contactInfo)
       })
     }
   }
 }
-
+const switchDetailBtn = (contactInfo) => {
+  const li = document.querySelector(`#${contactInfo.nombre}`)
+  const p = document.createElement('p')
+  p.id = `contact${contactInfo.nombre}`
+  p.textContent = contactInfo.email
+  /* si el contacto no se ha insertado aún */
+  const detailBtn = document.querySelector(`.${contactInfo.nombre}`)
+  if (!document.querySelector(`#contact${contactInfo.nombre}`)) {
+    li.insertBefore(p, detailBtn)
+    /* cambiar apariencia del botón */
+    detailBtn.textContent = 'Ocultar'
+  } /* si ya se ha insertado, quitarlo*/ else {
+    /* cambiar apariencia del botón */
+    detailBtn.textContent = 'Detalles'
+    document.querySelector(`#contact${contactInfo.nombre}`).remove()
+  }
+}
 const showAttendeContact = async (userId) => {
   try {
     const userInfo = await fetch(
