@@ -44,7 +44,7 @@ Extra:
 
 Subida de ficheros (por ejemplo: avatares o carteles de eventos). DONE
 
-Autenticación por roles.
+Autenticación por roles.DONE
 
 Controladores que ordenen la información bajo algún criterio. DONE
 

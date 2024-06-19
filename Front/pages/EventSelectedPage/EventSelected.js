@@ -111,8 +111,6 @@ const ShowParticipants = async (id) => {
         for (let event of eventosRegistrados) {
           /* si el evento coincide con el que se está viendo */
           /* .... añadirlo a la lista de asistentes de dicho evento */
-          console.log(`event.id is: ${event._id}`)
-          console.log(`id is: ${id}`)
           if (event._id === id) {
             asistentes.push({
               nombre: asistente.nombre,
