@@ -42,4 +42,16 @@ const getAllAttendance = async (req, res, next) => {
       .json(`Error occurred while getting all attendance: ${error}`)
   }
 }
-module.exports = { registerAttendance, getAllAttendance }
+
+const getAttendeByID = async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const user = await Attendance.findById(id)
+    return res.status(200).json(user)
+  } catch (error) {
+    return res
+      .status(400)
+      .json(`Error occurred while getting the user: ${error}`)
+  }
+}
+module.exports = { registerAttendance, getAllAttendance, getAttendeByID }

@@ -20,13 +20,15 @@
   border-radius: 50%;
   cursor: pointer;
 }
+.li > label,
 .li > p {
   font-size: 0.6rem;
 }
+
 #attendees.hide {
   visibility: hidden;
 }
-#more-info-btn {
+.attendeBtn {
   padding: 0.2rem 0.4rem;
   font-size: 0.5rem;
   font-weight: lighter;

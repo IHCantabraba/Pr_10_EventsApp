@@ -104,7 +104,6 @@ const ShowParticipants = async (id) => {
     const response = await fetch('http://localhost:3000/api/attendees')
     if (response.ok) {
       const ParsedResponse = await response.json()
-      console.log(ParsedResponse)
       /* para cada asistente registrado en general */
       for (let asistente of ParsedResponse) {
         /* obtener eventos en los que se ha registrado */
@@ -112,12 +111,15 @@ const ShowParticipants = async (id) => {
         for (let event of eventosRegistrados) {
           /* si el evento coincide con el que se está viendo */
           /* .... añadirlo a la lista de asistentes de dicho evento */
+          console.log(`event.id is: ${event._id}`)
+          console.log(`id is: ${id}`)
           if (event._id === id) {
             asistentes.push({
               nombre: asistente.nombre,
               email: asistente.email,
               img: asistente.img,
-              userId: asistente.users
+              userId: asistente.users,
+              AttendeeId: asistente._id
             })
           }
         }

@@ -17,11 +17,11 @@ Endpoints:
 
 /api/events/:id: Proporciona detalles de un evento específico. DONE
 
-/api/attendees: Ofrece la lista de asistentes registrados.
+/api/attendees: Ofrece la lista de asistentes registrados.DONE
 
-/api/attendees/:id: Proporciona detalles de un asistente específico. 
+/api/attendees/:id: Proporciona detalles de un asistente específico. DONE
 
-/api/user/events: Permite a los usuarios crear nuevos eventos.
+/api/user/events: Permite a los usuarios crear nuevos eventos.DONE
 
 /api/user/attendees/:eventId: Permite a los usuarios confirmar asistencia a un evento DONE
 
