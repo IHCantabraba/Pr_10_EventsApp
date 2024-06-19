@@ -1,7 +1,7 @@
 #events-section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  max-width: 100%;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }

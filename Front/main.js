@@ -39,18 +39,10 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
   sessionStorage.removeItem('user')
   document.querySelector('.userIcon').src = './no-image.png'
   document.querySelector('.userName').textContent = 'No user Logged'
+  if (document.querySelector('#NewEvent')) {
+    document.querySelector('#NewEvent').remove()
+  }
   Login()
-})
-/* NewEvent header btn functionality */
-document.querySelector('#NewEvent').addEventListener('click', () => {
-  sessionStorage.getItem('user')
-    ? NewEvent()
-    : document
-        .querySelector('main')
-        .append(
-          MsgTemplate('Login or Register First!', './redcross.png', 'bad')
-        )
-  document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
 })
 
 if (sessionStorage.getItem('user')) {

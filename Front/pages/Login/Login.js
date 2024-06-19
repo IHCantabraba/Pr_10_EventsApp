@@ -4,6 +4,7 @@ import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
+import NewEvent from '../NewEvent/NewEvrnt'
 
 const template = () =>
   `
@@ -71,7 +72,6 @@ const loginsubmit = async () => {
       RemoveMsgDiv()
     } else {
       /* enviar solicitud de login */
-      console.log('sending')
       const data = await fetch('http://localhost:3000/api/users/login', {
         headers: {
           'Content-Type': 'application/json'
@@ -95,18 +95,29 @@ const loginsubmit = async () => {
         sessionStorage.setItem('user', JSON.stringify(dataResponse))
         /* habilitar crear evento en funcion de los permisos del rol */
         const rol = JSON.parse(sessionStorage.getItem('user')).user.rol
-        console.log(rol)
-        if (rol !== 'admin' || rol !== 'publisher') {
+        if (rol === 'admin' || rol === 'publisher') {
+          const addAnchor = document.createElement('a')
+          addAnchor.href = '#'
+          addAnchor.id = 'NewEvent'
+          addAnchor.textContent = 'Crear Evento'
+          const headerpages = document.querySelector('#app-Pages')
+          const referenceAnchor = document.querySelector('#loginLink')
+          headerpages.insertBefore(addAnchor, referenceAnchor)
           const CrearEvent = document.querySelector('#NewEvent')
-          /* TODO revisar cómo eliminar el eventListener que ya tiene */
-          // CrearEvent.removeEventListener('click')
+          /* NewEvent header btn functionality */
           CrearEvent.addEventListener('click', () => {
-            document
-              .querySelector('main')
-              .append(
-                MsgTemplate('You need to be Publisher', './redcross.png', 'bad')
-              )
-            RemoveMsgDiv()
+            sessionStorage.getItem('user')
+              ? NewEvent()
+              : document
+                  .querySelector('main')
+                  .append(
+                    MsgTemplate(
+                      'Login or Register First!',
+                      './redcross.png',
+                      'bad'
+                    )
+                  )
+            document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
           })
         }
         /* Events Btn header  */

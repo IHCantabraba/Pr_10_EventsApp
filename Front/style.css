@@ -4,7 +4,7 @@
   --ihc-header-height: 70px;
   --ihc-BG-color-HeaderFooter: rgb(245, 244, 244);
   /* footer */
-  --ihc-footer-height: 60px;
+  --ihc-footer-height: 3rem;
   --ihc-footer-gap: 0.5rem;
   /*BTN Register*/
   --ihc-BtnRegister-BG-color: lightblue;
