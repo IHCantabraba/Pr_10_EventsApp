@@ -2,13 +2,15 @@ import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
 import Login from '../Login/Login'
+import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
+import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 // onsubmit="${submitRegister}" enctype="multipart/form-data"
 /* Register template */
 const template = () => `
   <section id="register-form">
     <form id="register-page" >
-      ${InputElem('text', 'Username', 'username')}
-      ${InputElem('text', 'email', 'email')}
+      ${InputElem('text', 'Username', 'username', '', 'required')}
+      ${InputElem('text', 'email', 'email', '', 'required')}
       ${InputElem('password', 'Password', 'password')}
       ${InputElem('password', 'Repeat Password', 'passwordRepeted')}
       <p id="publisherOption">¿Quieres publicar eventos?</p>
@@ -29,7 +31,6 @@ const Register = () => {
   document.querySelector('main').innerHTML = template()
   document.querySelector('#sumitRegister').addEventListener('click', () => {
     submitRegister()
-    Login()
   })
 }
 
@@ -56,13 +57,25 @@ const submitRegister = async () => {
     data.append('img', avatar)
     data.append('rol', rol)
     console.log(data.entries())
-    await fetch('http://localhost:3000/api/users/register', {
+    const response = await fetch('http://localhost:3000/api/users/register', {
       method: 'POST',
       body: data,
       mode: 'cors',
       cache: 'default'
     })
-    alert(`Please, log in with your credentials`)
+    if (response.ok) {
+      alert(`Please, log in with your credentials`)
+      Login()
+    } else {
+      document
+        .querySelector('main')
+        .append(MsgTemplate('Fill all needed flieds!', './redcross.png', 'bad'))
+
+      document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+      setTimeout(() => {
+        Register()
+      }, 2000)
+    }
   } catch (error) {
     console.log(error)
   }
