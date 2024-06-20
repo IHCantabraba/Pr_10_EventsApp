@@ -6,12 +6,14 @@ import main from './components/main/main'
 import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
+import rolPermisionFeatures from './utils/RolPermision'
 
 /* insertar el header */
 HeaderTemplate()
 main()
 LandingTemplate()
 footer()
+rolPermisionFeatures()
 /* register Btn Register page */
 document
   .querySelector('#landing-register-btn')

@@ -16,7 +16,6 @@ const getEvents = async () => {
         credential: 'include'
       }
     })
-    console.log(events.status, events.ok)
     if (events.ok) {
       const eventsList = await events.json()
       return eventsList

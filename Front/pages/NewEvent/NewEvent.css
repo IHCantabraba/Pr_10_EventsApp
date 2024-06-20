@@ -49,3 +49,8 @@
 #img-text::after {
   content: ' *';
 }
+
+#NewEventSubmit,
+#CancelNewEvent {
+  padding: 0.6rem 0.9rem;
+}
