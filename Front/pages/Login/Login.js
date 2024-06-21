@@ -4,7 +4,6 @@ import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
-import NewEvent from '../NewEvent/NewEvrnt'
 import rolPermisionFeatures from '../../utils/RolPermision'
 
 const template = () =>

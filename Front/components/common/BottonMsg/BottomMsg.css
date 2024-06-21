@@ -1,6 +1,6 @@
 #Dialog-Div {
-  width: 200px;
-  height: 70px;
+  width: 150px;
+  height: 50px;
   background-color: rgb(234, 232, 232);
   /* filter: brightness(1.75); */
   display: flex;
@@ -27,17 +27,7 @@
     opacity: 1;
   }
 }
-#Dialog-header {
-  width: 100%;
-  height: 20px;
-  border: 1px solid rgb(228, 226, 226);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: grey;
-  border-radius: 8px;
-}
+
 #Dialig-info-Div {
   display: flex;
   flex-direction: row;
@@ -49,4 +39,7 @@
 #msg-symbol {
   width: 15px;
   height: 15px;
+}
+#Msg {
+  font-size: 0.8rem;
 }
