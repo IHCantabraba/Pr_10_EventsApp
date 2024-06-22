@@ -11,7 +11,7 @@ const template = () => `
     <form id="register-page" >
       ${InputElem('text', 'Username', 'username', '', 'required')}
       ${InputElem('text', 'email', 'email', '', 'required')}
-      ${InputElem('password', 'Password', 'password', '', 'required')}
+      ${InputElem('password', 'Password', 'Reg-password', '', 'required')}
       ${InputElem(
         'password',
         'Repeat Password',
