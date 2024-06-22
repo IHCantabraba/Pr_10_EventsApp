@@ -91,6 +91,8 @@
 }
 .EventselectedLongDescrp {
   text-align: center;
+  height: 6rem;
+  overflow: scroll;
 }
 
 .EventSelectedBtnJoin.btn,
@@ -106,4 +108,9 @@
 .EventSelectedBtnJoin[disabled] {
   background-color: rgb(61, 59, 59);
   cursor: default;
+}
+#UlContainer {
+  width: 100%;
+  max-height: 10rem;
+  overflow: scroll;
 }

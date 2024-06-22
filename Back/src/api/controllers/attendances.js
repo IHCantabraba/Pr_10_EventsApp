@@ -21,6 +21,11 @@ const registerAttendance = async (req, res, next) => {
         const eventupdated = await Event.findByIdAndUpdate(id, EventInfo, {
           new: true
         })
+        /* TODO si existe ya un attende con ese nombre, añadirle un evento nuevo sino, crearlo */
+        const nombre = req.body.nombre
+        console.log(`name is: ${nombre}`)
+        const existente = await Attendance.findOne({ nombre })
+        console.log(existente)
         const newReserve = new Attendance(req.body)
         const reservation = await newReserve.save()
         return res.status(200).json(reservation)
@@ -53,5 +58,13 @@ const getAttendeByID = async (req, res, next) => {
       .status(400)
       .json(`Error occurred while getting the user: ${error}`)
   }
+}
+
+const getAttendeByName = async (req, res, next) => {
+  try {
+    const { name } = req.params
+    const attendee = await Attendance.find({ name })
+    return res.status(200).json(attendee)
+  } catch (error) {}
 }
 module.exports = { registerAttendance, getAllAttendance, getAttendeByID }

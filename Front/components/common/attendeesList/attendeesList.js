@@ -2,10 +2,13 @@ import Btn from '../Button/button'
 import './attendeesList.css'
 
 const template = () => {
+  const ulDiv = document.createElement('div')
+  ulDiv.id = 'UlContainer'
   const ul = document.createElement('ul')
   ul.id = 'attendees'
   ul.classList.add('show')
-  return ul
+  ulDiv.append(ul)
+  return ulDiv
 }
 
 const showAsistanceList = async (asistentes) => {
@@ -13,11 +16,18 @@ const showAsistanceList = async (asistentes) => {
   const participantesList = document.querySelector('#attendees')
   if (participantesList.length !== 0) {
     for (let asistente of asistentes) {
+      let img
+      console.log(asistente.img)
+      if (asistente.img === 'undefined') {
+        img = 'no-image.png'
+      } else {
+        img = asistente.img
+      }
       const li = document.createElement('li')
       li.classList.add('li')
       li.id = asistente.nombre
       li.innerHTML = `
-      <img src="${asistente.img}" >
+      <img src="${img}" >
       <label>${asistente.nombre}</label>
       ${Btn(
         `${asistente.AttendeeId}`,
