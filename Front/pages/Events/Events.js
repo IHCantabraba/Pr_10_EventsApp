@@ -37,9 +37,11 @@ const refreshSession = () => {
 const orderEvents = (events) => {
   /* ordenar de menos plazas a màs */
   const sortedEvents = events.sort((e1, e2) =>
-    e1.limitParticipantes < e2.limitParticipantes
+    e1.limitParticipantes - e1.users.length <
+    e2.limitParticipantes - e2.users.length
       ? -1
-      : e1.limitParticipantes > e2.limitParticipantes
+      : e1.limitParticipantes - e1.users.length >
+        e2.limitParticipantes - e2.users.length
       ? 1
       : 0
   )
