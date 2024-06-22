@@ -77,7 +77,7 @@ const loginsubmit = async () => {
       RemoveMsgDiv()
     } else {
       /* enviar solicitud de login */
-      const data = await fetch('http://localhost:3000/api/users/login', {
+      const data = await fetch('http://localhost:3000/api/auth/login', {
         headers: {
           'Content-Type': 'application/json'
         },

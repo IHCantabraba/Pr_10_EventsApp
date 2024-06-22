@@ -8,7 +8,6 @@ const eventRouter = require('./src/api/routes/events')
 const authRouter = require('./src/api/routes/authori')
 const { reservationRouter } = require('./src/api/routes/attendances')
 const { attendeesRouter } = require('./src/api/routes/attendees')
-
 const app = express()
 const PORT = 3000
 /* coonnect to Mongo DB */
@@ -17,15 +16,10 @@ cloudinaryConfig()
 /* configure to accept json structure */
 app.use(express.json())
 /* configure to access from different ip (front and back end) */
-app.use(
-  cors(/*{
-  //   origin: 'http://localhost:5173',
-  //   credentials: true
-  // }*/)
-)
+app.use(cors())
 /* router a los distintos modelos */
 /*auth */
-// app.use('/api/auth', authRouter)
+app.use('/api/auth', authRouter)
 /* usuarios */
 app.use('/api/users', userRouter)
 /* eventos */

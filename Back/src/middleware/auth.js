@@ -5,11 +5,8 @@ const isAuth = async (req, res, next) => {
   try {
     const token = await req.headers.authorization
     const parsedToken = token.replace('Bearer ', '')
-    console.log(parsedToken)
     const { _id } = verifyToken(parsedToken)
-    console.log(new mongoose.Types.ObjectId(_id))
     const user = await User.findById(_id)
-    console.log(user)
     if (user) {
       user.password = null
       req.user = user

@@ -45,7 +45,7 @@ const submitRegister = async () => {
   try {
     const form = document.querySelector('#register-page')
     const username = document.querySelector('#username').value
-    const password = document.querySelector('#password').value
+    const password = document.querySelector('#Reg-password').value
     const Repeatedpassword = document.querySelector('#passwordRepeted').value
     const email = document.querySelector('#email').value
     const avatar = document.querySelector('.avatar').files[0]
@@ -68,7 +68,7 @@ const submitRegister = async () => {
       data.append('img', avatar)
       data.append('rol', rol)
       console.log(data.entries())
-      const response = await fetch('http://localhost:3000/api/users/register', {
+      const response = await fetch('http://localhost:3000/api/auth/register', {
         method: 'POST',
         body: data,
         mode: 'cors',
