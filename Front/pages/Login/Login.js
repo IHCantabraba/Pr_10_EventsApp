@@ -36,9 +36,14 @@ const Login = () => {
     const icon = document.querySelector('.userIcon')
     const userName = document.querySelector('.userName')
     const user = JSON.parse(sessionStorage.getItem('user'))
+    if (!user.user.img) {
+      icon.src = 'no-image.png'
+      userName.textContent = user.user.nombre
+    } else {
+      icon.src = user.user.img
+      userName.textContent = user.user.nombre
+    }
 
-    icon.src = user.user.img
-    userName.textContent = user.user.nombre
     /* abrir events age automáticamente si está logueado */
     setTimeout(() => {
       if (!document.querySelector('#events-section')) {

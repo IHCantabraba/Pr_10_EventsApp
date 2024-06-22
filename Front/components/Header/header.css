@@ -28,23 +28,28 @@
   justify-content: space-around;
   gap: 1rem;
 }
-#Events,
+#EventsLink,
 #loginLink,
 #registerLink,
-#logoutLink,
-#NewEvent {
+#logoutLink {
   cursor: pointer;
   text-decoration: none;
   color: rgb(4, 4, 82);
   font-weight: bold;
 }
-#Events {
-  font-size: 1.5rem;
+#NewEvent {
+  color: rgb(188, 77, 77);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+#EventsLink {
+  font-size: 1rem;
 }
 #registerLink,
 #loginLink,
 #logoutLink {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 #userLogged {
   justify-content: center;

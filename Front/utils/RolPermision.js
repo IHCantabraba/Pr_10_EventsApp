@@ -10,7 +10,7 @@ const rolPermisionFeatures = () => {
       addAnchor.id = 'NewEvent'
       addAnchor.textContent = 'Crear Evento'
       const headerpages = document.querySelector('#app-Pages')
-      const referenceAnchor = document.querySelector('#loginLink')
+      const referenceAnchor = document.querySelector('#EventsLink')
       if (!document.querySelector('#NewEvent')) {
         headerpages.insertBefore(addAnchor, referenceAnchor)
         const CrearEvent = document.querySelector('#NewEvent')

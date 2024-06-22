@@ -31,7 +31,16 @@ document.querySelector('#loginLink').addEventListener('click', () => {
 
 /* Register Btn from Header */
 document.querySelector('#registerLink').addEventListener('click', () => {
-  Register()
+  if (sessionStorage.getItem('user')) {
+    Register()
+  } else {
+    Login()
+  }
+})
+
+/* Events Btn from Header */
+document.querySelector('#EventsLink').addEventListener('click', () => {
+  Events()
 })
 /* logout Btn Header */
 document.querySelector('#logoutLink').addEventListener('click', () => {
@@ -43,13 +52,26 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
   }
   Login()
 })
-
+/* update image and name of logged user */
 if (sessionStorage.getItem('user')) {
-  document.querySelector('.userIcon').src = JSON.parse(
-    sessionStorage.getItem('user')
-  ).user.img
   document.querySelector('.userName').textContent = JSON.parse(
     sessionStorage.getItem('user')
   ).user.nombre
+  console.log(
+    `sesiónStorage img is: ${
+      JSON.parse(sessionStorage.getItem('user')).user.img
+    }`
+  )
+  /* si no ha añadido foto al registrarse utilizar la default */
+  if (
+    !JSON.parse(sessionStorage.getItem('user')).user.img ||
+    JSON.parse(sessionStorage.getItem('user')).user.img === 'undefined'
+  ) {
+    document.querySelector('.userIcon').src = 'no-image.png'
+  } else {
+    document.querySelector('.userIcon').src = JSON.parse(
+      sessionStorage.getItem('user')
+    ).user.img
+  }
   Events()
 }
