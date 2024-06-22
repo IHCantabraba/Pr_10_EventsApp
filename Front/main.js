@@ -7,6 +7,8 @@ import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
 import rolPermisionFeatures from './utils/RolPermision'
+import MsgTemplate from './components/common/BottonMsg/BottomMsg'
+import RemoveMsgDiv from './utils/RemoveMsgDiv'
 
 /* insertar el header */
 HeaderTemplate()
@@ -31,7 +33,7 @@ document.querySelector('#loginLink').addEventListener('click', () => {
 
 /* Register Btn from Header */
 document.querySelector('#registerLink').addEventListener('click', () => {
-  if (sessionStorage.getItem('user')) {
+  if (!sessionStorage.getItem('user')) {
     Register()
   } else {
     Login()
@@ -40,7 +42,14 @@ document.querySelector('#registerLink').addEventListener('click', () => {
 
 /* Events Btn from Header */
 document.querySelector('#EventsLink').addEventListener('click', () => {
-  Events()
+  if (sessionStorage.getItem('user')) {
+    Events()
+  } else {
+    document
+      .querySelector('main')
+      .append(MsgTemplate('Login or register First', './redcross.png', 'bad'))
+    RemoveMsgDiv()
+  }
 })
 /* logout Btn Header */
 document.querySelector('#logoutLink').addEventListener('click', () => {

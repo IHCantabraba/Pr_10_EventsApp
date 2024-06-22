@@ -10,17 +10,29 @@ const template = () => `
       <div id="first-row-form">
          <div id="form-title-info"> 
         <p id="titulo">Título del evento</p>
-        ${InputElem('text', 'Título del evento', 'new-event-name')}
+        ${InputElem(
+          'text',
+          'Título del evento',
+          'new-event-name',
+          '',
+          'required'
+        )}
         </div>
         <div id="form-location-info">
           <p id="new-event-location-P">Ubicacion del evento</p>
-         ${InputElem('text', 'Ubicacion del evento', 'new-event-location')}
+         ${InputElem(
+           'text',
+           'Ubicacion del evento',
+           'new-event-location',
+           '',
+           'required'
+         )}
         </div>
       </div>
       <div id="form-second-row">
         <div id="form-desc">
          <p id="new-event-desc-P">Breve descripción</p>
-        ${InputElem('text', 'Descripcion', 'new-event-desc')}
+        ${InputElem('text', 'Descripcion', 'new-event-desc', '', 'required')}
         </div>
         <div id="form-places">
          <p id="eventPlaces"> Número de plazas</p>
