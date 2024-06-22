@@ -47,7 +47,7 @@ const template = () => `
       <p id="img-text"> Seleccionar imagen del evento</p>
       ${InputElem('file', '', 'new-event-img', 'new-event-imgF')}
       <p id="new-event-longdesc-P">Descripcion Detallada</p>
-      ${InputElem('text', '(Optional)', 'new-event-longdesc')}
+      <textarea id="new-event-longdesc" placeholder="(Optional)" class="longText" ></textarea>
       <div id="NewEventBtns">
         ${Btn('NewEventSubmit', 'Publicar', 'new-event-submit-btn')}
         ${Btn('CancelNewEvent', 'Cancelar', 'new-event-cancel-btn')}
@@ -55,6 +55,7 @@ const template = () => `
     </form>
   </section>
 `
+//${InputElem('text', '(Optional)', 'new-event-longdesc', 'longText')}
 const calculateDate = (start, end) => {
   if (end.length === 0) {
     let fechaEvento =
@@ -77,23 +78,30 @@ const calculateDate = (start, end) => {
   }
 }
 const CreateNewEvent = async () => {
-  const token = JSON.parse(sessionStorage.getItem('user')).token
-  const start = document.querySelector('.start').value
-  const end = document.querySelector('.end').value
-  const titulo = document.querySelector('#new-event-name').value
-  const ubicacion = document.querySelector('#new-event-location').value
-  const desc = document.querySelector('#new-event-desc').value
-  const longDesc = document.querySelector('#new-event-longdesc').value
-  const img = document.querySelector('#new-event-img').files[0]
-  const plazas = document.querySelector('#new-event-places').value
-  let reserva
-  if (plazas !== '') {
-    reserva = true
-  } else {
-    reserva = false
-  }
-  const fecha = calculateDate(start, end)
+  let insertedData = []
   try {
+    const token = JSON.parse(sessionStorage.getItem('user')).token
+    const start = document.querySelector('.start').value
+    insertedData.push(start)
+    const end = document.querySelector('.end').value
+    const titulo = document.querySelector('#new-event-name').value
+    insertedData.push(titulo)
+    const ubicacion = document.querySelector('#new-event-location').value
+    insertedData.push(ubicacion)
+    const desc = document.querySelector('#new-event-desc').value
+    insertedData.push(desc)
+    const longDesc = document.querySelector('#new-event-longdesc').value
+    const img = document.querySelector('#new-event-img').files[0]
+    insertedData.push(img)
+    const plazas = document.querySelector('#new-event-places').value
+    let reserva
+    if (plazas !== '') {
+      reserva = true
+    } else {
+      reserva = false
+    }
+    const fecha = calculateDate(start, end)
+
     const form = document.querySelector('#event-register-page')
     const data = new FormData(form)
     data.append('titulo', titulo)
@@ -104,18 +112,41 @@ const CreateNewEvent = async () => {
     data.append('reserva', reserva)
     data.append('img', img)
     data.append('limitParticipantes', Number(plazas))
-
-    const response = await fetch('http://localhost:3000/api/users/events', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      body: data
-    })
-    if (response.ok) {
-      MsgTemplate('Succesfully created Event', './green-check.png', 'good')
+    if (!insertedData.includes('')) {
+      const response = await fetch('http://localhost:3000/api/users/events', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: data
+      })
+      if (response.ok) {
+        document
+          .querySelector('#main')
+          .append(
+            MsgTemplate(
+              'Succesfully created Event',
+              './green-check.png',
+              'good'
+            )
+          )
+        document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+      } else {
+        console.log(response)
+        document
+          .querySelector('#main')
+          .append(
+            MsgTemplate('Please review all fields', './redcross.png', 'bad')
+          )
+        document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+      }
     } else {
-      console.log(response)
+      document
+        .querySelector('#main')
+        .append(
+          MsgTemplate('Please fill all needed data', './redcross.png', 'bad')
+        )
+      document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
     }
   } catch (error) {
     console.log(error)
@@ -133,9 +164,12 @@ const NewEvent = () => {
     .querySelector('.new-event-cancel-btn')
     .addEventListener('click', () => CreateNewEvent())
   /* funcionalidad del boton publicar */
-  const submitBtn = document
+  document
     .querySelector('.new-event-submit-btn')
-    .addEventListener('click', () => CreateNewEvent())
+    .addEventListener('click', (e) => {
+      e.preventDefault()
+      CreateNewEvent()
+    })
   const start = datepicker('.start', {
     id: 1,
     customDays: ['M', 'T', 'W', 'Th', 'F', 'S', 'S'],

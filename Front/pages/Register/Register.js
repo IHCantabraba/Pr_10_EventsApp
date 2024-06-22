@@ -35,7 +35,8 @@ const template = () => `
 /* Register page */
 const Register = (user, email) => {
   document.querySelector('main').innerHTML = template()
-  document.querySelector('#sumitRegister').addEventListener('click', () => {
+  document.querySelector('#sumitRegister').addEventListener('click', (e) => {
+    e.preventDefault()
     submitRegister()
   })
 }
@@ -55,7 +56,11 @@ const submitRegister = async () => {
     } else {
       rol = 'user'
     }
-    if (password === Repeatedpassword) {
+    if (
+      password === Repeatedpassword &&
+      password !== '' &&
+      Repeatedpassword !== ''
+    ) {
       const data = new FormData(form)
       data.append('nombre', username)
       data.append('email', email)
@@ -81,9 +86,6 @@ const submitRegister = async () => {
           )
 
         document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
-        setTimeout(() => {
-          Register()
-        }, 2000)
       }
     } else {
       document
@@ -91,12 +93,6 @@ const submitRegister = async () => {
         .append(MsgTemplate('Password mismatch!', './redcross.png', 'bad'))
 
       document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
-      setTimeout(() => {
-        Register()
-        /* mantener los campos introducidos */
-        document.querySelector('#username').value = username
-        document.querySelector('#email').value = email
-      }, 2000)
     }
   } catch (error) {
     console.log(error)

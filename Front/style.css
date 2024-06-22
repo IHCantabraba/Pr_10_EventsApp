@@ -10,6 +10,8 @@
   --ihc-BtnRegister-BG-color: lightblue;
   /* close page bton */
   --ihc-closeBtn-redX-size: 20px;
+  /* basic gap */
+  --ihc-basic-gap: 0.5rem;
 }
 /* body {
   background-color: rgb(62, 61, 61);

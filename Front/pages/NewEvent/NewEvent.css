@@ -4,18 +4,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--ihc-basic-gap);
   margin: 5% 5%;
 }
 
 #new-event-dates {
   display: flex;
   flex-direction: row;
-}
-#new-even-longdesc {
-  min-height: 10rem;
-  min-width: 60%;
-  text-align: center;
+  gap: var(--ihc-basic-gap);
 }
 
 #NewEventBtns {
@@ -23,14 +19,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--ihc-basic-gap);
   width: 40%;
 }
 #first-row-form,
 #form-second-row {
   display: flex;
   flex-direction: row;
-  gap: 0.5rem;
+  gap: var(--ihc-basic-gap);
 }
 #form-title-info,
 #form-location-info,
@@ -53,4 +49,12 @@
 #NewEventSubmit,
 #CancelNewEvent {
   padding: 0.6rem 0.9rem;
+}
+.longText {
+  width: 80%;
+  height: 10rem;
+  text-align: center;
+  overflow: auto;
+  padding: 0.5rem 0.5rem;
+  border-radius: 10px;
 }

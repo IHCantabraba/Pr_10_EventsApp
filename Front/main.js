@@ -66,11 +66,7 @@ if (sessionStorage.getItem('user')) {
   document.querySelector('.userName').textContent = JSON.parse(
     sessionStorage.getItem('user')
   ).user.nombre
-  console.log(
-    `sesiónStorage img is: ${
-      JSON.parse(sessionStorage.getItem('user')).user.img
-    }`
-  )
+
   /* si no ha añadido foto al registrarse utilizar la default */
   if (
     !JSON.parse(sessionStorage.getItem('user')).user.img ||
