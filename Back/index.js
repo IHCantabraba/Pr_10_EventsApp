@@ -8,6 +8,7 @@ const eventRouter = require('./src/api/routes/events')
 const authRouter = require('./src/api/routes/authori')
 const { reservationRouter } = require('./src/api/routes/attendances')
 const { attendeesRouter } = require('./src/api/routes/attendees')
+const eventOrganizedRouter = require('./src/api/routes/organizedEvents')
 const app = express()
 const PORT = 3000
 /* coonnect to Mongo DB */
@@ -24,6 +25,8 @@ app.use('/api/auth', authRouter)
 app.use('/api/users', userRouter)
 /* eventos */
 app.use('/api/events', eventRouter)
+/* eventos organizados */
+app.use('/api/events/user', eventOrganizedRouter)
 /* attendees */
 app.use('/api/attendees', attendeesRouter)
 /* registrar asistentes */
