@@ -1,7 +1,6 @@
 import NewEvent from '../pages/NewEvent/NewEvrnt'
 import OrganizedEvents from '../pages/Organizados/Organizados'
 const insertAnchor = (id, nombre, previo) => {
-  console.log(`creating anchor ${nombre}`)
   /* crear anchor para Crear Evento */
   const addAnchor = document.createElement('a')
   addAnchor.href = '#'

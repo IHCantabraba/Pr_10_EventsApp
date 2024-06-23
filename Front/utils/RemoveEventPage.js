@@ -1,9 +1,9 @@
 import Events from '../pages/Events/Events'
 
-const RemoveEventPage = () => {
+const RemoveEventPage = (clas) => {
   console.log('removing')
-  const page = document.querySelector('.EventSelectedPage')
+  const page = document.querySelector(`.${clas}`)
   page.remove()
-  Events()
+  // Events()
 }
 export default RemoveEventPage

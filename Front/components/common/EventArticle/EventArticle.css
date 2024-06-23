@@ -103,7 +103,20 @@
   opacity: 0;
   cursor: pointer;
 }
-
+.notCanceled,
+.Canceled {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+}
+.notCanceled {
+  opacity: 0;
+}
+.Canceled {
+  opacity: 1;
+  background-color: lightcoral;
+}
 @media (max-width: 850px) {
   .event-article {
     width: 150px;

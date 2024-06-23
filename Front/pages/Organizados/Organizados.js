@@ -1,10 +1,10 @@
 import './Organizados.css'
 import createArticle from '../../components/common/EventArticle/eventArticle'
-import OpenPage from '../EventSelectedPage/EventSelected'
 import Login from '../Login/Login'
+import PublisherOpenPage from '../PublisherEventSelectedPage/PublisherEventSelectedPage'
 const template = () =>
   `
-<section id="Publisher-events-section"></section>`
+<section id="Publisher-events-section" class="withEvents"></section>`
 
 const getOrganizedEvents = async () => {
   const userLogged = JSON.parse(sessionStorage.getItem('user'))
@@ -73,6 +73,7 @@ const showEvents = (events) => {
   /* obtener seccion de eventos */
   const EventsSection = document.querySelector('#Publisher-events-section')
   /* añadir eventos si existe la sección */
+
   if (EventsSection) {
     for (let event of sortedEvents) {
       const article = createArticle(event)
@@ -84,7 +85,7 @@ const showEvents = (events) => {
     /* añadir funcionalidad a cada boton */
     for (let eventBtn of eventsBtn) {
       eventBtn.addEventListener('click', (e) => {
-        OpenPage(e.target.id)
+        PublisherOpenPage(e.target.id)
       })
     }
   }
@@ -97,21 +98,25 @@ const insertEvents = async () => {
     showEvents(events)
   } else {
     /* TODO cambiar estilo de la página con una clase */
-    console.log('no events')
+
     const PublisherEventsSection = document.querySelector(
       '#Publisher-events-section'
     )
+    PublisherEventsSection.classList.toggle('withEvents')
+    PublisherEventsSection.classList.toggle('withOutEvents')
 
     const p = document.createElement('p')
     p.id = 'no-publisher-events-p'
-    p.textContent = 'You have no publish any event jet'
+    p.textContent = 'You have no published any event jet'
     PublisherEventsSection.append(p)
   }
 }
 
 const OrganizedEvents = () => {
   document.querySelector('main').innerHTML = template()
-  insertEvents()
+  if (!document.querySelector('.event-article')) {
+    insertEvents()
+  }
 }
 
 export default OrganizedEvents

@@ -1,0 +1,116 @@
+.Publisher-EventSelectedPage {
+  position: absolute;
+  top: var(--ihc-header-height);
+  right: 0;
+  left: 0;
+  bottom: 0;
+  min-height: calc(
+    100vh - var(--ihc-header-height) - var(--ihc-footer-height) -
+      var(--ihc-closeBtn-redX-size)
+  );
+  width: calc (100% - var(--ihc-closeBtn-redX-size));
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5rem;
+  z-index: 3;
+  margin: 0.5rem 1.5rem;
+}
+.Publisher-EventSelectedBasicInfo,
+.Publisher-EventSelectedMoreInfo {
+  display: flex;
+  flex-direction: column;
+  height: calc(
+    100vh - var(--ihc-header-height) - var(--ihc-footer-height) -
+      var(--ihc-closeBtn-redX-size)
+  );
+  width: 50%;
+}
+.Publisher-EventSelectedimg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.Publisher-EventSelectedTitle {
+  position: absolute;
+  left: 18%;
+}
+.Publisher-EventSelectedFecha,
+.Publisher-EventSelectedLocation {
+  position: absolute;
+  bottom: 15px;
+  font-size: 0.8rem;
+}
+.Publisher-EventSelectedFecha {
+  left: 1.5rem;
+}
+.Publisher-EventSelectedLocation {
+  left: 25%;
+}
+.Publisher-closePage {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-image: url(/redcross.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  height: var(--ihc-closeBtn-redX-size);
+  width: var(--ihc-closeBtn-redX-size);
+  border: none;
+  background-color: none;
+}
+
+.Publisher-EventSelectedPage.show {
+  visibility: visible;
+}
+.Publisher-EventSelectedPage.hide {
+  visibility: hidden;
+}
+/* SEventSelectedBasicInfo*/
+.Publisher-EventSelectedBasicInfo {
+  height: 100%;
+}
+/* EventSelectedMoreInfo */
+
+.Publisher-EventSelectedMoreInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+}
+.Publisher-EventSelectedPageOptions {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.Publisher-EventselectedLongDescrp {
+  text-align: center;
+  height: 6rem;
+  overflow: scroll;
+}
+
+.Publisher-EventSelectedBtnJoin.btn,
+.Publisher-EventSelectedBtnShowAsistance.btn {
+  border-radius: 10px;
+  border: none;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
+.Publisher-EventSelectedBtnJoin[disabled] {
+  background-color: rgb(61, 59, 59);
+  cursor: default;
+}
+#UlContainer {
+  width: 100%;
+  max-height: 10rem;
+  overflow: scroll;
+}
