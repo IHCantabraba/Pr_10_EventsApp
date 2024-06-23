@@ -3,6 +3,8 @@ import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import Participantes from '../../components/common/attendeesList/attendeesList'
 import RemoveEventPage from '../../utils/RemoveEventPage'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
+import OrganizedEvents from '../Organizados/Organizados'
+import Login from '../Login/Login'
 
 const ShowEventSelected = (eventSelected) => {
   let longDescription = eventSelected.longDescription
@@ -39,8 +41,6 @@ const blurContent = (id) => {
 
 /* abrir página de detalle del Evento */
 const PublisherOpenPage = async (id) => {
-  console.log(`openning event id ${id}`)
-  // const events = document.querySelector('#Publisher-events-section')
   blurContent('Publisher-events-section')
 
   try {
@@ -55,13 +55,29 @@ const PublisherOpenPage = async (id) => {
       .addEventListener('click', () => {
         blurContent('Publisher-events-section')
         RemoveEventPage('Publisher-EventSelectedPage')
+        OrganizedEvents()
       })
+
     /* Cancelar btn functionality */
-    document
-      .querySelector('.Publisher-EventSelectedBtnJoin')
-      .addEventListener('click', () => {
-        CancelEvent(id)
-      })
+    const EventCancelado = document.querySelector(`label[name="${id}"]`)
+    if (EventCancelado.classList.contains('Canceled')) {
+      const Btn2Cancel = document.querySelector(
+        '.Publisher-EventSelectedBtnJoin'
+      )
+      Btn2Cancel.textContent = 'Reabrir'
+      document
+        .querySelector('.Publisher-EventSelectedBtnJoin')
+        .addEventListener('click', () => {
+          CancelEvent(id, 'En curso')
+        })
+    } else {
+      document
+        .querySelector('.Publisher-EventSelectedBtnJoin')
+        .addEventListener('click', () => {
+          CancelEvent(id, 'cancelado')
+        })
+    }
+
     /* ver participantes btn functionality */
     document
       .querySelector('.Publisher-EventSelectedBtnShowAsistance')
@@ -87,7 +103,6 @@ const checkFreePlaces = () => {
   const places = document.querySelectorAll(`.freePlaces`)
   for (let place of places) {
     if (Number(place.textContent) === 0) {
-      console.log(place.textContent)
       let targetId = place.classList[1]
       const joinBtns = document.querySelectorAll(
         `.Publisher-EventSelectedBtnJoin`
@@ -95,9 +110,6 @@ const checkFreePlaces = () => {
       for (let joinBtn of joinBtns) {
         const btnId = joinBtn.classList[2]
         if (targetId === btnId) {
-          console.log(
-            `id: ${targetId} tiene ${place.textContent} plazas libres`
-          )
           joinBtn.disabled = true
           joinBtn.textContent = 'No more Places'
         }
@@ -136,7 +148,7 @@ const ShowParticipants = async (id) => {
   }
 }
 
-const CancelEvent = async (id) => {
+const CancelEvent = async (id, estado) => {
   const token = JSON.parse(sessionStorage.getItem('user')).token
   try {
     const CancelarEvento = await fetch(
@@ -148,25 +160,29 @@ const CancelEvent = async (id) => {
           credential: 'include'
         },
         method: 'PUT',
-        body: JSON.stringify({ estado: 'cancelado' })
+        body: JSON.stringify({ estado: `${estado}` })
       }
     )
     if (CancelarEvento.ok) {
       const page = document.querySelector('.Publisher-EventSelectedPage ')
       page.appendChild(
-        MsgTemplate(` Event Canceled !`, './green-check.png', 'good')
+        MsgTemplate(` Evento ${estado} !`, './green-check.png', 'good')
       )
       RemoveMsgDiv()
+    } /* TODO if cancelarEvento.status === 401 (unauthorized lanzar Longin) */
+    if (CancelarEvento.status === 401) {
+      const page = document.querySelector('.Publisher-EventSelectedPage ')
+      page.appendChild(
+        MsgTemplate(` Evento ${estado} !`, './redcross.png', 'bad')
+      )
+      RemoveMsgDiv()
+      setTimeout(() => {
+        Login()
+      }, 1500)
     }
   } catch (error) {
     console.log(error)
   }
-
-  //     const page = document.querySelector('.Publisher-EventSelectedPage ')
-  //     page.appendChild(
-  //       MsgTemplate(` Event Reserved already !`, './redcross.png', 'bad')
-  //     )
-  //     RemoveMsgDiv()
 }
 
 export default PublisherOpenPage

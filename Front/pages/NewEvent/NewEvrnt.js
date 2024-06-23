@@ -33,7 +33,13 @@ const template = () => `
       <div id="form-second-row">
         <div id="form-desc">
          <p id="new-event-desc-P">Breve descripción</p>
-        ${InputElem('text', 'Descripcion', 'new-event-desc', '', 'required')}
+        ${InputElem(
+          'text',
+          '2 descriptive Words',
+          'new-event-desc',
+          '',
+          'required'
+        )}
         </div>
         <div id="form-places">
          <p id="eventPlaces"> Número de plazas</p>

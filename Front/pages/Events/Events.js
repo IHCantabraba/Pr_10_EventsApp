@@ -65,7 +65,7 @@ const articleAspect = (event) => {
     places.style.backgroundColor = 'lightcoral'
   }
   /* estado del evento */
-  console.log(event.estado)
+
   if (event.estado === 'cancelado') {
     const Evento2Cancel = document.querySelector(`label[name="${event._id}"]`)
     Evento2Cancel.classList.toggle('notCanceled')

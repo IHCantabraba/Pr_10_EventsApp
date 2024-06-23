@@ -24,16 +24,18 @@ const CancelEvent = async (req, res, next) => {
   console.log('inside update')
   try {
     const { id } = req.params
-    const newUser = new Event(req.body)
-    const oldUser = await Event.findById(id)
+    const newEvent = new Event(req.body)
+    const oldEvent = await Event.findById(id)
     console.log(req.body)
     if (req.body.estado) {
-      newUser.estado = req.body.estado
+      newEvent.estado = req.body.estado
     }
-    newUser._id = id
+    newEvent._id = id
+    newEvent.limitParticipantes = oldEvent.limitParticipantes
+
     /* TODO añadir asistencias y mantener las que haya */
 
-    const userUpdated = await Event.findByIdAndUpdate(id, newUser, {
+    const userUpdated = await Event.findByIdAndUpdate(id, newEvent, {
       new: true
     })
     return res.status(200).json(`User succesfully updated, ${userUpdated}`)

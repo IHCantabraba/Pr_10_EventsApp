@@ -100,7 +100,6 @@ const showEvents = (events) => {
 const insertEvents = async () => {
   /* obtener los eventos en BBDD */
   const events = await getOrganizedEvents()
-  console.log(events)
   if (events.length !== 0) {
     showEvents(events)
   } else {

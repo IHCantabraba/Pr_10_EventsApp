@@ -1,4 +1,5 @@
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
+import Btn from '../../components/common/Button/button'
 import Participantes from '../../components/common/attendeesList/attendeesList'
 import RemoveEventPage from '../../utils/RemoveEventPage'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
@@ -32,14 +33,14 @@ const ShowEventSelected = (eventSelected) => {
 }
 // export default ShowEventSelected
 
-const blurContent = (events) => {
-  events.classList.toggle('blur')
+const blurContent = (id) => {
+  const elem = document.querySelector(`#${id}`)
+  elem.classList.toggle('blur')
 }
 /* abrir página de detalle del Evento */
 const OpenPage = async (id) => {
   console.log(`openning event id ${id}`)
-  const events = document.querySelector('#events-section')
-  blurContent(events)
+  blurContent('events-section')
 
   try {
     const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
@@ -48,17 +49,25 @@ const OpenPage = async (id) => {
     /* insert detailed event page */
     document.querySelector('main').innerHTML += ShowEventSelected(EventData)
     /* close page Btn functionality */
-    document
-      .querySelector('.closePage')
-      .addEventListener('click', () => RemoveEventPage('EventSelectedPage'))
+    document.querySelector('.closePage').addEventListener('click', () => {
+      blurContent('events-section')
+      RemoveEventPage('EventSelectedPage')
+    })
     /* apuntate btn functionality */
-    document
-      .querySelector('.EventSelectedBtnJoin')
-      .addEventListener('click', () => {
-        console.log(id)
+    const EventCancelado = document.querySelector(`label[name="${id}"]`)
+    if (EventCancelado.classList.contains('Canceled')) {
+      const Btn2Cancel = document.querySelector('.EventSelectedBtnJoin')
+      Btn2Cancel.disabled = true
+      Btn2Cancel.textContent = 'Can not Register'
+    } else {
+      document
+        .querySelector('.EventSelectedBtnJoin')
+        .addEventListener('click', () => {
+          console.log(id)
+          RegisterInEvent(id)
+        })
+    }
 
-        RegisterInEvent(id)
-      })
     /* ver participantes btn functionality */
     document
       .querySelector('.EventSelectedBtnShowAsistance')
@@ -82,15 +91,11 @@ const checkFreePlaces = () => {
   const places = document.querySelectorAll(`.freePlaces`)
   for (let place of places) {
     if (Number(place.textContent) === 0) {
-      console.log(place.textContent)
       let targetId = place.classList[1]
       const joinBtns = document.querySelectorAll(`.EventSelectedBtnJoin`)
       for (let joinBtn of joinBtns) {
         const btnId = joinBtn.classList[2]
         if (targetId === btnId) {
-          console.log(
-            `id: ${targetId} tiene ${place.textContent} plazas libres`
-          )
           joinBtn.disabled = true
           joinBtn.textContent = 'No more Places'
         }
