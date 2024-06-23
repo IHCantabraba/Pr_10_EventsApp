@@ -4,6 +4,7 @@ import InputElem from '../../components/common/Input/Input'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import './NewEvent.css'
 import datepicker from 'js-datepicker'
+import Events from '../Events/Events'
 const template = () => `
   <section id="event-register-form">
     <form id="event-register-page">
@@ -94,12 +95,13 @@ const CreateNewEvent = async () => {
     const longDesc = document.querySelector('#new-event-longdesc').value
     const img = document.querySelector('#new-event-img').files[0]
     insertedData.push(img)
-    const plazas = document.querySelector('#new-event-places').value
+    let plazas = document.querySelector('#new-event-places').value
     let reserva
     if (plazas !== '') {
       reserva = true
     } else {
       reserva = false
+      plazas = 9999
     }
     const fecha = calculateDate(start, end)
 
@@ -133,6 +135,11 @@ const CreateNewEvent = async () => {
             )
           )
         document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+        setTimeout(() => {
+          if (!document.querySelector('#events-section')) {
+            Events()
+          }
+        }, 2000)
       } else {
         console.log(response)
         document

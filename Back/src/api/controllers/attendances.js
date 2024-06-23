@@ -4,10 +4,11 @@ const User = require('../models/users')
 
 const registerAttendance = async (req, res, next) => {
   /* comprobar que no exista ya */
-  /* TODO already registerd */
+
   try {
     const { id } = req.params
     console.log(id)
+    /* Buscar el evento */
     const EventInfo = await Event.findById(id)
     if (EventInfo !== 'undefined') {
       console.log(EventInfo.titulo)
@@ -24,11 +25,23 @@ const registerAttendance = async (req, res, next) => {
         /* TODO si existe ya un attende con ese nombre, añadirle un evento nuevo sino, crearlo */
         const nombre = req.body.nombre
         console.log(`name is: ${nombre}`)
+        /* buscar si ese usuario ya es asistente de algún evento */
         const existente = await Attendance.findOne({ nombre })
         console.log(existente)
-        const newReserve = new Attendance(req.body)
-        const reservation = await newReserve.save()
-        return res.status(200).json(reservation)
+        if (existente) {
+          existente.events.push(id)
+          const updateAttendance = await Attendance.findByIdAndUpdate(
+            existente.id,
+            existente,
+            { new: true }
+          )
+          console.log(` Attendee New list: ${existente}`)
+          return res.status(200).json(updateAttendance)
+        } else {
+          const newReserve = new Attendance(req.body)
+          const reservation = await newReserve.save()
+          return res.status(200).json(reservation)
+        }
       }
     } else {
       console.log(`can not find event`)
