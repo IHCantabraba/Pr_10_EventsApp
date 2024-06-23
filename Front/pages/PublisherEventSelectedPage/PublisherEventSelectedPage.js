@@ -86,7 +86,7 @@ const PublisherOpenPage = async (id) => {
 const checkFreePlaces = () => {
   const places = document.querySelectorAll(`.freePlaces`)
   for (let place of places) {
-    if (place.textContent.includes('0')) {
+    if (Number(place.textContent) === 0) {
       console.log(place.textContent)
       let targetId = place.classList[1]
       const joinBtns = document.querySelectorAll(
@@ -137,9 +137,30 @@ const ShowParticipants = async (id) => {
 }
 
 const CancelEvent = async (id) => {
-  const Evento2Cancel = document.querySelector(`label[name="${id}"]`)
-  Evento2Cancel.classList.toggle('notCanceled')
-  Evento2Cancel.classList.toggle('Canceled')
+  const token = JSON.parse(sessionStorage.getItem('user')).token
+  try {
+    const CancelarEvento = await fetch(
+      `http://localhost:3000/api/events/${id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          credential: 'include'
+        },
+        method: 'PUT',
+        body: JSON.stringify({ estado: 'cancelado' })
+      }
+    )
+    if (CancelarEvento.ok) {
+      const page = document.querySelector('.Publisher-EventSelectedPage ')
+      page.appendChild(
+        MsgTemplate(` Event Canceled !`, './green-check.png', 'good')
+      )
+      RemoveMsgDiv()
+    }
+  } catch (error) {
+    console.log(error)
+  }
 
   //     const page = document.querySelector('.Publisher-EventSelectedPage ')
   //     page.appendChild(

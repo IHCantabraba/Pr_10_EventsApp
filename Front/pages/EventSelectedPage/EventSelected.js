@@ -81,7 +81,7 @@ const OpenPage = async (id) => {
 const checkFreePlaces = () => {
   const places = document.querySelectorAll(`.freePlaces`)
   for (let place of places) {
-    if (place.textContent.includes('0')) {
+    if (Number(place.textContent) === 0) {
       console.log(place.textContent)
       let targetId = place.classList[1]
       const joinBtns = document.querySelectorAll(`.EventSelectedBtnJoin`)

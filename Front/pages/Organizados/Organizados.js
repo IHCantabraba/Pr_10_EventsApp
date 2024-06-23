@@ -61,10 +61,17 @@ const articleAspect = (event) => {
     reserved.style.backgroundColor = 'lightgreen'
   }
   /* cambair simbología si no hay plazas */
-  /* TODO revisar */
+
   const places = document.querySelector('.freePlaces')
-  if (places.textContent.includes('0')) {
+  if (Number(places.textContent) === 0) {
     places.style.backgroundColor = 'lightcoral'
+  }
+  /* estado del evento */
+  console.log(event.estado)
+  if (event.estado === 'cancelado') {
+    const Evento2Cancel = document.querySelector(`label[name="${event._id}"]`)
+    Evento2Cancel.classList.toggle('notCanceled')
+    Evento2Cancel.classList.toggle('Canceled')
   }
 }
 const showEvents = (events) => {
@@ -114,9 +121,7 @@ const insertEvents = async () => {
 
 const OrganizedEvents = () => {
   document.querySelector('main').innerHTML = template()
-  if (!document.querySelector('.event-article')) {
-    insertEvents()
-  }
+  insertEvents()
 }
 
 export default OrganizedEvents

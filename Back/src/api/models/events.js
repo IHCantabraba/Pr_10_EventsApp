@@ -18,7 +18,8 @@ const eventSchema = new mongoose.Schema(
     img: { type: String, required: true },
     users: [{ type: mongoose.Types.ObjectId, ref: 'users' }],
     limitParticipantes: { type: Number, required: true, default: 9999 },
-    createdBy: { type: mongoose.Types.ObjectId, ref: 'users' }
+    createdBy: { type: mongoose.Types.ObjectId, ref: 'users' },
+    estado: { type: String, required: false, default: 'En curso' }
   },
   { timestamp: true, collection: 'events' }
 )

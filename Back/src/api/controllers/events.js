@@ -20,4 +20,25 @@ const getEvent = async (req, res, next) => {
     return res.status(400).json(`Error occurred while getting event: ${error}`)
   }
 }
-module.exports = { getAllEvents, getEvent }
+const CancelEvent = async (req, res, next) => {
+  console.log('inside update')
+  try {
+    const { id } = req.params
+    const newUser = new Event(req.body)
+    const oldUser = await Event.findById(id)
+    console.log(req.body)
+    if (req.body.estado) {
+      newUser.estado = req.body.estado
+    }
+    newUser._id = id
+    /* TODO añadir asistencias y mantener las que haya */
+
+    const userUpdated = await Event.findByIdAndUpdate(id, newUser, {
+      new: true
+    })
+    return res.status(200).json(`User succesfully updated, ${userUpdated}`)
+  } catch (error) {
+    return res.status(400).json(`Error occurred while updating ${error}`)
+  }
+}
+module.exports = { getAllEvents, getEvent, CancelEvent }
