@@ -59,6 +59,9 @@ document.querySelector('#logoutLink').addEventListener('click', () => {
   if (document.querySelector('#NewEvent')) {
     document.querySelector('#NewEvent').remove()
   }
+  if (document.querySelector('#OrganEvents')) {
+    document.querySelector('#OrganEvents').remove()
+  }
   Login()
 })
 /* update image and name of logged user */

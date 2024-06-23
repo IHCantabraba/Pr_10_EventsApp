@@ -37,7 +37,8 @@
   color: rgb(4, 4, 82);
   font-weight: bold;
 }
-#NewEvent {
+#NewEvent,
+#OrganEvents {
   color: rgb(188, 77, 77);
   cursor: pointer;
   text-decoration: none;
@@ -81,7 +82,8 @@
   #NewEvent,
   #loginLink,
   #registerLink,
-  #logoutLink {
+  #logoutLink,
+  #OrganEvents {
     font-size: 0.8rem;
   }
   #app-Pages {
