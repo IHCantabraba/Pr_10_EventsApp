@@ -8,3 +8,9 @@
 ### este rol tendrá dos páginas adicionales
 #### Página de crear eventos
 #### página de ver los eventos que ha publicado. Aquí podrá cancelar un evento y reabrir un evento cancelado previamente.
+
+
+## crear un evento
+### Cubre el formulario con la información mínima necesarioa
+#### Título, ubicación, breve descripción (2 palabras), fecha o rango de fechas y foto del evento (flyer o brochure)
+#### Adicionalmente puedes limitar el número de participantes y también añadir una descrición detallada del evento.
