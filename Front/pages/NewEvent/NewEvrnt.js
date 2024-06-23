@@ -171,12 +171,16 @@ const NewEvent = () => {
   /* funcinalidad del bton cancelar */
   document
     .querySelector('.new-event-cancel-btn')
-    .addEventListener('click', () => CreateNewEvent())
+    .addEventListener('click', () => Events())
   /* funcionalidad del boton publicar */
   document
     .querySelector('.new-event-submit-btn')
     .addEventListener('click', (e) => {
       e.preventDefault()
+      const PublicarBtn = document.querySelector('.new-event-submit-btn')
+      PublicarBtn.textContent = 'Creando...'
+      PublicarBtn.style.backgroundColor = 'lightcoral'
+
       CreateNewEvent()
     })
   const start = datepicker('.start', {

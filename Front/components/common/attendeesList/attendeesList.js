@@ -12,12 +12,11 @@ const template = () => {
 }
 
 const showAsistanceList = async (asistentes) => {
-  console.log(asistentes)
   const participantesList = document.querySelector('#attendees')
   if (participantesList.length !== 0) {
     for (let asistente of asistentes) {
       let img
-      console.log(asistente.img)
+
       if (asistente.img === 'undefined') {
         img = 'no-image.png'
       } else {

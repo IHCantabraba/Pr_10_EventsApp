@@ -24,10 +24,10 @@ const registerAttendance = async (req, res, next) => {
         })
         /* TODO si existe ya un attende con ese nombre, añadirle un evento nuevo sino, crearlo */
         const nombre = req.body.nombre
-        console.log(`name is: ${nombre}`)
+
         /* buscar si ese usuario ya es asistente de algún evento */
         const existente = await Attendance.findOne({ nombre })
-        console.log(existente)
+
         if (existente) {
           existente.events.push(id)
           const updateAttendance = await Attendance.findByIdAndUpdate(
