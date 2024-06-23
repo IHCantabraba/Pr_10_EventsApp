@@ -17,6 +17,6 @@
 
 
 ## Requisitos adicionales
-### Se debe crear un base de datos en MongoAtlas
-### se debe tener una cuenta en Cloudinary
-### crear el archivo .env para incluir las correspondientes keys de MongoAtlas y Cloudinary
+#### Se debe crear un base de datos en MongoAtlas
+#### se debe tener una cuenta en Cloudinary
+#### crear el archivo .env para incluir las correspondientes keys de MongoAtlas y Cloudinary
