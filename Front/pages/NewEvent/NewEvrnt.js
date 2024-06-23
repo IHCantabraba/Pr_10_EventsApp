@@ -81,6 +81,7 @@ const CreateNewEvent = async () => {
   let insertedData = []
   try {
     const token = JSON.parse(sessionStorage.getItem('user')).token
+    const creator_id = JSON.parse(sessionStorage.getItem('user')).user._id
     const start = document.querySelector('.start').value
     insertedData.push(start)
     const end = document.querySelector('.end').value
@@ -112,6 +113,7 @@ const CreateNewEvent = async () => {
     data.append('reserva', reserva)
     data.append('img', img)
     data.append('limitParticipantes', Number(plazas))
+    data.append('createdBy', creator_id)
     if (!insertedData.includes('')) {
       const response = await fetch('http://localhost:3000/api/users/events', {
         method: 'POST',
