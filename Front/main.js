@@ -7,11 +7,9 @@ import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
 import rolPermisionFeatures from './utils/RolPermision'
-import MsgTemplate from './components/common/BottonMsg/BottomMsg'
-import RemoveMsgDiv from './utils/RemoveMsgDiv'
 import LogoutFucntion from './utils/LogoutFucntion'
 import notification from './utils/notification'
-
+sessionStorage.removeItem('user')
 /* insertar el header */
 HeaderTemplate()
 main()

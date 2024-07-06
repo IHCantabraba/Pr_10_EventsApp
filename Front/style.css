@@ -4,7 +4,7 @@
   --ihc-header-height: 70px;
   --ihc-BG-color-HeaderFooter: #000000;
   /* footer */
-  --ihc-footer-height: 3rem;
+  --ihc-footer-height: 2rem;
   --ihc-footer-gap: 0.5rem;
   /*BTN Register*/
   --ihc-BtnRegister-BG-color: lightblue;
@@ -18,4 +18,8 @@
 } */
 * {
   font-family: 'Poetsen One', sans-serif;
+}
+::-webkit-scrollbar {
+  width: 2px;
+  background-color: rgb(145, 144, 144);
 }

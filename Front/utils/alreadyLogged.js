@@ -5,7 +5,9 @@ const template = () =>
 
 const alreadyLogeed = () => {
   const sesion = sessionStorage.getItem('user')
+  console.log(sesion.user)
   if (sesion) {
+    console.log('yes')
     if (
       !document.querySelector('#logoutLink') &&
       !document.querySelector('#userLogged')

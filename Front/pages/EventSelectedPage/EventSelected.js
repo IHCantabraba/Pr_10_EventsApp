@@ -1,5 +1,5 @@
+import selectedEvent from '../../components/SelectedEvent/EeventSelected'
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
-import Btn from '../../components/common/Button/button'
 import Participantes from '../../components/common/attendeesList/attendeesList'
 import RemoveEventPage from '../../utils/RemoveEventPage'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
@@ -11,25 +11,7 @@ const ShowEventSelected = (eventSelected) => {
     longDescription =
       '...Information Not available right now. Sorry for disturbances...'
   }
-  const selectedEvent = `
-  <section class="EventSelectedPage show">
-    <button class="closePage" background-img="./redcross.png"></button>
-    <div class="EventSelectedBasicInfo">
-      <img class="EventSelectedimg" src="${eventSelected.img}"/>
-      <h2 class="EventSelectedTitle">${eventSelected.titulo}</h2>
-      <p class="EventSelectedFecha">${eventSelected.fecha}</p>
-      <p class="EventSelectedLocation">${eventSelected.ubicacion}</p>
-    </div>
-    <div class="EventSelectedMoreInfo">
-      <p class="EventselectedLongDescrp">${longDescription}</p>
-      <div class="EventSelectedPageOptions">
-        <button class="EventSelectedBtnJoin btn ${eventSelected._id}">Apuntate!</button>
-        <button class="EventSelectedBtnShowAsistance btn">Ver Participantes</button>
-      </div>
-    </div>
-  </section>
-  `
-  return selectedEvent
+  selectedEvent(eventSelected, longDescription)
 }
 // export default ShowEventSelected
 
@@ -45,9 +27,9 @@ const OpenPage = async (id) => {
   try {
     const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
     const EventData = await EventInfo.json()
-
-    /* insert detailed event page */
-    document.querySelector('main').innerHTML += ShowEventSelected(EventData)
+    ShowEventSelected(EventData)
+    // /* insert detailed event page */
+    // document.querySelector('main').innerHTML += ShowEventSelected(EventData)
     /* close page Btn functionality */
     document.querySelector('.closePage').addEventListener('click', () => {
       blurContent('events-section')

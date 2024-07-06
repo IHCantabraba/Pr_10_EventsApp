@@ -23,11 +23,7 @@ const LogoutFucntion = () => {
       insertAnchor('loginLink', 'Login', 'registerLink')
       /* Register Btn from Header */
       document.querySelector('#registerLink').addEventListener('click', () => {
-        if (!sessionStorage.getItem('user')) {
-          Register()
-        } else {
-          Login()
-        }
+        Register()
       })
       /* login btn from register page */
       document

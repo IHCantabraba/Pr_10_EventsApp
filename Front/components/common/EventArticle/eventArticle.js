@@ -15,6 +15,9 @@ const createArticle = (event) => {
   }
   const article = `
     <article class="event-article" name="${event._id}">
+      <div class="effect">
+        <p class='effectP'>"${event.titulo}"</p>
+      </div>
       <button id="${event._id}" class="openEvent"></button>
       <label class="notCanceled" name="${event._id}">Cancelado</label>
       <img class="event-img" class="img" src="${event.img}" >
