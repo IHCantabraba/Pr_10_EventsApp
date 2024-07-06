@@ -1,34 +1,30 @@
 import notification from './notification'
 
 const validatePassword = (password, Repeatedpassword) => {
+  let Msg
+  let icon = './redcross.png'
+  let estado = 'bad'
+
   if (password === '' && Repeatedpassword === '') {
-    console.log(password, Repeatedpassword)
-    notification(
-      'Password and Repeat password are required!',
-      './redcross.png',
-      'bad'
-    )
+    Msg = 'Password and Repeat password are required!'
   }
   if (password !== '' && Repeatedpassword === '') {
-    console.log(password, Repeatedpassword)
-    notification('Repeat Password is required!', './redcross.png', 'bad')
+    Msg = 'Repeat Password is required!'
   }
   if (password === '' && Repeatedpassword !== '') {
-    console.log(password, Repeatedpassword)
-    notification(' Password is required!', './redcross.png', 'bad')
+    Msg = ' Password is required!'
   }
   if (
     password !== Repeatedpassword &&
     password !== '' &&
     Repeatedpassword !== ''
   ) {
-    console.log(password, Repeatedpassword)
-    notification(
-      ' Password and Repeated Password mismatch!!',
-      './redcross.png',
-      'bad'
-    )
+    Msg = ' Password and Repeated Password mismatch!!'
   }
+  notification(Msg, icon, estado)
+  const RegisterBtn = document.querySelector('#sumitRegister')
+  RegisterBtn.textContent = 'Enviar'
+  RegisterBtn.style.backgroundColor = 'black'
 }
 
 export default validatePassword

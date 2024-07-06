@@ -39,6 +39,9 @@ const Register = (user, email) => {
   document.querySelector('main').innerHTML = template()
   document.querySelector('#sumitRegister').addEventListener('click', (e) => {
     e.preventDefault()
+    const RegisterBtn = document.querySelector('#sumitRegister')
+    RegisterBtn.textContent = 'Registrando...'
+    RegisterBtn.style.backgroundColor = 'lightcoral'
     submitRegister()
   })
 }
@@ -80,7 +83,6 @@ const submitRegister = async () => {
       const responseText = await response.text()
       console.log(responseText)
       if (response.ok) {
-        alert(`Please, log in with your credentials`)
         notification('succesfully register', './green-check.png', 'good')
         setTimeout(() => {
           Login()
@@ -88,9 +90,7 @@ const submitRegister = async () => {
       }
       if (response.status === 400) {
         registerErrorParser(responseText)
-      } //else {
-      //   notification('Fill all needed fields!', './redcross.png', 'bad')
-      // }
+      }
     } else {
       validatePassword(password, Repeatedpassword)
     }
