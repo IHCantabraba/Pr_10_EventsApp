@@ -14,6 +14,8 @@ const addAnchor = (id, nombre, previo) => {
   } else {
     console.log('anchor already exists')
   }
+  /* eliminar loggin */
+  document.querySelector('#loginLink').remove()
 }
 
 const addUserLog = () => {

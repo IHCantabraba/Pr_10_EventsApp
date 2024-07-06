@@ -24,6 +24,7 @@ const template = () => `
         <input type="checkbox"  id="isPublisher"></input>
         <label id="publicara" for="willPublicate">Si</label>
       </div>
+      <label for='avatar' class='custom-file-upload'>Select image</label>
       ${InputElem('file', '', 'avatar', 'avatar', '', 'required')}
       <div id="registerBtns">
         ${Btn('sumitRegister', 'Enviar', 'sumitRegister')}
