@@ -5,6 +5,8 @@ import Login from '../Login/Login'
 import notification from '../../utils/notification'
 import registerErrorParser from '../../utils/registerErorParser'
 import validatePassword from '../../utils/validatePassword'
+import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
+import autologinFromRegister from '../../utils/LoginFromRegister'
 
 /* Register template */
 const template = () => `
@@ -39,9 +41,7 @@ const Register = (user, email) => {
   document.querySelector('main').innerHTML = template()
   document.querySelector('#sumitRegister').addEventListener('click', (e) => {
     e.preventDefault()
-    const RegisterBtn = document.querySelector('#sumitRegister')
-    RegisterBtn.textContent = 'Registrando...'
-    RegisterBtn.style.backgroundColor = 'lightcoral'
+    changeSubmitBtnAppearence('#sumitRegister', 'Registrando...', 'lightcoral')
     submitRegister()
   })
 }
@@ -85,7 +85,7 @@ const submitRegister = async () => {
       if (response.ok) {
         notification('succesfully register', './green-check.png', 'good')
         setTimeout(() => {
-          Login()
+          autologinFromRegister(username, password)
         }, 1500)
       }
       if (response.status === 400) {

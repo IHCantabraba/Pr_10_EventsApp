@@ -7,9 +7,19 @@ const registerErrorParser = (errorMsg) => {
         notification(`${data} field is required!`, './redcross.png', 'bad')
       }
     })
+  }
+  if (errorMsg.includes('User already exists')) {
+    notification(
+      'User Name already exists. Choose another!',
+      './redcross.png',
+      'bad'
+    )
   } else {
     notification('Server Error!', './redcross.png', 'bad')
   }
+  const RegisterBtn = document.querySelector('#sumitRegister')
+  RegisterBtn.textContent = 'Enviar'
+  RegisterBtn.style.backgroundColor = 'black'
 }
 
 export default registerErrorParser

@@ -14,7 +14,7 @@
   border: 1px solid rgb(208, 206, 206);
   padding: 10px 10px;
   border-radius: 15px;
-  box-shadow: 2px 2px 0px lightgrey;
+  box-shadow: 0 0 10px 5px lightgray;
 }
 #registrationBtn:hover {
   background-color: var(--ihc-BtnRegister-BG-color);

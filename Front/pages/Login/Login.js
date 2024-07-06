@@ -6,6 +6,9 @@ import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import rolPermisionFeatures from '../../utils/RolPermision'
 import LogoutTemplate from '../../utils/AddLogout'
+import setuserLogged from '../../utils/setUserLogged'
+import notification from '../../utils/notification'
+import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
 
 const template = () =>
   `
@@ -54,6 +57,9 @@ const Login = () => {
   }
   if (document.querySelector('#LoginBtn')) {
     document.querySelector('#LoginBtn').addEventListener('click', (e) => {
+      /* cambair estilo d ebotón para dar feedback */
+      changeSubmitBtnAppearence('#LoginBtn', 'logueando..', 'lightcoral')
+
       e.preventDefault()
       loginsubmit()
     })
@@ -66,16 +72,12 @@ const loginsubmit = async () => {
     const password = document.querySelector('#password').value
     if (username === '' || password === '') {
       /* Events Btn header  */
-      document
-        .querySelector('main')
-        .append(
-          MsgTemplate(
-            'Please Enter valid User and passwors',
-            './redcross.png',
-            'bad'
-          )
-        )
-      RemoveMsgDiv()
+      notification(
+        'Please Enter valid User and passwors',
+        './redcross.png',
+        'bad'
+      )
+      changeSubmitBtnAppearence('#LoginBtn', 'Login', 'black')
     } else {
       /* enviar solicitud de login */
       const data = await fetch('http://localhost:3000/api/auth/login', {
@@ -88,30 +90,12 @@ const loginsubmit = async () => {
 
       if (data.ok) {
         const dataResponse = await data.json()
-        /* almacenar en sessionStorage  el usuairo logueado */
-        sessionStorage.setItem('user', JSON.stringify(dataResponse))
-        LogoutTemplate()
-        const userIcon = document.querySelector('.userIcon')
-        /* adding user name and icon to log session */
-        if (dataResponse.user.img === 'undefined') {
-          userIcon.src = 'no-image.png'
-        } else {
-          userIcon.src = dataResponse.user.img
-        }
-        const loggedName = document.querySelector('.userName')
-        loggedName.innerHTML = dataResponse.user.nombre
-
+        setuserLogged(dataResponse)
+        changeSubmitBtnAppearence('#LoginBtn', 'Login', 'black')
+        notification('Longged Successfully', './green-check.png', 'good')
         /* habilitar crear evento en funcion de los permisos del rol */
-
         rolPermisionFeatures()
-
-        /* Events Btn header  */
-        document
-          .querySelector('main')
-          .append(
-            MsgTemplate('Longged Successfully', './green-check.png', 'good')
-          )
-        RemoveMsgDiv()
+        /* render Events */
         setTimeout(() => {
           if (!document.querySelector('#events-section')) {
             Events()

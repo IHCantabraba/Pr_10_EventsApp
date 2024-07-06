@@ -1,3 +1,4 @@
+import changeSubmitBtnAppearence from './chageformSubmitBtnAppearence'
 import notification from './notification'
 
 const validatePassword = (password, Repeatedpassword) => {
@@ -22,9 +23,7 @@ const validatePassword = (password, Repeatedpassword) => {
     Msg = ' Password and Repeated Password mismatch!!'
   }
   notification(Msg, icon, estado)
-  const RegisterBtn = document.querySelector('#sumitRegister')
-  RegisterBtn.textContent = 'Enviar'
-  RegisterBtn.style.backgroundColor = 'black'
+  changeSubmitBtnAppearence('#sumitRegister', 'Enviar', 'black')
 }
 
 export default validatePassword

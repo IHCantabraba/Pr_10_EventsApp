@@ -1,4 +1,4 @@
-import Login from '../pages/Login/Login'
+import LandingTemplate from '../components/Landing/Landing'
 import insertAnchor from './insertAnchor'
 
 const LogoutFucntion = () => {
@@ -18,7 +18,7 @@ const LogoutFucntion = () => {
       }
 
       insertAnchor('loginLink', 'Login', 'registerLink')
-      Login()
+      LandingTemplate()
     })
   }
 }

@@ -33,13 +33,8 @@ const addUserLog = () => {
   head.append(div)
 }
 const LogoutTemplate = () => {
-  //<a href="#" id="logoutLink">Long Out</a>
   addAnchor('logoutLink', 'LogOut')
   addUserLog()
   LogoutFucntion()
-
-  /* <div id="userLogged">
-          <img class="userIcon" src="no-image.png"></img>
-          <p class="userName">No user</p></div> */
 }
 export default LogoutTemplate
