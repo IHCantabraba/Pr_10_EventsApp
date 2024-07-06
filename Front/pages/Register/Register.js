@@ -7,6 +7,7 @@ import registerErrorParser from '../../utils/registerErorParser'
 import validatePassword from '../../utils/validatePassword'
 import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
 import autologinFromRegister from '../../utils/LoginFromRegister'
+import LandingTemplate from '../../components/Landing/Landing'
 
 /* Register template */
 const template = () => `
@@ -43,6 +44,19 @@ const Register = (user, email) => {
     e.preventDefault()
     changeSubmitBtnAppearence('#sumitRegister', 'Registrando...', 'lightcoral')
     submitRegister()
+  })
+  document.querySelector('#cancelBtn').addEventListener('click', () => {
+    LandingTemplate()
+    /* register Btn Register page */
+    document
+      .querySelector('#landing-register-btn')
+      .addEventListener('click', () => {
+        Register()
+      })
+    /* login btn from register page */
+    document
+      .querySelector('#landing-login-btn')
+      .addEventListener('click', () => Login())
   })
 }
 
