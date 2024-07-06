@@ -10,7 +10,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 40%;
+  width: 50%;
+  border: 1px solid rgb(208, 206, 206);
+  padding: 10px 10px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 0px lightgrey;
 }
 #registrationBtn:hover {
   background-color: var(--ihc-BtnRegister-BG-color);
@@ -42,6 +46,9 @@
 #publicara {
   font-size: 0.8rem;
 }
+#publisherOption {
+  text-align: center;
+}
 #isPublisher {
   height: 15px;
   width: 15px;
@@ -64,8 +71,12 @@ input[type='file'] {
   cursor: pointer;
   border-radius: 15px;
   font-size: 12px;
-  background-color: lightgray;
+  background-color: rgb(238, 232, 232);
   text-align: center;
+  box-shadow: 1px 1px lightgray;
+}
+.custom-file-upload:hover {
+  transform: scale(1.05);
 }
 @media (max-width: 500px) {
   #sumitRegister,
