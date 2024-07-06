@@ -2,9 +2,10 @@ import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
 import Login from '../Login/Login'
-import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
-import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
-// onsubmit="${submitRegister}" enctype="multipart/form-data"
+import notification from '../../utils/notification'
+import registerErrorParser from '../../utils/registerErorParser'
+import validatePassword from '../../utils/validatePassword'
+
 /* Register template */
 const template = () => `
   <section id="register-form">
@@ -76,24 +77,22 @@ const submitRegister = async () => {
         cache: 'default'
       })
       console.log(response.status, response.ok)
+      const responseText = await response.text()
+      console.log(responseText)
       if (response.ok) {
         alert(`Please, log in with your credentials`)
-        Login()
-      } else {
-        document
-          .querySelector('main')
-          .append(
-            MsgTemplate('Fill all needed fields!', './redcross.png', 'bad')
-          )
-
-        document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+        notification('succesfully register', './green-check.png', 'good')
+        setTimeout(() => {
+          Login()
+        }, 1500)
       }
+      if (response.status === 400) {
+        registerErrorParser(responseText)
+      } //else {
+      //   notification('Fill all needed fields!', './redcross.png', 'bad')
+      // }
     } else {
-      document
-        .querySelector('main')
-        .append(MsgTemplate('Password mismatch!', './redcross.png', 'bad'))
-
-      document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+      validatePassword(password, Repeatedpassword)
     }
   } catch (error) {
     console.log(error)
