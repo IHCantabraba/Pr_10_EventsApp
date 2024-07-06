@@ -5,6 +5,8 @@ import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import './NewEvent.css'
 import datepicker from 'js-datepicker'
 import Events from '../Events/Events'
+import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
+import notification from '../../utils/notification'
 const template = () => `
   <section id="event-register-form">
     <form id="event-register-page">
@@ -131,37 +133,19 @@ const CreateNewEvent = async () => {
         body: data
       })
       if (response.ok) {
-        document
-          .querySelector('#main')
-          .append(
-            MsgTemplate(
-              'Succesfully created Event',
-              './green-check.png',
-              'good'
-            )
-          )
-        document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+        notification('Succesfully created Event', './green-check.png', 'good')
         setTimeout(() => {
           if (!document.querySelector('#events-section')) {
             Events()
           }
         }, 2000)
       } else {
-        console.log(response)
-        document
-          .querySelector('#main')
-          .append(
-            MsgTemplate('Please review all fields', './redcross.png', 'bad')
-          )
-        document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+        notification('Please review all fields', './redcross.png', 'bad')
+        changeSubmitBtnAppearence('.new-event-submit-btn', 'Publicar', 'black')
       }
     } else {
-      document
-        .querySelector('#main')
-        .append(
-          MsgTemplate('Please fill all needed data', './redcross.png', 'bad')
-        )
-      document.querySelector('#Dialog-Div') ? RemoveMsgDiv() : 0
+      notification('Please fill all needed data', './redcross.png', 'bad')
+      changeSubmitBtnAppearence('.new-event-submit-btn', 'Publicar', 'black')
     }
   } catch (error) {
     console.log(error)
@@ -183,10 +167,12 @@ const NewEvent = () => {
     .querySelector('.new-event-submit-btn')
     .addEventListener('click', (e) => {
       e.preventDefault()
-      const PublicarBtn = document.querySelector('.new-event-submit-btn')
-      PublicarBtn.textContent = 'Creando...'
-      PublicarBtn.style.backgroundColor = 'lightcoral'
-
+      /* cambiar estilo del Btn para dar feedback */
+      changeSubmitBtnAppearence(
+        '.new-event-submit-btn',
+        'Publicando...',
+        'lightcoral'
+      )
       CreateNewEvent()
     })
   const start = datepicker('.start', {

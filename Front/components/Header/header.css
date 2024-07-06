@@ -21,6 +21,7 @@
 }
 #app-Title {
   font-size: 1rem;
+  color: white;
 }
 
 #app-Pages {
@@ -34,22 +35,33 @@
 #logoutLink {
   cursor: pointer;
   text-decoration: none;
-  color: rgb(4, 4, 82);
-  font-weight: bold;
+  color: white;
+  padding: 5px 5px;
 }
 #NewEvent,
 #OrganEvents {
-  color: rgb(188, 77, 77);
+  color: rgb(19, 84, 154);
   cursor: pointer;
   text-decoration: none;
   font-weight: bold;
+  padding: 5px 5px;
+}
+#NewEvent:hover,
+#OrganEvents:hover,
+#loginLink:hover,
+#logoutLink:hover,
+#EventsLink:hover,
+#registerLink:hover {
+  background-color: rgba(211, 211, 211, 0.538);
+  border-radius: 5px;
 }
 #EventsLink {
   font-size: 1rem;
 }
 #registerLink,
 #loginLink,
-#logoutLink {
+#logoutLink,
+#EventsLink {
   font-size: 0.8rem;
 }
 #userLogged {
@@ -66,6 +78,9 @@
   border: 1px solid white;
   border-radius: 50%;
   background-color: lightgrey;
+}
+.userName {
+  color: white;
 }
 @media (max-width: 550px) {
   #app-Title {

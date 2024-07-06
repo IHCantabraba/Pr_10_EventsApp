@@ -10,6 +10,7 @@ import rolPermisionFeatures from './utils/RolPermision'
 import MsgTemplate from './components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from './utils/RemoveMsgDiv'
 import LogoutFucntion from './utils/LogoutFucntion'
+import notification from './utils/notification'
 
 /* insertar el header */
 HeaderTemplate()
@@ -48,10 +49,7 @@ document.querySelector('#EventsLink').addEventListener('click', () => {
   if (sessionStorage.getItem('user')) {
     Events()
   } else {
-    document
-      .querySelector('main')
-      .append(MsgTemplate('Login or register First', './redcross.png', 'bad'))
-    RemoveMsgDiv()
+    notification('Login or register First', './redcross.png', 'bad')
   }
 })
 /* logout Btn Header */

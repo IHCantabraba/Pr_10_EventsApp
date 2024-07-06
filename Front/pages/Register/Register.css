@@ -78,7 +78,12 @@ input[type='file'] {
 .custom-file-upload:hover {
   transform: scale(1.05);
 }
-@media (max-width: 500px) {
+@media (min-width: 1024px) {
+  #register-page {
+    width: 30%;
+  }
+}
+@media (max-width: 750px) {
   #sumitRegister,
   #cancelBtn {
     padding: 0.6rem 0.7rem;

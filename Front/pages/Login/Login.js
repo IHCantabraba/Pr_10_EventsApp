@@ -9,13 +9,13 @@ import LogoutTemplate from '../../utils/AddLogout'
 import setuserLogged from '../../utils/setUserLogged'
 import notification from '../../utils/notification'
 import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
-
+//`<h2 id="alreadyLogged"> You are already logged. Redirecting to Events page... </h2> `
 const template = () =>
   `
   <section id="login-form">
   ${
     sessionStorage.getItem('user')
-      ? `<h2 id="alreadyLogged"> You are already logged. Redirecting to Events page... </h2> `
+      ? alreadyLogeed()
       : `
     <form id="login-page">
       <div id="loinginfo">
@@ -101,15 +101,15 @@ const loginsubmit = async () => {
             Events()
           }
         }, 2000)
+      } else {
+        notification('User or pasword incorrect', './redcross.png', 'bad')
+        changeSubmitBtnAppearence('#LoginBtn', 'Login', 'black')
       }
     }
   } catch (error) {
     /* Events Btn header  */
     console.log(`error ${error}`)
-    document
-      .querySelector('main')
-      .append(MsgTemplate('User or pasword incorrect', './redcross.png', 'bad'))
-    RemoveMsgDiv()
+    notification('User or pasword incorrect', './redcross.png', 'bad')
   }
 }
 export default Login

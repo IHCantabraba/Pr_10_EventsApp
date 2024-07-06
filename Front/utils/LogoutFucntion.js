@@ -1,4 +1,5 @@
 import LandingTemplate from '../components/Landing/Landing'
+import Login from '../pages/Login/Login'
 import insertAnchor from './insertAnchor'
 
 const LogoutFucntion = () => {
@@ -18,6 +19,10 @@ const LogoutFucntion = () => {
       }
 
       insertAnchor('loginLink', 'Login', 'registerLink')
+      /* login btn from register page */
+      document
+        .querySelector('#loginLink')
+        .addEventListener('click', () => Login())
       LandingTemplate()
     })
   }

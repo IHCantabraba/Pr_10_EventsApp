@@ -2,7 +2,7 @@
 
 :root {
   --ihc-header-height: 70px;
-  --ihc-BG-color-HeaderFooter: rgb(245, 244, 244);
+  --ihc-BG-color-HeaderFooter: #000000;
   /* footer */
   --ihc-footer-height: 3rem;
   --ihc-footer-gap: 0.5rem;
