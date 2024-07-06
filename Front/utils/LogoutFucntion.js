@@ -30,6 +30,16 @@ const LogoutFucntion = () => {
         .querySelector('#loginLink')
         .addEventListener('click', () => Login())
       LandingTemplate()
+      /* register Btn Register page */
+      document
+        .querySelector('#landing-register-btn')
+        .addEventListener('click', () => {
+          Register()
+        })
+      /* login btn from register page */
+      document
+        .querySelector('#landing-login-btn')
+        .addEventListener('click', () => Login())
     })
   }
 }
