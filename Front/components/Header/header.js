@@ -1,6 +1,12 @@
 import './header.css'
-import sliderBtn from '../common/SliderBtn/SliderBtn'
+
 //<a href="#" id="NewEvent">Crear Evento</a>
+//<a href="#" id="logoutLink">Long Out</a>
+{
+  /* <div id="userLogged">
+          <img class="userIcon" src="no-image.png"></img>
+          <p class="userName">No user</p></div> */
+}
 const HeaderTemplate = () => {
   const template = `
     <div id="app">
@@ -10,11 +16,7 @@ const HeaderTemplate = () => {
           <a href="#" id="EventsLink">Eventos</a>
           <a href="#" id="loginLink">Login</a>
           <a href="#" id="registerLink">Register</a>
-          <a href="#" id="logoutLink">Long Out</a>
         </div>
-        <div id="userLogged">
-          <img class="userIcon" src="no-image.png"></img>
-          <p class="userName">No user</p></div>
       </header>
     </div>
   `

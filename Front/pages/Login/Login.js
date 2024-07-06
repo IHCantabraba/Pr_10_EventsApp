@@ -5,6 +5,7 @@ import Events from '../Events/Events'
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import rolPermisionFeatures from '../../utils/RolPermision'
+import LogoutTemplate from '../../utils/AddLogout'
 
 const template = () =>
   `
@@ -87,6 +88,9 @@ const loginsubmit = async () => {
 
       if (data.ok) {
         const dataResponse = await data.json()
+        /* almacenar en sessionStorage  el usuairo logueado */
+        sessionStorage.setItem('user', JSON.stringify(dataResponse))
+        LogoutTemplate()
         const userIcon = document.querySelector('.userIcon')
         /* adding user name and icon to log session */
         if (dataResponse.user.img === 'undefined') {
@@ -96,10 +100,11 @@ const loginsubmit = async () => {
         }
         const loggedName = document.querySelector('.userName')
         loggedName.innerHTML = dataResponse.user.nombre
-        /* almacenar en sessionStorage  el usuairo logueado */
-        sessionStorage.setItem('user', JSON.stringify(dataResponse))
+
         /* habilitar crear evento en funcion de los permisos del rol */
+
         rolPermisionFeatures()
+
         /* Events Btn header  */
         document
           .querySelector('main')

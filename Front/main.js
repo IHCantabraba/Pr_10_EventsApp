@@ -9,13 +9,16 @@ import Events from './pages/Events/Events'
 import rolPermisionFeatures from './utils/RolPermision'
 import MsgTemplate from './components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from './utils/RemoveMsgDiv'
+import LogoutFucntion from './utils/LogoutFucntion'
 
 /* insertar el header */
 HeaderTemplate()
 main()
 LandingTemplate()
 footer()
-rolPermisionFeatures()
+if (sessionStorage.getItem('user')) {
+  rolPermisionFeatures()
+}
 /* register Btn Register page */
 document
   .querySelector('#landing-register-btn')
@@ -52,18 +55,10 @@ document.querySelector('#EventsLink').addEventListener('click', () => {
   }
 })
 /* logout Btn Header */
-document.querySelector('#logoutLink').addEventListener('click', () => {
-  sessionStorage.removeItem('user')
-  document.querySelector('.userIcon').src = './no-image.png'
-  document.querySelector('.userName').textContent = 'No user Logged'
-  if (document.querySelector('#NewEvent')) {
-    document.querySelector('#NewEvent').remove()
-  }
-  if (document.querySelector('#OrganEvents')) {
-    document.querySelector('#OrganEvents').remove()
-  }
-  Login()
-})
+if (document.querySelector('#logoutLink')) {
+  LogoutFucntion()
+}
+
 /* update image and name of logged user */
 if (sessionStorage.getItem('user')) {
   document.querySelector('.userName').textContent = JSON.parse(
