@@ -86,6 +86,7 @@ const submitRegister = async () => {
         notification('succesfully register', './green-check.png', 'good')
         setTimeout(() => {
           autologinFromRegister(username, password)
+          document.querySelector('#registerLink').remove()
         }, 1500)
       }
       if (response.status === 400) {

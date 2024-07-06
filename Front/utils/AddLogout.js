@@ -1,22 +1,5 @@
 import LogoutFucntion from './LogoutFucntion'
-
-const addAnchor = (id, nombre, previo) => {
-  /* crear anchor para Crear Evento */
-  const addAnchor = document.createElement('a')
-  addAnchor.href = '#'
-  addAnchor.id = id
-  addAnchor.textContent = nombre
-  /* obtener secion del heade */
-  const headerpages = document.querySelector('#app-Pages')
-
-  if (!document.querySelector(`#${id}`)) {
-    headerpages.append(addAnchor)
-  } else {
-    console.log('anchor already exists')
-  }
-  /* eliminar loggin */
-  document.querySelector('#loginLink').remove()
-}
+import addAnchor from './addAnchor'
 
 const addUserLog = () => {
   const div = document.createElement('div')
@@ -34,6 +17,7 @@ const addUserLog = () => {
 }
 const LogoutTemplate = () => {
   addAnchor('logoutLink', 'LogOut')
+  document.querySelector('#loginLink').remove()
   addUserLog()
   LogoutFucntion()
 }

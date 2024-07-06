@@ -82,7 +82,7 @@
 .userName {
   color: white;
 }
-@media (max-width: 550px) {
+@media (max-width: 760px) {
   #app-Title {
     display: none;
   }

@@ -2,13 +2,11 @@ import './Loing.css'
 import Btn from '../../components/common/Button/button'
 import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
-import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
-import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
 import rolPermisionFeatures from '../../utils/RolPermision'
-import LogoutTemplate from '../../utils/AddLogout'
 import setuserLogged from '../../utils/setUserLogged'
 import notification from '../../utils/notification'
 import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
+import alreadyLogeed from '../../utils/alreadyLogged'
 //`<h2 id="alreadyLogged"> You are already logged. Redirecting to Events page... </h2> `
 const template = () =>
   `
@@ -95,6 +93,8 @@ const loginsubmit = async () => {
         notification('Longged Successfully', './green-check.png', 'good')
         /* habilitar crear evento en funcion de los permisos del rol */
         rolPermisionFeatures()
+        /* remove Register option in hedaer */
+        document.querySelector('#registerLink').remove()
         /* render Events */
         setTimeout(() => {
           if (!document.querySelector('#events-section')) {

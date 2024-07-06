@@ -1,5 +1,7 @@
 import LandingTemplate from '../components/Landing/Landing'
 import Login from '../pages/Login/Login'
+import Register from '../pages/Register/Register'
+import addAnchor from './addAnchor'
 import insertAnchor from './insertAnchor'
 
 const LogoutFucntion = () => {
@@ -17,8 +19,16 @@ const LogoutFucntion = () => {
       if (document.querySelector('#OrganEvents')) {
         document.querySelector('#OrganEvents').remove()
       }
-
+      addAnchor('registerLink', 'Register')
       insertAnchor('loginLink', 'Login', 'registerLink')
+      /* Register Btn from Header */
+      document.querySelector('#registerLink').addEventListener('click', () => {
+        if (!sessionStorage.getItem('user')) {
+          Register()
+        } else {
+          Login()
+        }
+      })
       /* login btn from register page */
       document
         .querySelector('#loginLink')
