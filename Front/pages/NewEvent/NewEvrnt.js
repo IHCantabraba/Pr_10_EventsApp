@@ -51,7 +51,7 @@ const template = () => `
       <p id="fechas">fecha o rango de fecha</p>
       <div id="new-event-dates">
         ${InputElem('text', '', 'new-event-date-start', 'start')}
-        ${InputElem('text', '', 'new-event-date-start', 'end')}
+        ${InputElem('text', '', 'new-event-date-end', 'end')}
       </div>
       <p id="img-text"> Seleccionar imagen del evento</p>
       ${InputElem('file', '', 'new-event-img', 'new-event-imgF')}
@@ -158,6 +158,8 @@ const CreateNewEvent = async () => {
 }
 const NewEvent = () => {
   document.querySelector('main').innerHTML = template()
+  document.querySelector('#new-event-date-start').readOnly = true
+  document.querySelector('#new-event-date-end').readOnly = true
   /* funcinalidad del bton cancelar */
   document
     .querySelector('.new-event-cancel-btn')
