@@ -13,15 +13,16 @@
 }
 
 #header {
-  justify-content: space-around;
+  justify-content: center;
   gap: 1rem;
   height: var(--ihc-header-height);
   background-color: var(--ihc-BG-color-HeaderFooter);
   margin-bottom: 0.5rem;
 }
 #app-Title {
-  font-size: 1rem;
   color: white;
+  border: 1px solid white;
+  padding: 10px 10px;
 }
 
 #app-Pages {
@@ -82,12 +83,21 @@
 .userName {
   color: white;
 }
+@media (max-width: 980px) {
+  #app-Title {
+    font-size: 0.8rem;
+  }
+}
 @media (max-width: 760px) {
   #app-Title {
     display: none;
   }
+  #header {
+    gap: 0.2rem;
+    justify-content: space-around;
+  }
 }
-@media (max-width: 420px) {
+@media (max-width: 460px) {
   #userLogged {
     gap: 0.5rem;
   }
@@ -103,5 +113,27 @@
   }
   #app-Pages {
     width: 80%;
+  }
+  .userName {
+    display: none;
+  }
+  #userLogged {
+    border: none;
+  }
+  #header {
+    gap: 0.2rem;
+    justify-content: center;
+  }
+}
+@media (max-width: 370px) {
+  #NewEvent,
+  #loginLink,
+  #registerLink,
+  #logoutLink,
+  #OrganEvents {
+    font-size: 0.6rem;
+  }
+  #app-Pages {
+    gap: 0.5rem;
   }
 }

@@ -28,21 +28,21 @@
 }
 @media (max-width: 600px) {
   #events-section {
-    grid-template-columns: repeat(2, 200px);
-  }
-}
-
-@media (max-width: 500px) {
-  #events-section {
-    grid-template-columns: repeat(2, 200px);
-  }
-}
-@media (max-width: 450px) {
-  #events-section {
     grid-template-columns: repeat(2, 180px);
   }
 }
-@media (max-width: 400px) {
+
+@media (max-width: 540px) {
+  #events-section {
+    grid-template-columns: repeat(2, 150px);
+  }
+}
+/* @media (max-width: 450px) {
+  #events-section {
+    grid-template-columns: repeat(2, 180px);
+  } */
+/*}*/
+@media (max-width: 490px) {
   #events-section {
     grid-template-columns: repeat(1, 150px);
   }
