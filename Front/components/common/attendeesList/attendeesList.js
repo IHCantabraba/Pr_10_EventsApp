@@ -13,7 +13,8 @@ const template = () => {
 
 const showAsistanceList = async (asistentes) => {
   const participantesList = document.querySelector('#attendees')
-  if (participantesList.length !== 0) {
+  if (participantesList.length > 0) {
+    console.log('hay particiantes')
     for (let asistente of asistentes) {
       let img
 
@@ -45,6 +46,12 @@ const showAsistanceList = async (asistentes) => {
         switchDetailBtn(contactInfo)
       })
     }
+  } else {
+    console.log('no hay participante')
+    const text = document.createElement('p')
+    text.classList.add('noPerson')
+    text.textContent = ' Sin participantes'
+    participantesList.appendChild(text)
   }
 }
 const switchDetailBtn = (contactInfo) => {

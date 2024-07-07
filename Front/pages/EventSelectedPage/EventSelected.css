@@ -124,6 +124,7 @@
   max-height: 14rem;
   overflow: scroll;
   overflow-x: hidden;
+  min-height: 14px;
 }
 .li > img {
   height: 80px;
