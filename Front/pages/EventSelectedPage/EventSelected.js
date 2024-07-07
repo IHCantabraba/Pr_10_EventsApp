@@ -22,6 +22,7 @@ const blurContent = (id) => {
 /* abrir página de detalle del Evento */
 const OpenPage = async (id) => {
   console.log(`openning event id ${id}`)
+  document.querySelector('#events-section').style.pointerEvents = 'none'
   blurContent('events-section')
 
   try {
@@ -33,6 +34,7 @@ const OpenPage = async (id) => {
     document.querySelector('.closePage').addEventListener('click', () => {
       blurContent('events-section')
       RemoveEventPage('EventSelectedPage')
+      document.querySelector('#events-section').style.pointerEvents = 'auto'
     })
     /* apuntate btn functionality */
     const EventCancelado = document.querySelector(`label[name="${id}"]`)
