@@ -36,9 +36,10 @@
   overflow: hidden;
   background-color: rgb(108, 104, 104, 0.327);
   border-radius: 15px;
+  cursor: pointer;
 }
 .event-article:hover > .effect {
-  height: 100%;
+  height: 40px;
   z-index: 5;
   width: 100%;
 }
@@ -120,7 +121,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 4;
   opacity: 0;
   cursor: pointer;
 }

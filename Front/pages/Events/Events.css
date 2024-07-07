@@ -37,11 +37,7 @@
     grid-template-columns: repeat(2, 150px);
   }
 }
-/* @media (max-width: 450px) {
-  #events-section {
-    grid-template-columns: repeat(2, 180px);
-  } */
-/*}*/
+
 @media (max-width: 490px) {
   #events-section {
     grid-template-columns: repeat(1, 150px);

@@ -15,12 +15,12 @@ const createArticle = (event) => {
   }
   const article = `
     <article class="event-article" name="${event._id}">
+    <button id="${event._id}" class="openEvent"></button>
       <div class="effect">
         <p class='effectP'>"${
           event.estado === 'cancelado' ? 'Cancelado' : 'Apuntate ya!'
         }"</p>
       </div>
-      <button id="${event._id}" class="openEvent"></button>
       <label class="notCanceled" name="${event._id}">Cancelado</label>
       <img class="event-img" class="img" src="${event.img}" >
       <h2 class="event-title" clas="title">${event.titulo}</h2>
