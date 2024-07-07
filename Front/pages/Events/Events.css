@@ -9,19 +9,19 @@
 #events-section.blur {
   filter: blur(5px);
 }
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
   #events-section {
     grid-template-columns: repeat(3, 250px);
     width: 100%;
   }
 }
-@media (max-width: 850px) {
+@media (max-width: 930px) {
   #events-section {
-    grid-template-columns: repeat(3, 250px);
+    grid-template-columns: repeat(3, 220px);
     width: 100%;
   }
 }
-@media (max-width: 780px) {
+@media (max-width: 840px) {
   #events-section {
     grid-template-columns: repeat(2, 250px);
   }

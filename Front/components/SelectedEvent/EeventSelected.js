@@ -11,25 +11,27 @@ const selectedEvent = (eventSelected, longDesription) => {
   const divBasic = document.createElement('div')
   divBasic.classList.add('EventSelectedBasicInfo')
   section.append(divBasic)
+  const h2Event = document.createElement('h2')
+  h2Event.classList.add('EventSelectedTitle')
+  h2Event.textContent = eventSelected.titulo
+  divBasic.append(h2Event)
   const imgEvent = document.createElement('img')
   imgEvent.classList.add('EventSelectedimg')
   imgEvent.src = eventSelected.img
   divBasic.append(imgEvent)
 
-  const h2Event = document.createElement('h2')
-  h2Event.classList.add('EventSelectedTitle')
-  h2Event.textContent = eventSelected.titulo
-  divBasic.append(h2Event)
+  const divTImePlace = document.createElement('div')
+  divTImePlace.classList.add('dateplace')
   const pFecha = document.createElement('p')
   pFecha.classList.add('EventSelectedFecha')
   pFecha.textContent = eventSelected.fecha
-  divBasic.append(pFecha)
+  divTImePlace.append(pFecha)
 
   const pLocation = document.createElement('p')
   pLocation.classList.add('EventSelectedLocation')
   pLocation.textContent = eventSelected.ubicacion
-  divBasic.append(pLocation)
-
+  divTImePlace.append(pLocation)
+  divBasic.append(divTImePlace)
   const divMore = document.createElement('div')
   divMore.classList.add('EventSelectedMoreInfo')
 

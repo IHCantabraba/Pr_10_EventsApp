@@ -28,8 +28,7 @@ const OpenPage = async (id) => {
     const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
     const EventData = await EventInfo.json()
     ShowEventSelected(EventData)
-    // /* insert detailed event page */
-    // document.querySelector('main').innerHTML += ShowEventSelected(EventData)
+
     /* close page Btn functionality */
     document.querySelector('.closePage').addEventListener('click', () => {
       blurContent('events-section')

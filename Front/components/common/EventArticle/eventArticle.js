@@ -7,7 +7,7 @@ const createArticle = (event) => {
   let plazasRestantes = 0
   if (plazas !== 9999) {
     plazasRestantes = plazas - asistentes + ' plazas'
-    if (plazasRestantes === 0) {
+    if (plazasRestantes === '0 plazas') {
       plazasRestantes = 'Agotado'
     }
   } else {
@@ -16,7 +16,9 @@ const createArticle = (event) => {
   const article = `
     <article class="event-article" name="${event._id}">
       <div class="effect">
-        <p class='effectP'>"${event.titulo}"</p>
+        <p class='effectP'>"${
+          event.estado === 'cancelado' ? 'Cancelado' : 'Apuntate ya!'
+        }"</p>
       </div>
       <button id="${event._id}" class="openEvent"></button>
       <label class="notCanceled" name="${event._id}">Cancelado</label>
@@ -27,7 +29,9 @@ const createArticle = (event) => {
         <p class="event-date">${event.fecha}</p>
         <p class="event-location">${event.ubicacion}</p>
       </div>
-      <div id="reserved" class="reservation ${titulo}">${event.reserva}</div>
+      <div id=${titulo}" class="reservation reserved ${titulo}">${
+    event.reserva
+  }</div>
       <p class="freePlaces ${event._id}">${plazasRestantes}</p>
     </article>
   `

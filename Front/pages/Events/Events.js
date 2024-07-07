@@ -52,7 +52,12 @@ const articleAspect = (event) => {
     `.${event.titulo.replaceAll(' ', '')}`
   )
   if (reserved.textContent === 'true') {
-    reserved.innerHTML = 'Reserva Ya!'
+    if (event.limitParticipantes - event.users.length > 0) {
+      reserved.innerHTML = 'Reserva Ya!'
+    } else {
+      reserved.textContent = 'Completo'
+      reserved.style.backgroundColor = 'lightcoral'
+    }
   } else {
     reserved.textContent = 'Sin Reserva'
   }
@@ -61,8 +66,10 @@ const articleAspect = (event) => {
   }
   /* cambair simbología si no hay plazas */
   const places = document.querySelector('.freePlaces')
-  if (Number(places.textContent) === 0) {
+  if (places.textContent.includes('Agotado')) {
     places.style.backgroundColor = 'lightcoral'
+    const efecto = document.querySelector('.effect')
+    efecto.textContent = 'Completo'
   }
   /* estado del evento */
 

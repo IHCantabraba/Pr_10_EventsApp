@@ -62,7 +62,7 @@
   width: 80%;
   font-size: 1rem;
 }
-#reserved {
+.reserved {
   content: '';
   position: absolute;
   top: -42px;
@@ -146,7 +146,7 @@
   .event-title {
     font-size: 0.8rem;
   }
-  #reserved {
+  .reserved {
     font-size: 0.8rem;
     top: -47px;
   }
