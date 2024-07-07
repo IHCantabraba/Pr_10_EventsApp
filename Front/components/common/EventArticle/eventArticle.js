@@ -8,7 +8,7 @@ const createArticle = (event) => {
   if (plazas !== 9999) {
     plazasRestantes = plazas - asistentes + ' plazas'
     if (plazasRestantes === '0 plazas') {
-      plazasRestantes = 'Agotado'
+      plazasRestantes = 'Lleno!'
     }
   } else {
     plazasRestantes = 'No limit'

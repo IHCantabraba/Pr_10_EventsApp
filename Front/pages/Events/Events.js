@@ -66,7 +66,7 @@ const articleAspect = (event) => {
   }
   /* cambair simbología si no hay plazas */
   const places = document.querySelector('.freePlaces')
-  if (places.textContent.includes('Agotado')) {
+  if (places.textContent.includes('Lleno')) {
     places.style.backgroundColor = 'lightcoral'
     const efecto = document.querySelector('.effect')
     efecto.textContent = 'Completo'
