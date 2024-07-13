@@ -4,12 +4,9 @@ const upload = require('../../middleware/file')
 const {
   getUserByID,
   getAllusers,
-  register,
-  login,
   updatedUser,
   deleteUser,
-  registerEvent,
-  eventReservation
+  registerEvent
 } = require('../controllers/users')
 const userRouter = require('express').Router()
 
