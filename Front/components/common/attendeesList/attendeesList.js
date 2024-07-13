@@ -13,7 +13,8 @@ const template = () => {
 
 const showAsistanceList = async (asistentes) => {
   const participantesList = document.querySelector('#attendees')
-  if (participantesList.length > 0) {
+  console.log(asistentes)
+  if (asistentes.length > 0) {
     console.log('hay particiantes')
     for (let asistente of asistentes) {
       let img
