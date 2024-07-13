@@ -1,4 +1,4 @@
-import Events from '../pages/Events/Events'
+import Events from '../../pages/Events/Events'
 
 const RemoveEventPage = (clas) => {
   console.log('removing')

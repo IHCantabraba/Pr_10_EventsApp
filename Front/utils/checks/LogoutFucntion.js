@@ -1,8 +1,8 @@
-import LandingTemplate from '../components/Landing/Landing'
-import Login from '../pages/Login/Login'
-import Register from '../pages/Register/Register'
-import addAnchor from './addAnchor'
-import insertAnchor from './insertAnchor'
+import LandingTemplate from '../../components/Landing/Landing'
+import Login from '../../pages/Login/Login'
+import Register from '../../pages/Register/Register'
+import addAnchor from '../DomFunctions/addAnchor'
+import insertAnchor from '../DomFunctions/insertAnchor'
 
 const LogoutFucntion = () => {
   if (sessionStorage.getItem('user')) {

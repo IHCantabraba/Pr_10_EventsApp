@@ -1,6 +1,6 @@
 import Btn from '../Button/button'
 import './attendeesList.css'
-
+import { apiBaseUrl } from '../../../utils/ServicePath/apiBaseUrl'
 const template = () => {
   const ulDiv = document.createElement('div')
   ulDiv.id = 'UlContainer'
@@ -73,9 +73,7 @@ const switchDetailBtn = (contactInfo) => {
 }
 const showAttendeContact = async (userId) => {
   try {
-    const userInfo = await fetch(
-      `http://localhost:3000/api/attendees/${userId}`
-    )
+    const userInfo = await fetch(`${apiBaseUrl}/attendees/${userId}`)
     if (userInfo.ok) {
       let contact = await userInfo.json()
       return contact

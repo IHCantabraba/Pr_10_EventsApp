@@ -1,10 +1,10 @@
-import Events from '../pages/Events/Events'
-import notification from './notification'
-import rolPermisionFeatures from './RolPermision'
-import setuserLogged from './setUserLogged'
+import Events from '../../pages/Events/Events'
+import notification from '../DomFunctions/notification'
+import rolPermisionFeatures from '../checks/RolPermision'
+import setuserLogged from '../checks/setUserLogged'
 
 const autologinFromRegister = async (username, password) => {
-  const data = await fetch('http://localhost:3000/api/auth/login', {
+  const data = await fetch(`${apiBaseUrl}/auth/login`, {
     headers: {
       'Content-Type': 'application/json'
     },

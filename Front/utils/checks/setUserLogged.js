@@ -1,4 +1,4 @@
-import LogoutTemplate from './AddLogout'
+import LogoutTemplate from '../DomFunctions/AddLogout'
 
 const setuserLogged = (dataResponse) => {
   /* guardar los datos d eusuairo logueado */

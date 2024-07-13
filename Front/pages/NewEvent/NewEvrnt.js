@@ -1,12 +1,13 @@
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import Btn from '../../components/common/Button/button'
 import InputElem from '../../components/common/Input/Input'
-import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
+import RemoveMsgDiv from '../../utils/DomFunctions/RemoveMsgDiv'
 import './NewEvent.css'
 import datepicker from 'js-datepicker'
 import Events from '../Events/Events'
-import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
-import notification from '../../utils/notification'
+import changeSubmitBtnAppearence from '../../utils/LoadingFeedback/chageformSubmitBtnAppearence'
+import notification from '../../utils/DomFunctions/notification'
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 const template = () => `
   <section id="event-register-form">
     <form id="event-register-page">
@@ -125,7 +126,7 @@ const CreateNewEvent = async () => {
     data.append('limitParticipantes', Number(plazas))
     data.append('createdBy', creator_id)
     if (!insertedData.includes('')) {
-      const response = await fetch('http://localhost:3000/api/users/events', {
+      const response = await fetch(`${apiBaseUrl}/users/events`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`

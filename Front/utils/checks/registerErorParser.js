@@ -1,4 +1,4 @@
-import notification from './notification'
+import notification from '../DomFunctions/notification'
 const registerErrorParser = (errorMsg) => {
   const neededinfo = ['nombre', 'email', 'password']
   if (errorMsg.includes('ValidationError')) {

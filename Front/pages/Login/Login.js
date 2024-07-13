@@ -2,11 +2,12 @@ import './Loing.css'
 import Btn from '../../components/common/Button/button'
 import InputElem from '../../components/common/Input/Input'
 import Events from '../Events/Events'
-import rolPermisionFeatures from '../../utils/RolPermision'
-import setuserLogged from '../../utils/setUserLogged'
-import notification from '../../utils/notification'
-import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
-import alreadyLogeed from '../../utils/alreadyLogged'
+import rolPermisionFeatures from '../../utils/checks/RolPermision'
+import setuserLogged from '../../utils/checks/setUserLogged'
+import notification from '../../utils/DomFunctions/notification'
+import changeSubmitBtnAppearence from '../../utils/LoadingFeedback/chageformSubmitBtnAppearence'
+import alreadyLogeed from '../../utils/checks/alreadyLogged'
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 //`<h2 id="alreadyLogged"> You are already logged. Redirecting to Events page... </h2> `
 const template = () =>
   `
@@ -78,7 +79,7 @@ const loginsubmit = async () => {
       changeSubmitBtnAppearence('#LoginBtn', 'Login', 'black')
     } else {
       /* enviar solicitud de login */
-      const data = await fetch('http://localhost:3000/api/auth/login', {
+      const data = await fetch(`${apiBaseUrl}/auth/login`, {
         headers: {
           'Content-Type': 'application/json'
         },

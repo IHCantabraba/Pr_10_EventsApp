@@ -2,6 +2,7 @@ import createArticle from '../../components/common/EventArticle/eventArticle'
 import './Events.css'
 import OpenPage from '../EventSelectedPage/EventSelected'
 import Login from '../Login/Login'
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 const template = () =>
   `
 <section id="events-section"></section>`
@@ -10,7 +11,7 @@ const getEvents = async () => {
   const userLogged = JSON.parse(sessionStorage.getItem('user'))
   const token = userLogged.token
   try {
-    const events = await fetch('http://localhost:3000/api/events', {
+    const events = await fetch(`${apiBaseUrl}/events`, {
       headers: {
         Authorization: `Bearer ${token}`,
         credential: 'include'

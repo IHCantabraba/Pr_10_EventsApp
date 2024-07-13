@@ -1,4 +1,4 @@
-import MsgTemplate from '../components/common/BottonMsg/BottomMsg'
+import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import RemoveMsgDiv from './RemoveMsgDiv'
 
 const notification = (msg, icon, tipo) => {

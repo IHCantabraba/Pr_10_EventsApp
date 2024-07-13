@@ -1,11 +1,11 @@
 import './PublisherEventSelectedPage.css'
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import Participantes from '../../components/common/attendeesList/attendeesList'
-import RemoveEventPage from '../../utils/RemoveEventPage'
-import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
+import RemoveEventPage from '../../utils/DomFunctions/RemoveEventPage'
+import RemoveMsgDiv from '../../utils/DomFunctions/RemoveMsgDiv'
 import OrganizedEvents from '../Organizados/Organizados'
 import Login from '../Login/Login'
-
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 const ShowEventSelected = (eventSelected) => {
   let longDescription = eventSelected.longDescription
   if (longDescription === '') {
@@ -44,7 +44,7 @@ const PublisherOpenPage = async (id) => {
   blurContent('Publisher-events-section')
 
   try {
-    const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
+    const EventInfo = await fetch(`${apiBaseUrl}/events/${id}`)
     const EventData = await EventInfo.json()
 
     /* insert detailed event page */
@@ -120,7 +120,7 @@ const checkFreePlaces = () => {
 const ShowParticipants = async (id) => {
   let asistentes = []
   try {
-    const response = await fetch('http://localhost:3000/api/attendees')
+    const response = await fetch(`${apiBaseUrl}/attendees`)
     if (response.ok) {
       const ParsedResponse = await response.json()
       /* para cada asistente registrado en general */
@@ -151,18 +151,15 @@ const ShowParticipants = async (id) => {
 const CancelEvent = async (id, estado) => {
   const token = JSON.parse(sessionStorage.getItem('user')).token
   try {
-    const CancelarEvento = await fetch(
-      `http://localhost:3000/api/events/${id}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          credential: 'include'
-        },
-        method: 'PUT',
-        body: JSON.stringify({ estado: `${estado}` })
-      }
-    )
+    const CancelarEvento = await fetch(`${apiBaseUrl}/events/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        credential: 'include'
+      },
+      method: 'PUT',
+      body: JSON.stringify({ estado: `${estado}` })
+    })
     if (CancelarEvento.ok) {
       const page = document.querySelector('.Publisher-EventSelectedPage ')
       page.appendChild(

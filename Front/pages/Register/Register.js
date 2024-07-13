@@ -2,13 +2,13 @@ import './Register.css'
 import InputElem from '../../components/common/Input/Input'
 import Btn from '../../components/common/Button/button'
 import Login from '../Login/Login'
-import notification from '../../utils/notification'
-import registerErrorParser from '../../utils/registerErorParser'
-import validatePassword from '../../utils/validatePassword'
-import changeSubmitBtnAppearence from '../../utils/chageformSubmitBtnAppearence'
-import autologinFromRegister from '../../utils/LoginFromRegister'
+import notification from '../../utils/DomFunctions/notification'
+import registerErrorParser from '../../utils/checks/registerErorParser'
+import validatePassword from '../../utils/checks/validatePassword'
+import changeSubmitBtnAppearence from '../../utils/LoadingFeedback/chageformSubmitBtnAppearence'
+import autologinFromRegister from '../../utils/ServicePath/LoginFromRegister'
 import LandingTemplate from '../../components/Landing/Landing'
-
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 /* Register template */
 const template = () => `
   <section id="register-form">
@@ -87,7 +87,7 @@ const submitRegister = async () => {
       data.append('img', avatar)
       data.append('rol', rol)
       console.log(data.entries())
-      const response = await fetch('http://localhost:3000/api/auth/register', {
+      const response = await fetch(`${apiBaseUrl}/auth/register`, {
         method: 'POST',
         body: data,
         mode: 'cors',

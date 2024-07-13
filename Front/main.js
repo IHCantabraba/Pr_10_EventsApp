@@ -6,9 +6,9 @@ import main from './components/main/main'
 import footer from './components/footer/footer'
 import Login from './pages/Login/Login'
 import Events from './pages/Events/Events'
-import rolPermisionFeatures from './utils/RolPermision'
-import LogoutFucntion from './utils/LogoutFucntion'
-import notification from './utils/notification'
+import rolPermisionFeatures from './utils/checks/RolPermision'
+import LogoutFucntion from './utils/checks/LogoutFucntion'
+import notification from './utils/DomFunctions/notification'
 sessionStorage.removeItem('user')
 /* insertar el header */
 HeaderTemplate()

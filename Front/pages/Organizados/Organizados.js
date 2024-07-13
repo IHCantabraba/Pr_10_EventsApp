@@ -2,6 +2,7 @@ import './Organizados.css'
 import createArticle from '../../components/common/EventArticle/eventArticle'
 import Login from '../Login/Login'
 import PublisherOpenPage from '../PublisherEventSelectedPage/PublisherEventSelectedPage'
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 const template = () =>
   `
 <section id="Publisher-events-section" class="withEvents"></section>`
@@ -11,7 +12,7 @@ const getOrganizedEvents = async () => {
   const token = userLogged.token
   const id = userLogged.user._id
   try {
-    const events = await fetch(`http://localhost:3000/api/events/user/${id}`, {
+    const events = await fetch(`${apiBaseUrl}/events/user/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         credential: 'include'

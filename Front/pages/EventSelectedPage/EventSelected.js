@@ -1,10 +1,10 @@
 import selectedEvent from '../../components/SelectedEvent/EeventSelected'
 import MsgTemplate from '../../components/common/BottonMsg/BottomMsg'
 import Participantes from '../../components/common/attendeesList/attendeesList'
-import RemoveEventPage from '../../utils/RemoveEventPage'
-import RemoveMsgDiv from '../../utils/RemoveMsgDiv'
+import RemoveEventPage from '../../utils/DomFunctions/RemoveEventPage'
+import RemoveMsgDiv from '../../utils/DomFunctions/RemoveMsgDiv'
 import './EventSelected.css'
-
+import { apiBaseUrl } from '../../utils/ServicePath/apiBaseUrl'
 const ShowEventSelected = (eventSelected) => {
   let longDescription = eventSelected.longDescription
   if (longDescription === '') {
@@ -26,7 +26,7 @@ const OpenPage = async (id) => {
   blurContent('events-section')
 
   try {
-    const EventInfo = await fetch(`http://localhost:3000/api/events/${id}`)
+    const EventInfo = await fetch(`${apiBaseUrl}/events/${id}`)
     const EventData = await EventInfo.json()
     ShowEventSelected(EventData)
 
@@ -89,7 +89,7 @@ const checkFreePlaces = () => {
 const ShowParticipants = async (id) => {
   let asistentes = []
   try {
-    const response = await fetch('http://localhost:3000/api/attendees')
+    const response = await fetch(`${apiBaseUrl}/attendees`)
     if (response.ok) {
       const ParsedResponse = await response.json()
       /* para cada asistente registrado en general */
@@ -127,23 +127,20 @@ const RegisterInEvent = async (id) => {
 
   /* register user on event */
   try {
-    const response = await fetch(
-      `http://localhost:3000/api/user/attendees/${id}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          nombre: userNombre,
-          email: useremail,
-          users: userId,
-          img: userImg,
-          events: id
-        })
-      }
-    )
+    const response = await fetch(`${apiBaseUrl}/user/attendees/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        nombre: userNombre,
+        email: useremail,
+        users: userId,
+        img: userImg,
+        events: id
+      })
+    })
     console.log(response)
     if (response.status !== 201) {
       const page = document.querySelector('.EventSelectedPage ')

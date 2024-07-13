@@ -1,4 +1,4 @@
-import LogoutTemplate from './AddLogout'
+import LogoutTemplate from '../DomFunctions/AddLogout'
 
 const template = () =>
   `<h2 id="alreadyLogged"> You are already logged. Redirecting to Events page... </h2> `

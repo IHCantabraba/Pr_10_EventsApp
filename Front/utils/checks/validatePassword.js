@@ -1,5 +1,5 @@
-import changeSubmitBtnAppearence from './chageformSubmitBtnAppearence'
-import notification from './notification'
+import changeSubmitBtnAppearence from '../LoadingFeedback/chageformSubmitBtnAppearence'
+import notification from '../DomFunctions/notification'
 
 const validatePassword = (password, Repeatedpassword) => {
   let Msg

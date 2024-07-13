@@ -1,4 +1,4 @@
-import LogoutFucntion from './LogoutFucntion'
+import LogoutFucntion from '../checks/LogoutFucntion'
 import addAnchor from './addAnchor'
 
 const addUserLog = () => {

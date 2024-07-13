@@ -1,6 +1,6 @@
-import NewEvent from '../pages/NewEvent/NewEvrnt'
-import OrganizedEvents from '../pages/Organizados/Organizados'
-import insertAnchor from './insertAnchor'
+import NewEvent from '../../pages/NewEvent/NewEvrnt'
+import OrganizedEvents from '../../pages/Organizados/Organizados'
+import insertAnchor from '../DomFunctions/insertAnchor'
 
 const rolPermisionFeatures = () => {
   /* habilitar crear evento en funcion de los permisos del rol */
